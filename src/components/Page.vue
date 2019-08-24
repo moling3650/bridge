@@ -6,8 +6,10 @@
     <video v-show="isLoop" ref="LoopVideo" :src="require(`../../public/video/${pageName}-2.mp4`)" preload loop>
       您的浏览器不支持 video 标签。
     </video>
-    <slot :is-loop="isLoop"/>
-    <button v-show="!isLoop" class="skip" @click="playLoopVideo">skip</button>
+    <div class="content">
+      <slot :is-loop="isLoop"/>
+      <button v-show="!isLoop && canSkip" class="skip" @click="playLoopVideo">skip</button>
+    </div>
   </div>
 </template>
 
@@ -18,6 +20,9 @@ export default {
     pageName: {
       type: String,
       required: true,
+    },
+    canSkip: {
+      type: Boolean,
     },
   },
   data () {
@@ -53,10 +58,18 @@ export default {
   & > video {
     width: 100%;
   }
-  .skip {
+  .content {
     position: absolute;
-    right: 10px;
-    bottom: 10px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    .skip {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+    }
   }
 }
 </style>
