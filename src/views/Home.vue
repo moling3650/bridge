@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="page"/>
+    <loader :is-loading="false" @click-start="watchVideo"/>
   </div>
 </template>
 
@@ -8,5 +8,10 @@
 
 export default {
   name: 'Home',
+  methods: {
+    watchVideo () {
+      console.log('a')
+    },
+  },
 }
 </script>
