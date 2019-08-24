@@ -3,7 +3,7 @@
     <loader v-show="loadingVisiable" :is-loading="isLoading" @click-start="watchVideo"/>
     <page v-show="!loadingVisiable" ref="page" page-name="Home" can-skip @canplay="showVideo">
       <template slot-scope="{ isLoop }">
-        <router-link v-show="isLoop" class="start" to="/">开始</router-link>
+        <router-link v-show="isLoop" class="start" to="/navigation">开始</router-link>
       </template>
     </page>
   </div>

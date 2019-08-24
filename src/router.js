@@ -17,7 +17,7 @@ export default new Router({
       path: '/navigation',
       name: 'navigation',
       component: () =>
-        import(/* webpackChunkName: "about" */ './views/Navigation.vue'),
+        import(/* webpackChunkName: "Navigation" */ './views/Navigation.vue'),
     },
   ],
 })
