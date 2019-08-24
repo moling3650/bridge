@@ -6,9 +6,11 @@ import './registerServiceWorker'
 import Loader from '@/components/Loader'
 import Page from '@/components/Page'
 import NavLink from '@/components/NavLink'
+import NavBar from '@/components/NavBar'
 Vue.component(Loader.name, Loader)
 Vue.component(Page.name, Page)
 Vue.component(NavLink.name, NavLink)
+Vue.component(NavBar.name, NavBar)
 
 Vue.config.productionTip = false
 

@@ -9,6 +9,7 @@
         <nav-link to="DongRenGongDao" text="东人工岛" :style="{ top: '17%', left: '57%' }"/>
         <nav-link to="HaiDiSuiDao" text="海底隧道" :style="{ top: '45%', left: '63%' }"/>
         <nav-link to="XiRenGongDao" text="西人工岛" :style="{ top: '23%', left: '73%' }"/>
+        <nav-bar/>
       </template>
     </page>
   </div>
