@@ -1,7 +1,6 @@
 <template>
   <div class="page">
     <video
-      v-show="!isLoop"
       ref="Cutscenes"
       :src="require(`../../public/video/${pageName}-1.mp4`)"
       preload
@@ -13,11 +12,11 @@
       您的浏览器不支持 video 标签。
     </video>
     <video
-      v-show="isLoop"
       ref="LoopVideo"
       :src="require(`../../public/video/${pageName}-2.mp4`)"
       :preload="loopPreLoad"
       loop
+      :style="{ zIndex }"
     >
       您的浏览器不支持 video 标签。
     </video>
@@ -49,6 +48,11 @@ export default {
       loopPreLoad: false,
     }
   },
+  computed: {
+    zIndex () {
+      return this.isLoop ? 1 : -1
+    },
+  },
   methods: {
     play (loop) {
       if (loop) {
@@ -76,6 +80,11 @@ export default {
   overflow: hidden;
   & > video {
     width: 100%;
+    &:nth-child(2) {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
   }
   .content {
     position: absolute;
@@ -84,6 +93,7 @@ export default {
     bottom: 0;
     left: 0;
     text-align: center;
+    z-index: 10;
     .skip {
       position: absolute;
       right: 10px;
