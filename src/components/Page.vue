@@ -1,9 +1,24 @@
 <template>
   <div class="page">
-    <video v-show="!isLoop" ref="Cutscenes" :src="require(`../../public/video/${pageName}-1.mp4`)" preload :autoplay="autoplay" @canplay="$emit('canplay')" @ended="playLoopVideo">
+    <video
+      v-show="!isLoop"
+      ref="Cutscenes"
+      :src="require(`../../public/video/${pageName}-1.mp4`)"
+      preload
+      :autoplay="autoplay"
+      @canplay="$emit('canplay')"
+      @canplaythrough="loopPreLoad = true"
+      @ended="playLoopVideo"
+    >
       您的浏览器不支持 video 标签。
     </video>
-    <video v-show="isLoop" ref="LoopVideo" :src="require(`../../public/video/${pageName}-2.mp4`)" preload loop>
+    <video
+      v-show="isLoop"
+      ref="LoopVideo"
+      :src="require(`../../public/video/${pageName}-2.mp4`)"
+      :preload="loopPreLoad"
+      loop
+    >
       您的浏览器不支持 video 标签。
     </video>
     <div class="content">
@@ -31,6 +46,7 @@ export default {
   data () {
     return {
       isLoop: false,
+      loopPreLoad: false,
     }
   },
   methods: {
