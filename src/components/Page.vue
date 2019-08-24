@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <video v-show="!isLoop" ref="Cutscenes" :src="require(`../../public/video/${pageName}-1.mp4`)" preload @canplaythrough="$emit('canplay')" @ended="playLoopVideo">
+    <video v-show="!isLoop" ref="Cutscenes" :src="require(`../../public/video/${pageName}-1.mp4`)" preload :autoplay="autoplay" @canplay="$emit('canplay')" @ended="playLoopVideo">
       您的浏览器不支持 video 标签。
     </video>
     <video v-show="isLoop" ref="LoopVideo" :src="require(`../../public/video/${pageName}-2.mp4`)" preload loop>
@@ -22,6 +22,9 @@ export default {
       required: true,
     },
     canSkip: {
+      type: Boolean,
+    },
+    autoplay: {
       type: Boolean,
     },
   },
