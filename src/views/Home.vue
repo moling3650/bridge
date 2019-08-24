@@ -1,6 +1,11 @@
 <template>
   <div class="home">
-    <loader :is-loading="false" @click-start="watchVideo"/>
+    <loader v-show="loadingVisiable" :is-loading="isLoading" @click-start="watchVideo"/>
+    <page v-show="!loadingVisiable" ref="page" page-name="Home" can-skip @canplay="showVideo">
+      <template slot-scope="{ isLoop }">
+        <router-link v-show="isLoop" class="start" to="/">开始</router-link>
+      </template>
+    </page>
   </div>
 </template>
 
@@ -8,10 +13,30 @@
 
 export default {
   name: 'Home',
+  data () {
+    return {
+      isLoading: true,
+      loadingVisiable: true,
+    }
+  },
   methods: {
     watchVideo () {
-      console.log('a')
+      this.loadingVisiable = false
+      this.$refs.page.play()
+    },
+    showVideo () {
+      this.isLoading = false
     },
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.start {
+  position: relative;
+  top: 50%;
+  font-size: 36px;
+  color: #eee;
+  text-decoration: none;
+}
+</style>
