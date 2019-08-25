@@ -2,7 +2,7 @@
   <div id="DongRenGongDao">
     <page page-name="DongRenGongDao" autoplay can-skip>
       <template slot-scope="{ isLoop }">
-        <nav-bar v-show="isLoop"/>
+        <nav-bar v-show="isLoop" back-and-next/>
       </template>
     </page>
   </div>
