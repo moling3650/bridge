@@ -2,16 +2,17 @@
   <div class="page">
     <video
       ref="Cutscenes"
-      :src="require(`../../public/video/${pageName}-1.mp4`)"
+      :src="require(`../../public/video/${pageName}${noLoop ? '' : '-1' }.mp4`)"
       preload
       :autoplay="autoplay"
       @canplay="$emit('canplay')"
       @canplaythrough="loopPreLoad = true"
-      @ended="playLoopVideo"
+      @ended="handleEnded"
     >
       您的浏览器不支持 video 标签。
     </video>
     <video
+      v-if="!noLoop"
       ref="LoopVideo"
       :src="require(`../../public/video/${pageName}-2.mp4`)"
       :preload="loopPreLoad"
@@ -22,7 +23,7 @@
     </video>
     <div class="content">
       <slot :is-loop="isLoop"/>
-      <button v-show="!isLoop && canSkip" class="skip" @click="playLoopVideo">skip</button>
+      <button v-show="!isLoop && canSkip" class="skip" @click="handleEnded">skip</button>
     </div>
   </div>
 </template>
@@ -41,6 +42,9 @@ export default {
     autoplay: {
       type: Boolean,
     },
+    noLoop: {
+      type: Boolean,
+    },
   },
   data () {
     return {
@@ -54,8 +58,14 @@ export default {
     },
   },
   methods: {
+    handleEnded () {
+      this.$emit('ended')
+      if (!this.noLoop) {
+        this.playLoopVideo()
+      }
+    },
     play (loop) {
-      if (loop) {
+      if (loop && !this.noLoop) {
         this.playLoopVideo()
       } else {
         this.$refs.Cutscenes.play()

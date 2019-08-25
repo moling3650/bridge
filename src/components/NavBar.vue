@@ -3,7 +3,7 @@
     <div class="bar-container" @mouseleave="showBar = false">
       <div v-show="showBar" class="bar">
         <router-link :to="{ name: 'navigation', query: { loop: true } }">导航</router-link>
-        <router-link to="/">大桥漫游</router-link>
+        <router-link to="/Roaming">大桥漫游</router-link>
         <router-link to="/">世界之最</router-link>
         <router-link to="/">桥魔方</router-link>
         <router-link to="/">建设者</router-link>

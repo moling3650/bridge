@@ -61,5 +61,11 @@ export default new Router({
       component: () =>
         import(/* webpackChunkName: "Views" */ './views/XiRenGongDao.vue'),
     },
+    {
+      path: '/Roaming',
+      name: 'Roaming',
+      component: () =>
+        import(/* webpackChunkName: "Views" */ './views/Roaming.vue'),
+    },
   ],
 })
