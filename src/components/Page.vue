@@ -2,6 +2,7 @@
   <div class="page">
     <video
       ref="Cutscenes"
+      :poster="require(`../../public/img/poster/${pageName}${noLoop ? '' : '-1' }-p.jpg`)"
       :src="require(`../../public/video/${pageName}${noLoop ? '' : '-1' }.mp4`)"
       preload
       :autoplay="autoplay"
