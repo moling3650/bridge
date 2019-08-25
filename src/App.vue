@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <audio autoplay loop :src="require('./assets/bgmusic.mp3')">
+      你的浏览器版本太低，不支持audio标签
+    </audio>
     <router-view/>
   </div>
 </template>
