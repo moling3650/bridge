@@ -67,5 +67,11 @@ export default new Router({
       component: () =>
         import(/* webpackChunkName: "Views" */ './views/Roaming.vue'),
     },
+    {
+      path: '/End',
+      name: 'End',
+      component: () =>
+        import(/* webpackChunkName: "Views" */ './views/End.vue'),
+    },
   ],
 })
