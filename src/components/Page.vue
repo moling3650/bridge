@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div ref="page" class="page" :style="{ height }">
     <video
       ref="Cutscenes"
       :poster="require(`../../public/img/poster/${pageName}${noLoop ? '' : '-1' }-p.jpg`)"
@@ -7,7 +7,8 @@
       preload
       :autoplay="autoplay"
       @canplay="$emit('canplay')"
-      @canplaythrough="loopPreLoad = true"
+      @canplaythrough="loopPreLoad = 'auto'"
+      @play="handlePlay"
       @ended="handleEnded"
     >
       您的浏览器不支持 video 标签。
@@ -51,6 +52,7 @@ export default {
     return {
       isLoop: false,
       loopPreLoad: false,
+      height: '100%',
     }
   },
   computed: {
@@ -59,6 +61,10 @@ export default {
     },
   },
   methods: {
+    handlePlay () {
+      const rect = this.$refs.Cutscenes.getBoundingClientRect()
+      this.height = `${Math.min(document.body.clientHeight, rect.height)}px`
+    },
     handleEnded () {
       this.$emit('ended')
       if (!this.noLoop) {
@@ -73,8 +79,8 @@ export default {
       }
     },
     playLoopVideo () {
+      this.isLoop = true
       this.$nextTick(() => {
-        this.isLoop = true
         this.$refs.LoopVideo.play()
       })
     },
