@@ -3,20 +3,30 @@
     <page page-name="JiuZhouQiao" autoplay can-skip>
       <template slot-scope="{ isLoop }">
         <nav-bar v-show="isLoop" back-and-next/>
-        <dot v-show="isLoop" :style="{ top: '13%', left: '33%' }" text="风帆塔" @click.native="clickDot"/>
-        <dot v-show="isLoop" :style="{ top: '40%', left: '52%' }" text="世界最长的钢铁大桥"/>
-        <dot v-show="isLoop" :style="{ top: '43%', left: '67%' }" text="桥墩"/>
+        <dot v-show="isLoop" :style="{ top: '13%', left: '33%' }" text="风帆塔" @click.native="clickDot(1)"/>
+        <dot v-show="isLoop" :style="{ top: '40%', left: '52%' }" text="世界最长的钢铁大桥" @click.native="clickDot(2)"/>
+        <dot v-show="isLoop" :style="{ top: '43%', left: '67%' }" text="桥墩" @click.native="clickDot(3)"/>
       </template>
     </page>
+    <video-player v-show="showVPlayer" ref="vplayer" @close="showVPlayer = false"/>
   </div>
 </template>
 
 <script>
 export default {
   name: 'JiuZhouQiao',
+  data () {
+    return {
+      showVPlayer: false,
+    }
+  },
   methods: {
-    clickDot () {
-      console.log('a')
+    clickDot (index) {
+      const video = {
+        url: require(`../../public/video/JiuZhouQiao/1-b-${index}.mp4`),
+      }
+      this.showVPlayer = true
+      this.$refs.vplayer.play(video)
     },
   },
 }
