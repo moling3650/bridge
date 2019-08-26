@@ -8,11 +8,13 @@ import Page from '@/components/Page'
 import NavLink from '@/components/NavLink'
 import NavBar from '@/components/NavBar'
 import Dot from '@/components/Dot'
+import VideoPlayer from '@/components/VideoPlayer'
 Vue.component(Loader.name, Loader)
 Vue.component(Page.name, Page)
 Vue.component(NavLink.name, NavLink)
 Vue.component(NavBar.name, NavBar)
 Vue.component(Dot.name, Dot)
+Vue.component(VideoPlayer.name, VideoPlayer)
 
 Vue.config.productionTip = false
 
