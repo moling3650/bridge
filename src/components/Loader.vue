@@ -28,11 +28,18 @@ export default {
 
 <style lang="scss" scoped>
 #Loader {
+  width: 100%;
+  height: 100%;
+  // padding-top: 200px;
   text-align: center;
+  background-image: url(../../public/img/poster/Home-1-p.jpg);
+  background-size: 100% ;
 }
 .loading {
-  background: #fff;
-  margin: 100px auto;
+  position: relative;
+  top: 200px;
+  background: transparent;
+  margin: 0 auto 100px;
   width: 100px;
   height: 100px;
   animation: spin 10s infinite;
@@ -90,6 +97,8 @@ export default {
 }
 
 .loading-text {
+  position: relative;
+  top: 150px;
   display: inline-block;
   font-size: 24px;
   .text {
