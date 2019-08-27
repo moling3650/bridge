@@ -5,7 +5,7 @@
         <nav-bar v-show="isLoop" back-and-next/>
         <dot v-show="isLoop" :style="{ top: '13%', left: '33%' }" text="风帆塔" @click.native="clickDot(1)"/>
         <dot v-show="isLoop" :style="{ top: '40%', left: '52%' }" text="世界最长的钢铁大桥" @click.native="clickDot(2)"/>
-        <dot v-show="isLoop" :style="{ top: '43%', left: '67%' }" text="桥墩" @click.native="clickDot(3)"/>
+        <dot v-show="isLoop" :style="{ top: '40%', left: '76%' }" text="桥墩" @click.native="clickDot(3)"/>
       </template>
     </page>
     <video-player v-show="showVPlayer" ref="vplayer" @close="showVPlayer = false"/>
