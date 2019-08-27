@@ -52,10 +52,14 @@ export default {
     noLoop: {
       type: Boolean,
     },
+    start: {
+      type: String,
+      default: 'Cutscenes',
+    },
   },
   data () {
     return {
-      isLoop: false,
+      isLoop: this.start !== 'Cutscenes',
       loopPreLoad: false,
       height: '100%',
     }

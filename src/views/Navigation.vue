@@ -1,6 +1,6 @@
 <template>
   <div class="Navigation">
-    <page ref="page" page-name="Navigation" can-skip @canplay="play">
+    <page ref="page" page-name="Navigation" :start="start" can-skip autoplay>
       <template v-if="isLoop" slot-scope="{ isLoop }">
         <nav-link to="JiuZhouQiao" text="九州桥" :style="{ top: '44%', left: '10%' }"/>
         <nav-link to="JiangHaiQiao" text="江海桥" :style="{ top: '18%', left: '25%' }"/>
@@ -18,10 +18,10 @@
 <script>
 export default {
   name: 'Navigation',
-  methods: {
-    play () {
-      this.$refs.page.play(this.$route.query.loop)
-    },
+  data () {
+    return {
+      start: this.$route.query.loop ? 'LoopVideo' : 'Cutscenes',
+    }
   },
 }
 </script>
