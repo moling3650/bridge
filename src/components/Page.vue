@@ -69,6 +69,11 @@ export default {
       return this.isLoop ? 1 : -1
     },
   },
+  mounted () {
+    if (this.isLoop) {
+      this.play(true)
+    }
+  },
   methods: {
     handlePlay () {
       const rect = this.$refs.Cutscenes.getBoundingClientRect()
