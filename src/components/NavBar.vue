@@ -5,7 +5,7 @@
         <router-link :to="{ name: 'navigation', query: { loop: true } }"/>
         <router-link to="/Roaming"/>
         <router-link to="/"/>
-        <router-link to="/"/>
+        <router-link to="/ZhiShiMoFang"/>
         <a href="http://news.southcn.com/n/node_395653.htm"/>
         <router-link to="/"/>
       </div>
