@@ -2,12 +2,12 @@
   <div id="NavBar">
     <div v-show="showBar" class="bar-container" @mouseleave="showBar = false">
       <div class="bar">
-        <router-link :to="{ name: 'navigation', query: { loop: true } }">导航</router-link>
-        <router-link to="/Roaming">大桥漫游</router-link>
-        <router-link to="/">世界之最</router-link>
-        <router-link to="/">桥魔方</router-link>
-        <router-link to="/">建设者</router-link>
-        <router-link to="/">互动</router-link>
+        <router-link :to="{ name: 'navigation', query: { loop: true } }"/>
+        <router-link to="/Roaming"/>
+        <router-link to="/"/>
+        <router-link to="/"/>
+        <a href="http://news.southcn.com/n/node_395653.htm"/>
+        <router-link to="/"/>
       </div>
       <router-link v-show="backAndNext" class="back" :to="to.back">
         <img src="@/assets/img/back.png" alt="返回">
@@ -69,8 +69,10 @@ export default {
     text-align: center;
     .bar {
       display: inline-block;
-      width: 600px;
+      width: 700px;
       height: 120px;
+      padding-left: 50px;
+      padding-right: 50px;
       background-image: url(../assets/img/navbar.png);
       background-size: 100% 100%;
       & > a {
