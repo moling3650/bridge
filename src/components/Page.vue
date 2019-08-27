@@ -16,6 +16,7 @@
     <video
       v-if="!noLoop"
       ref="LoopVideo"
+      :poster="require(`../../public/img/poster/${pageName}-2-p.jpg`)"
       :src="require(`../../public/video/${pageName}-2.mp4`)"
       :preload="loopPreLoad"
       loop
@@ -25,7 +26,11 @@
     </video>
     <div class="content">
       <slot :is-loop="isLoop"/>
-      <button v-show="!isLoop && canSkip" class="skip" @click="handleEnded">skip</button>
+
+      <a v-show="!isLoop && canSkip" class="next" @click="handleEnded">
+        <img src="@/assets/img/next.png" alt="前进">
+        <span class="text">前进</span>
+      </a>
     </div>
   </div>
 </template>
@@ -111,10 +116,25 @@ export default {
     left: 0;
     text-align: center;
     z-index: 10;
-    .skip {
+    .next {
       position: absolute;
-      right: 10px;
-      bottom: 10px;
+      right: 20px;
+      bottom: 20px;
+      display: inline-block;
+      width: 120px;
+      height: 120px;
+      font-size: 24px;
+      color: #eeeeee;
+      text-decoration: none;
+      cursor: pointer;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+      .text {
+        position: relative;
+        top: -50px;
+      }
     }
   }
 }
