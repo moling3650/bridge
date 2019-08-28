@@ -2,10 +2,10 @@
   <div id="ZhiShiMoFang">
     <div class="tech-container">
       <ul class="tech-list">
-        <li v-for="(t, i) in techList" :key="i" class="out-right" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
+        <li v-for="(t, i) in filteredData" :key="t" class="out-right" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
           <div class="picBox">
             <div class="show">
-              <img :src="`http://www.gdggkf.com/zg/assets/tech/list_${i + 1}.png`">
+              <img :src="`http://www.gdggkf.com/zg/assets/tech/list_${index * size + i + 1}.png`">
             </div>
             <div class="hide">
               <h3>{{ t }}</h3>
@@ -14,6 +14,8 @@
         </li>
       </ul>
     </div>
+    <i v-show="index > 0" class="left" @click="index -= 1"/>
+    <i v-show="index < techList.length / size - 1" class="right" @click="index += 1"/>
     <nav-bar/>
   </div>
 </template>
@@ -43,7 +45,14 @@ export default {
         '深圳光启\n“旅行者”3号',
         '深圳前海\n供冷系统',
       ],
+      index: 0,
+      size: 9,
     }
+  },
+  computed: {
+    filteredData () {
+      return this.techList.slice(this.index * this.size, (this.index + 1) * this.size)
+    },
   },
   methods: {
     _getDirection (event) {
@@ -80,6 +89,26 @@ export default {
   background-repeat: no-repeat;
   background-image: url(../../public/img/bg/magic_cube.jpg);
   background-size: 100%;
+  .left,
+  .right {
+    position: absolute;
+    top: 50%;
+    margin-top: -100px;
+    display: block;
+    width: 110px;
+    height: 200px;
+    cursor: pointer;
+  }
+  .left {
+    left: 10px;
+    background-image: url(../assets/img/left.png);
+    background-size: 100% 100%;
+  }
+  .right {
+    right: 10px;
+    background-image: url(../assets/img/right.png);
+    background-size: 100% 100%;
+  }
 }
 .tech-container {
   position: relative;
