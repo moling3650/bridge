@@ -11,11 +11,9 @@
       </div>
       <router-link v-show="backAndNext" class="back" :to="to.back">
         <img src="@/assets/img/back.png" alt="返回">
-        <span class="text">返回</span>
       </router-link>
       <router-link v-show="backAndNext" class="next" :to="to.next">
         <img src="@/assets/img/next.png" alt="前进">
-        <span class="text">前进</span>
       </router-link>
     </div>
     <img class="display-btn" src="@/assets/img/display-btn.png" alt="显示导航的按钮" @click="showBar = !showBar">
@@ -103,11 +101,6 @@ export default {
       width: 100%;
       height: 100%;
     }
-    .text {
-      position: relative;
-      top: -50px;
-    }
-
   }
   .back {
     top: 0;

@@ -29,7 +29,6 @@
 
       <a v-show="!isLoop && canSkip" class="next" @click="handleEnded">
         <img src="@/assets/img/next.png" alt="前进">
-        <span class="text">前进</span>
       </a>
     </div>
   </div>
@@ -139,10 +138,6 @@ export default {
       img {
         width: 100%;
         height: 100%;
-      }
-      .text {
-        position: relative;
-        top: -50px;
       }
     }
   }
