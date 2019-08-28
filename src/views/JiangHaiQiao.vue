@@ -3,8 +3,9 @@
     <page page-name="JiangHaiQiao" autoplay can-skip>
       <template slot-scope="{ isLoop }">
         <nav-bar v-show="isLoop" back-and-next/>
-        <dot v-show="isLoop" :style="{ top: '23%', left: '12%' }" text="海豚塔" @click.native="clickDot(1)"/>
-        <dot v-show="isLoop" :style="{ top: '40%', left: '80%' }" text="全球首次采用锌－铝合金超强钢丝" @click.native="clickDot(3)"/>
+        <dot v-show="isLoop" :style="{ marginTop: '12%', left: '12%' }" text="海豚塔" @click.native="clickDot(1)"/>
+        <dot v-show="isLoop" :style="{ marginTop: '14%', left: '48%' }" text="全球首例巨型钢塔翻身吊装"/>
+        <dot v-show="isLoop" :style="{ marginTop: '23%', left: '80%' }" text="全球首次采用锌－铝合金超强钢丝" @click.native="clickDot(3)"/>
       </template>
     </page>
     <video-player v-show="showVPlayer" ref="vplayer" @close="showVPlayer = false"/>
