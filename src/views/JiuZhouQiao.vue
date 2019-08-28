@@ -1,6 +1,6 @@
 <template>
   <div id="JiuZhouQiao">
-    <page page-name="JiuZhouQiao" autoplay can-skip>
+    <page page-name="JiuZhouQiao" autoplay can-skip :opacity="showVPlayer ? 5 : 0">
       <template slot-scope="{ isLoop }">
         <nav-bar v-show="isLoop" back-and-next/>
         <dot v-show="isLoop" :style="{ marginTop: '7%', left: '33%' }" text="风帆塔" @click.native="clickDot(1)"/>

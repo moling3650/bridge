@@ -1,5 +1,5 @@
 <template>
-  <div ref="page" class="page" :style="{ height }">
+  <div ref="page" class="page" :style="{ height, filter: `blur(${opacity}px)` }">
     <video
       ref="Cutscenes"
       :poster="require(`../../public/img/poster/${pageName}${noLoop ? '' : '-1' }-p.jpg`)"
@@ -54,6 +54,10 @@ export default {
     start: {
       type: String,
       default: 'Cutscenes',
+    },
+    opacity: {
+      type: Number,
+      default: 0,
     },
   },
   data () {
@@ -110,6 +114,7 @@ export default {
   overflow: hidden;
   & > video {
     width: 100%;
+    // object-fit: cover;
     &:nth-child(2) {
       position: absolute;
       top: 0;

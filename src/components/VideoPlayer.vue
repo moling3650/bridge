@@ -59,11 +59,13 @@ export default {
   justify-content: center;
   align-items: center;
   z-index: 10;
+  background-color: rgba(0,0,0,0.5);
 }
 .v-player-wrap {
   position: relative;
   width: 960px;
   height: 540px;
+  border: 15px solid #244852;
   .dplayer-fulled {
     width: 100%;
     height: 100%;
@@ -76,9 +78,6 @@ export default {
     color: #ffffff;
     z-index: 101;
     cursor: pointer;
-  }
-  .v-player {
-    border-top: 30px solid #04212b;
   }
 }
 </style>
