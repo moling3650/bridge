@@ -1,10 +1,20 @@
 <template>
   <div class="dot-wrap" v-bind="$attrs">
-    <div class="dot-2"/>
     <div class="text">{{ text }}</div>
-    <div class="dot example-1">
-      <div class="dot dot-1"/>
+
+    <div class="dots">
+      <div v-for="i in 5" :key="i" class="dot"/>
     </div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="50px" height="50px">
+      <defs>
+        <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur"/>
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"/>
+          <feBlend in="SourceGraphic" in2="goo"/>
+        </filter>
+      </defs>
+    </svg>
   </div>
 </template>
 
@@ -23,60 +33,122 @@ export default {
 <style lang="scss" scoped>
 .dot-wrap {
   position: absolute;
+  cursor: pointer;
   & > .text {
     display: none;
   }
   &:hover > .text {
     position: absolute;
-    top: -20px;
+    top: -60px;
     left: -150%;
     display: inline-block;
     width: 400%;
     font-size: 22px;
-    color: #eee;
   }
 }
-.dot {
-  display: flex;
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  cursor: pointer;
+$dot-color: #79C3CD;
+$dot-size: 20px;
+$circle-size: 30px;
+$animation-time: 4s;
+
+$color-yellow: #FBD301;
+$color-red: #FF3270;
+$color-blue: #208BF1;
+$color-green: #AFE102;
+
+$colors: ($color-yellow, $color-red, $color-blue, $color-green);
+
+body {
+	background: #ffffff;
 }
 
-.example-1 {
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+.dots {
+	width: 0;
+	height: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+
+	filter: url(#goo)
 }
-.dot-1 {
-  background: #1ab7ea;
-  opacity: 0;
-  animation: kf 2.5s cubic-bezier(.41,.25,.32,.83) infinite;
-}
-.dot-2 {
-  position: absolute;
-  display: inline-block;
-  top: 15px;
-  left: 15px;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  background-color: #1ab7ea;
-}
-@keyframes kf {
-  0% {
-    height: 10px;
-    width: 10px;
-    opacity: 0;
-  }
-  50% {
-    height: 30px;
-    width: 30px;
-    opacity: .8;
-  }
-  90% {
-    opacity: 0;
-  }
+
+.dot {
+	width: 0;
+	height: 0;
+	position: absolute;
+	left: 0;
+	top: 0;
+
+	&:before {
+		content: '';
+		width: $dot-size;
+		height: $dot-size;
+		border-radius: 50px;
+		background: $color-yellow;
+		position: absolute;
+		left: 50%;
+		transform: translateY(0) rotate(0deg);
+		margin-left: -($dot-size/2);
+		margin-top: -($dot-size/2);
+	}
+
+	@keyframes dot-move {
+		0% {
+			transform: translateY(0);
+		}
+
+		18%, 22% {
+			transform: translateY(-($circle-size));
+		}
+
+		40%, 100% {
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes dot-colors {
+		@for $i from 0 to 4 {
+			#{$i*25%} {
+				background-color: nth($colors, ($i+3)%4+1);
+			}
+		}
+
+		100% {
+			background-color: nth($colors, 4);
+		}
+	}
+
+	&:nth-child(5):before {
+		z-index: 100;
+		width: $dot-size * 1.3;
+		height: $dot-size * 1.3;
+		margin-left: -($dot-size * .65);
+		margin-top: -($dot-size * .65);
+		animation: dot-colors $animation-time ease infinite;
+	}
+
+	@for $i from 0 to 4 {
+		@keyframes dot-rotate-#{$i + 1} {
+			0% {
+				transform: rotate(#{($i+1)*270deg - 375deg});
+			}
+
+			100% {
+				transform: rotate(#{($i+1)*270deg + 0deg});
+			}
+		}
+
+		&:nth-child(#{$i + 1}) {
+			animation: dot-rotate-#{$i + 1} $animation-time #{$i * $animation-time / 4} linear infinite;
+
+			&:before {
+				background-color: nth($colors, $i+1);
+				animation: dot-move $animation-time #{$i * $animation-time/4} ease infinite;
+			}
+		}
+	}
 }
 </style>
