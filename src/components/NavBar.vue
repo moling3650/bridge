@@ -1,7 +1,7 @@
 <template>
   <div id="NavBar">
     <div v-show="showBar" class="bar-container" @mouseleave="showBar = false">
-      <div class="bar">
+      <div class="bar" :style="barStyle">
         <router-link :to="{ name: 'navigation', query: { loop: true } }"/>
         <router-link to="/Roaming"/>
         <router-link to="/"/>
@@ -9,10 +9,10 @@
         <a href="http://news.southcn.com/n/node_395653.htm"/>
         <router-link to="/"/>
       </div>
-      <router-link v-show="backAndNext" class="back" :to="to.back">
+      <router-link v-show="backAndNext" class="back" :to="to.back" :style="{ width: barStyle.height, height: barStyle.height }">
         <img src="@/assets/img/back.png" alt="返回">
       </router-link>
-      <router-link v-show="backAndNext" class="next" :to="to.next">
+      <router-link v-show="backAndNext" class="next" :to="to.next" :style="{ width: barStyle.height, height: barStyle.height }">
         <img src="@/assets/img/next.png" alt="前进">
       </router-link>
     </div>
@@ -26,6 +26,10 @@ export default {
   props: {
     backAndNext: {
       type: Boolean,
+    },
+    size: {
+      type: String,
+      default: 'lg',
     },
   },
   data () {
@@ -50,6 +54,22 @@ export default {
       return {
         back,
         next,
+      }
+    },
+    barStyle () {
+      const widthMap = {
+        lg: '700px',
+        md: '550px',
+        sm: '400px',
+      }
+      const heightMap = {
+        lg: '120px',
+        md: '100px',
+        sm: '80px',
+      }
+      return {
+        width: widthMap[this.size] || '700px',
+        height: heightMap[this.size] || '120px',
       }
     },
   },
@@ -92,8 +112,6 @@ export default {
   .next {
     position: absolute;
     display: inline-block;
-    width: 120px;
-    height: 120px;
     font-size: 24px;
     color: #eeeeee;
     text-decoration: none;

@@ -2,7 +2,7 @@
   <div class="v-player-mask">
     <div class="v-player-wrap">
       <i class="close" @click="$emit('close')"/>
-      <v-player ref="player" :style="{ width: '960px', height: '540px' }" :options="opts"/>
+      <v-player ref="player" :options="opts"/>
     </div>
   </div>
 </template>
@@ -63,6 +63,8 @@ export default {
 }
 .v-player-wrap {
   position: relative;
+  width: 960px;
+  height: 540px;
   border: 15px solid #244852;
   background: #244852;
   .dplayer-fulled {

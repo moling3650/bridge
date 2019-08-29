@@ -23,23 +23,23 @@ export default {
   },
   mounted () {
     this.resize()
-    window.onresize = () => this.resize()
   },
   methods: {
     resize () {
       this.showView = false
-      const baseRate = 1920 / 1080
-      const rate = document.body.clientWidth / document.body.clientHeight
-      if (rate > baseRate) {
-        this.height = document.body.clientHeight
-        this.width = this.height * baseRate
-        this.left = (document.body.clientWidth - this.width) / 2
-      } else {
-        this.width = document.body.clientWidth
-        this.height = this.width / baseRate
-        this.top = (document.body.clientHeight - this.height) / 2
-      }
       this.$nextTick(() => {
+        const baseRate = 1920 / 1080
+
+        const rate = document.body.clientWidth / document.body.clientHeight
+        if (rate > baseRate) {
+          this.height = document.body.clientHeight
+          this.width = this.height * baseRate
+          this.left = ~~((document.body.clientWidth - this.width) / 2)
+        } else {
+          this.width = document.body.clientWidth
+          this.height = this.width / baseRate
+          this.top = (document.body.clientHeight - this.height) / 2
+        }
         this.showView = true
       })
     },
