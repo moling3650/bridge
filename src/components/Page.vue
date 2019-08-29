@@ -27,8 +27,8 @@
     <div class="content">
       <slot :is-loop="isLoop"/>
 
-      <a v-show="!isLoop && canSkip" class="next" @click="handleEnded">
-        <img src="@/assets/img/next.png" alt="前进">
+      <a v-show="!isLoop && canSkip" class="skip" @click="handleEnded">
+        跳过
       </a>
     </div>
   </div>
@@ -145,6 +145,17 @@ export default {
         width: 100%;
         height: 100%;
       }
+    }
+    .skip {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      display: inline-block;
+      padding: 5px 10px;
+      border: 5px double #eeeeee;
+      border-radius: 20px;
+      color: #eeeeee;
+      cursor: pointer;
     }
   }
 }
