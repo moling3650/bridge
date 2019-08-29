@@ -1,8 +1,8 @@
 <template>
   <div class="v-player-mask">
     <div class="v-player-wrap">
-      <i class="close" @click="$emit('close')">X</i>
-      <v-player ref="player" class="v-player" :options="opts"/>
+      <i class="close" @click="$emit('close')"/>
+      <v-player ref="player" :style="{ width: '960px', height: '540px' }" :options="opts"/>
     </div>
   </div>
 </template>
@@ -63,21 +63,44 @@ export default {
 }
 .v-player-wrap {
   position: relative;
-  width: 960px;
-  height: 540px;
   border: 15px solid #244852;
+  background: #244852;
   .dplayer-fulled {
     width: 100%;
     height: 100%;
   }
+  /*关闭图标*/
+
   .close {
     position: absolute;
-    top: 5px;
-    right: 15px;
-    font-size: 20px;
-    color: #ffffff;
-    z-index: 101;
+    right: -20px;
+    top: -20px;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: #9e9898;
+    border-radius: 50%;
+    box-shadow: 2px 2px 5px 0px #000;
     cursor: pointer;
+    z-index: 10;
+  }
+
+  .close:before,
+  .close:after {
+    content: '';
+    position: absolute;
+    top: 14px;
+    right: 4px;
+    width: 20px;
+    height: 2px;
+    background: #eee;
+  }
+
+  .close:before {
+    transform: rotate(45deg);
+  }
+  .close:after {
+    transform: rotate(-45deg);
   }
 }
 </style>
