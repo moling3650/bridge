@@ -1,11 +1,11 @@
 <template>
   <div id="ZhiShiMoFang">
     <div class="tech-container">
-      <ul class="tech-list">
+      <ul class="tech-list" :style="{ width: `${col * 206}px` }">
         <li v-for="(t, i) in filteredData" :key="t" class="out-right" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
           <div class="picBox">
             <div class="show">
-              <img :src="`http://www.gdggkf.com/zg/assets/tech/list_${index * size + i + 1}.png`">
+              <img :src="`http://www.gdggkf.com/zg/assets/tech/list_${(size + index + i) % 18 + 1}.png`">
             </div>
             <div class="hide">
               <h3>{{ t }}</h3>
@@ -44,12 +44,68 @@ export default {
         '极行者号无人艇',
         '深圳光启\n“旅行者”3号',
         '深圳前海\n供冷系统',
+        'A',
+        'B',
+        'C',
+        'D',
+        'E',
+        'F',
+        'G',
+        'H',
+        'I',
+        'J',
+        'K',
+        'L',
+        'M',
+        'N',
+        'O',
+        'P',
+        'Q',
+        'R',
+        'S',
+        'T',
+        'U',
+        'V',
+        'W',
+        'X',
+        'Y',
+        'Z',
+        'a',
+        'b',
+        'c',
+        'd',
+        'e',
+        'f',
+        'g',
+        'h',
+        'i',
+        'j',
+        'k',
+        'l',
+        'm',
+        'n',
+        'o',
+        'p',
+        'q',
+        'r',
+        's',
+        't',
+        'u',
+        'v',
+        'w',
+        'x',
+        'y',
+        'z',
       ],
       index: 0,
-      size: 9,
+      col: 7,
+      row: 3,
     }
   },
   computed: {
+    size () {
+      return this.row * this.col
+    },
     filteredData () {
       return this.techList.slice(this.index * this.size, (this.index + 1) * this.size)
     },
@@ -113,7 +169,6 @@ export default {
 .tech-container {
   position: relative;
   .tech-list {
-    width: 1236px;
     margin: 0 auto;
     margin-top: 200px;
     padding: 0;
