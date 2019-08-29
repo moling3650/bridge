@@ -1,5 +1,5 @@
 <template>
-  <div id="ZhiShiMoFang">
+  <div id="ZhiShiMoFang" ref="page">
     <div class="tech-container">
       <ul class="tech-list" :style="{ width: `${col * 206}px` }">
         <li v-for="(t, i) in filteredData" :key="t" class="out-right" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
@@ -110,10 +110,18 @@ export default {
       return this.techList.slice(this.index * this.size, (this.index + 1) * this.size)
     },
   },
+  mounted () {
+    this._setSize()
+  },
   methods: {
+    _setSize () {
+      const rect = this.$refs.page.getBoundingClientRect()
+      this.col = parseInt((rect.width - 250) / 206)
+      this.row = parseInt((rect.height - 350) / 206)
+    },
     _getDirection (event) {
       const x = event.pageX - event.target.offsetLeft// (得到鼠标在框中的坐标)
-      const y = event.pageY - event.target.offsetTop// (得到鼠标在框中的坐标)
+      const y = event.pageY - event.target.offsetTop - 200// (得到鼠标在框中的坐标)
       const H = event.target.clientHeight
       const W = event.target.clientWidth
       const k = Math.floor(H / W)// 为了防止不能整除
@@ -142,6 +150,8 @@ export default {
 
 <style lang="scss" scoped>
 #ZhiShiMoFang {
+  width: 100%;
+  height: 100%;
   background-repeat: no-repeat;
   background-image: url(../../public/img/bg/magic_cube.jpg);
   background-size: 100%;
@@ -168,9 +178,9 @@ export default {
 }
 .tech-container {
   position: relative;
+  top: 200px;
   .tech-list {
     margin: 0 auto;
-    margin-top: 200px;
     padding: 0;
     text-align: center;
     box-sizing: border-box;
