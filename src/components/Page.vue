@@ -114,6 +114,7 @@ export default {
   overflow: hidden;
   & > video {
     width: 100%;
+    height: 100%;
     // object-fit: cover;
     &:nth-child(2) {
       position: absolute;
