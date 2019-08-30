@@ -7,7 +7,7 @@
         <router-link to="/"/>
         <router-link to="/ZhiShiMoFang"/>
         <a href="http://news.southcn.com/n/node_395653.htm"/>
-        <router-link to="/"/>
+        <router-link to="/JiaoHu"/>
       </div>
       <router-link v-show="backAndNext" class="back" :to="to.back" :style="{ width: barStyle.height, height: barStyle.height }">
         <img src="@/assets/img/back.png" alt="返回">
@@ -82,6 +82,7 @@ export default {
   width: 100%;
   text-align: center;
   bottom: 0;
+  font-size: 0;
   .bar-container {
     margin-bottom: 10px;
     text-align: center;
@@ -93,14 +94,11 @@ export default {
       padding-right: 50px;
       background-image: url(../assets/img/navbar.png);
       background-size: 100% 100%;
+      box-sizing: border-box;
       & > a {
         float: left;
         height: 100%;
         width: 16.6%;
-        font-size: 24px;
-        color: #eeeeee;
-        line-height: 120px;
-        text-decoration: none;
       }
     }
   }

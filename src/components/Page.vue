@@ -154,6 +154,7 @@ export default {
       padding: 5px 10px;
       border: 5px double #eeeeee;
       border-radius: 20px;
+      font-size: 14px;
       color: #eeeeee;
       cursor: pointer;
     }

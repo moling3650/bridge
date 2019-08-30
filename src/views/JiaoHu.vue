@@ -12,7 +12,7 @@
       <div class="left-content-container">
         <div class="content-wrapper">
           <div class="recommend"/>
-          <p class="recommend-des">你是第12345位为港珠澳大桥点赞的人</p>
+          <p class="recommend-des">你是第123456位为港珠澳大桥点赞的人</p>
           <img
             class="like-icon"
             :src="require('../../public/img/icons/like-icon.png')"
@@ -33,13 +33,7 @@
         </div>
       </div>
     </section>
-    <section class="bottom-nav">
-      <jiaohu-navbar/>
-      <ul class="nav-btn">
-        <li class="btn-item back"/>
-        <li class="btn-item head"/>
-      </ul>
-    </section>
+    <nav-bar/>
   </div>
 </template>
 
@@ -170,35 +164,6 @@ export default {
               background-size: 60%;
             }
           }
-        }
-      }
-    }
-  }
-  .bottom-nav {
-    width: 100%;
-    height: 1.2rem;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    .nav-btn {
-      position: absolute;
-      right: 0;
-      display: flex;
-      flex-direction: row;
-      margin: 0 0.55rem 0 0;
-      padding: 0;
-      list-style: none;
-      .btn-item {
-        height: 1.2rem;
-        width: 1.2rem;
-        &.back {
-          background: url("../assets/img/back.png") no-repeat;
-          background-size: 100%;
-          margin-right: 0.2rem;
-        }
-        &.head {
-          background: url("../assets/img/next.png") no-repeat;
-          background-size: 100%;
         }
       }
     }
