@@ -1,6 +1,8 @@
 <template>
   <div class="dot-wrap" v-bind="$attrs">
-    <div class="text">{{ text }}</div>
+    <div class="text-wrap">
+      <div class="text">{{ text }}</div>
+    </div>
 
     <div class="dots">
       <div v-for="i in 5" :key="i" class="dot"/>
@@ -34,16 +36,23 @@ export default {
 .dot-wrap {
   position: absolute;
   cursor: pointer;
-  & > .text {
+  & > .text-wrap {
     display: none;
   }
-  &:hover > .text {
+  &:hover > .text-wrap {
     position: absolute;
     top: -60px;
     left: -150%;
     display: inline-block;
     width: 400%;
-    font-size: 22px;
+    .text {
+      display: inline-block;
+      padding: 5px 15px;
+      border: 5px double #eeeeee;
+      border-radius: 22px;
+      color: #eeeeee;
+      font-size: 22px;
+    }
   }
 }
 $dot-color: #79C3CD;
@@ -57,10 +66,6 @@ $color-blue: #208BF1;
 $color-green: #AFE102;
 
 $colors: ($color-yellow, $color-red, $color-blue, $color-green);
-
-body {
-	background: #ffffff;
-}
 
 .dots {
 	width: 0;
