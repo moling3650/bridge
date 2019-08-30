@@ -51,58 +51,36 @@ export default {
 .v-player-mask {
   position: absolute;
   top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
   display: flex;
-  width: 100%;
-  height: 100%;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   z-index: 10;
   background-color: rgba(0,0,0,0.5);
-}
-.v-player-wrap {
-  position: relative;
-  width: 960px;
-  height: 540px;
-  border: 15px solid #244852;
-  background: #244852;
-  .dplayer-fulled {
-    width: 100%;
-    height: 100%;
-  }
-  /*关闭图标*/
-
-  .close {
-    position: absolute;
-    right: -20px;
-    top: -20px;
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    background: #9e9898;
-    border-radius: 50%;
-    box-shadow: 2px 2px 5px 0px #000;
-    cursor: pointer;
-    z-index: 10;
-  }
-
-  .close:before,
-  .close:after {
-    content: '';
-    position: absolute;
-    top: 14px;
-    right: 4px;
-    width: 20px;
-    height: 2px;
-    background: #eee;
-  }
-
-  .close:before {
-    transform: rotate(45deg);
-  }
-  .close:after {
-    transform: rotate(-45deg);
+  .v-player-wrap {
+    position: relative;
+    width: 50%;
+    height: 50%;
+    align-self: center;
+    border: 2px solid #ceffff;
+    .dplayer-fulled {
+      width: 100%;
+      height: 100%;
+    }
+    .close {
+      position: absolute;
+      top: -120px;
+      right: -120px;
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      background-image: url(../assets/img/back.png);
+      background-size: 100%;
+      cursor: pointer;
+    }
   }
 }
 </style>
