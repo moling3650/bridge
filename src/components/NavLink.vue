@@ -1,7 +1,8 @@
 <template>
   <router-link class="link" :to="`/${to}`">
     <img class="jpg" :src="require(`@/assets/img/NavLink-${to}.jpg`)" :alt="text" v-bind="$attrs">
-    <img class="png" src="@/assets/img/ring.png" alt="科技框">
+    <img class="ring ring-1" src="@/assets/img/ring-1.png" alt="科技框1">
+    <img class="ring ring-2" src="@/assets/img/ring-2.png" alt="科技框2">
     <div class="text">{{ text }}</div>
   </router-link>
 </template>
@@ -35,13 +36,18 @@ export default {
     height: 140px;
     border-radius: 50%;
   }
-  & > .png {
+  & > .ring {
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
+  }
+  & > .ring-1 {
     animation: spin-left 1.5s linear infinite;
+  }
+  & > .ring-2 {
+    animation: spin-right 1.5s linear infinite;
   }
   & > .text {
     position: absolute;
