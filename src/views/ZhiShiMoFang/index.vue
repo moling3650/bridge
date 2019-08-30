@@ -1,27 +1,40 @@
 <template>
   <div id="ZhiShiMoFang" ref="page">
-    <div v-show="!dialogVisiable" class="tech-container">
-      <ul class="tech-list" :style="{ width: `${col * 206}px` }">
-        <li v-for="(item, i) in filteredData" :key="i" class="out-right" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" @click="showDialog(item)">
-          <div class="picBox">
-            <div class="show">
-              <img :src="item.img">
+    <template v-if="!dialogVisiable">
+      <div class="tech-container">
+        <ul class="tech-list" :style="{ width: `${col * 206}px` }">
+          <li v-for="(d, i) in filteredData" :key="i" class="out-right" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" @click="showDialog(d)">
+            <div class="picBox">
+              <div class="show">
+                <img :src="d.img">
+              </div>
+              <div class="hide">
+                <h3>{{ d.question }}</h3>
+              </div>
             </div>
-            <div class="hide">
-              <h3>{{ item.question }}</h3>
+          </li>
+        </ul>
+      </div>
+      <i v-show="index > 0" class="left" @click="index -= 1"/>
+      <i v-show="index < data.length / size - 1" class="right" @click="index += 1"/>
+      <nav-bar/>
+    </template>
+    <transition name="fade">
+      <div v-if="dialogVisiable" class="dialog">
+        <div class="header">
+          <i class="close" @click="dialogVisiable = false"/>
+        </div>
+        <div class="body">
+          <h3 class="question">{{ item.question }}</h3>
+          <div class="content">
+            <img :src="item.img" alt="" class="photo">
+            <div class="answer">
+              <p v-for="(p, i) in item.answer" :key="i">{{ p }}</p>
             </div>
           </div>
-        </li>
-      </ul>
-    </div>
-    <i v-show="index > 0" class="left" @click="index -= 1"/>
-    <i v-show="index < data.length / size - 1" class="right" @click="index += 1"/>
-    <nav-bar/>
-    <div v-show="dialogVisiable" class="dialog">
-      <div class="header">
-        <i class="close" @click="dialogVisiable = false"/>
+        </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -36,6 +49,7 @@ export default {
       index: 0,
       col: 7,
       row: 3,
+      item: {},
     }
   },
   computed: {
@@ -55,6 +69,7 @@ export default {
   methods: {
     showDialog (item) {
       this.dialogVisiable = true
+      this.item = item
     },
     _setSize () {
       const rect = this.$refs.page.getBoundingClientRect()
@@ -153,6 +168,50 @@ export default {
         }
         &:after {
           transform: rotate(-45deg);
+        }
+      }
+    }
+    .body {
+      margin: 20px 5%;
+      margin-top: 0;
+      position: absolute;
+      top: 48px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      color: #eeeeee;
+      .question {
+        height: 20px;
+        margin: 5px auto;
+        font-size: 24px;
+
+      }
+      .content {
+        position: absolute;
+        top: 50px;
+        bottom: 10px;
+        right: 0;
+        left: 0;
+
+        .photo {
+          width: 20%;
+          vertical-align: top;
+        }
+        .answer {
+          display: inline-block;
+          width: 75%;
+          height: 100%;
+          margin-left: 5%;
+          padding-left: 5%;
+          border-left: 1px solid #eee;
+          box-sizing: border-box;
+          overflow: auto;
+          p {
+            line-height: 1.4;
+          }
+          p:nth-child(1) {
+            margin-top: 0;
+          }
         }
       }
 
