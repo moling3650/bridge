@@ -79,11 +79,5 @@ export default new Router({
       component: () =>
         import(/* webpackChunkName: "Views" */ './views/ZhiShiMoFang/index.vue'),
     },
-    {
-      path: '/JiaoHu',
-      name: 'JiaoHu',
-      component: () =>
-        import(/* webpackChunName: "Views"*/ './views/JiaoHu.vue'),
-    },
   ],
 })
