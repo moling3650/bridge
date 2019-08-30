@@ -77,7 +77,7 @@ export default new Router({
       path: '/ZhiShiMoFang',
       name: 'ZhiShiMoFang',
       component: () =>
-        import(/* webpackChunkName: "Views" */ './views/ZhiShiMoFang.vue'),
+        import(/* webpackChunkName: "Views" */ './views/ZhiShiMoFang/index.vue'),
     },
     {
       path: '/JiaoHu',

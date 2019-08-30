@@ -1,102 +1,38 @@
 <template>
   <div id="ZhiShiMoFang" ref="page">
-    <div class="tech-container">
+    <div v-show="!dialogVisiable" class="tech-container">
       <ul class="tech-list" :style="{ width: `${col * 206}px` }">
-        <li v-for="(t, i) in filteredData" :key="t" class="out-right" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
+        <li v-for="(item, i) in filteredData" :key="i" class="out-right" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" @click="showDialog(item)">
           <div class="picBox">
             <div class="show">
-              <img :src="`http://www.gdggkf.com/zg/assets/tech/list_${(size + index + i) % 18 + 1}.png`">
+              <img :src="item.img">
             </div>
             <div class="hide">
-              <h3>{{ t }}</h3>
+              <h3>{{ item.question }}</h3>
             </div>
           </div>
         </li>
       </ul>
     </div>
     <i v-show="index > 0" class="left" @click="index -= 1"/>
-    <i v-show="index < techList.length / size - 1" class="right" @click="index += 1"/>
+    <i v-show="index < data.length / size - 1" class="right" @click="index += 1"/>
     <nav-bar/>
+    <div v-show="dialogVisiable" class="dialog">
+      <div class="header">
+        <i class="close" @click="dialogVisiable = false"/>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import data from './data.js'
 export default {
   name: 'ZhiShiMoFang',
   data () {
     return {
-      techList: [
-        '',
-        '华龙一号',
-        '脉冲式散裂\n中子源',
-        '深圳国家\n基因库',
-        '“天河二号”\n超级计算机',
-        '全球最大水陆两栖飞机AG600',
-        '大疆无人机',
-        '华为',
-        '大亚湾中微子\n实验室',
-        '优必选Alpha\n机器人',
-        '亿航自动驾驶飞行器',
-        '“蓝鲸1号”\n钻井平台',
-        '全球首艘极地\n重载甲板运输船',
-        '富士康\n工业互联网',
-        '±800千伏特高压直流工程',
-        '极行者号无人艇',
-        '深圳光启\n“旅行者”3号',
-        '深圳前海\n供冷系统',
-        'A',
-        'B',
-        'C',
-        'D',
-        'E',
-        'F',
-        'G',
-        'H',
-        'I',
-        'J',
-        'K',
-        'L',
-        'M',
-        'N',
-        'O',
-        'P',
-        'Q',
-        'R',
-        'S',
-        'T',
-        'U',
-        'V',
-        'W',
-        'X',
-        'Y',
-        'Z',
-        'a',
-        'b',
-        'c',
-        'd',
-        'e',
-        'f',
-        'g',
-        'h',
-        'i',
-        'j',
-        'k',
-        'l',
-        'm',
-        'n',
-        'o',
-        'p',
-        'q',
-        'r',
-        's',
-        't',
-        'u',
-        'v',
-        'w',
-        'x',
-        'y',
-        'z',
-      ],
+      dialogVisiable: false,
+      data: data,
       index: 0,
       col: 7,
       row: 3,
@@ -107,13 +43,19 @@ export default {
       return this.row * this.col
     },
     filteredData () {
-      return this.techList.slice(this.index * this.size, (this.index + 1) * this.size)
+      return this.data.map((item, index) => {
+        item.img = require(`./img/${index + 1}.jpg`)
+        return item
+      }).slice(this.index * this.size, (this.index + 1) * this.size)
     },
   },
   mounted () {
     this._setSize()
   },
   methods: {
+    showDialog (item) {
+      this.dialogVisiable = true
+    },
     _setSize () {
       const rect = this.$refs.page.getBoundingClientRect()
       this.col = parseInt((rect.width - 250) / 206)
@@ -153,7 +95,7 @@ export default {
   width: 100%;
   height: 100%;
   background-repeat: no-repeat;
-  background-image: url(../../public/img/bg/magic_cube.jpg);
+  background-image: url(../../../public/img/bg/magic_cube.jpg);
   background-size: 100%;
   .left,
   .right {
@@ -167,13 +109,54 @@ export default {
   }
   .left {
     left: 10px;
-    background-image: url(../assets/img/left.png);
+    background-image: url(../../assets/img/left.png);
     background-size: 100% 100%;
   }
   .right {
     right: 10px;
-    background-image: url(../assets/img/right.png);
+    background-image: url(../../assets/img/right.png);
     background-size: 100% 100%;
+  }
+  .dialog {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    width: 70%;
+    height: 70%;
+    border: 2px solid #b5e5f4;
+    background: radial-gradient(rgba(101, 172, 218, 0.6), rgba(101, 172, 218, 0.9), rgba(101, 172, 218, 1));
+    .header {
+      height: 48px;
+      background-color: #105e8b;
+      .close {
+        position: absolute;
+        right: 9px;
+        top: 9px;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        z-index: 10;
+        &:before,
+        &:after {
+          content: '';
+          position: absolute;
+          top: 14px;
+          right: 4px;
+          width: 20px;
+          height: 2px;
+          background: #eee;
+        }
+
+        &:before {
+          transform: rotate(45deg);
+        }
+        &:after {
+          transform: rotate(-45deg);
+        }
+      }
+
+    }
   }
 }
 .tech-container {
