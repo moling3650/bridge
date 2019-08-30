@@ -1,8 +1,8 @@
 <template>
   <div id="app" :style="{ position: 'absolute', width: `${width}px`, height: `${height}px`, top: `${top}px`, left: `${left}px`, }">
-    <audio autoplay loop :src="require('./assets/bgmusic.mp3')">
+    <!-- <audio autoplay loop :src="require('./assets/bgmusic.mp3')">
       你的浏览器版本太低，不支持audio标签
-    </audio>
+    </audio> -->
     <transition name="fade" mode="out-in">
       <router-view v-if="showView"/>
     </transition>
