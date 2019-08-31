@@ -108,13 +108,13 @@ export default {
 <style lang="scss" scoped>
 .page {
   position: relative;
-  width: 100%;
+  width: 19.2rem;
   padding: 0;
   margin: 0;
   overflow: hidden;
   & > video {
-    width: 100%;
-    height: 100%;
+    width: 19.2rem;
+    height: 10.8rem;
     // object-fit: cover;
     &:nth-child(2) {
       position: absolute;
@@ -132,12 +132,12 @@ export default {
     z-index: 10;
     .next {
       position: absolute;
-      right: 20px;
-      bottom: 20px;
+      right: 0.2rem;
+      bottom: 0.2rem;
       display: inline-block;
-      width: 120px;
-      height: 120px;
-      font-size: 24px;
+      width: 1.2rem;
+      height: 1.2rem;
+      font-size: 0.24rem;
       color: #eeeeee;
       text-decoration: none;
       cursor: pointer;
@@ -148,13 +148,13 @@ export default {
     }
     .skip {
       position: absolute;
-      bottom: 10px;
-      right: 10px;
+      bottom: 0.1rem;
+      right: 0.1rem;
       display: inline-block;
-      padding: 5px 10px;
-      border: 5px double #eeeeee;
-      border-radius: 20px;
-      font-size: 14px;
+      padding: 0.05rem 0.1rem;
+      border: 0.05rem double #eeeeee;
+      border-radius: 0.2rem;
+      font-size: 0.14rem;
       color: #eeeeee;
       cursor: pointer;
     }

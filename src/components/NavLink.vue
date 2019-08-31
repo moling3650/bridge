@@ -26,14 +26,14 @@ export default {
 <style lang="scss" scoped>
 .link {
   position: absolute;
-  width: 200px;
-  height: 200px;
+  width: 2rem;
+  height: 2rem;
   & > .jpg {
     position: absolute;
-    top: 30px;
-    left: 30px;
-    width: 140px;
-    height: 140px;
+    top: .3rem;
+    left: .3rem;
+    width: 1.4rem;
+    height: 1.4rem;
     border-radius: 50%;
   }
   & > .ring {
@@ -52,10 +52,10 @@ export default {
   & > .text {
     position: absolute;
     display: inline-block;
-    top: -20%;
+    top: -.4rem;
     left: 0;
     width: 100%;
-    font-size: 24px;
+    font-size: .24rem;
     color: #4ec6ff;
   }
 }
@@ -75,13 +75,13 @@ export default {
 }
 @media screen and (max-width: 1440px) {
   .link {
-    width: 140px;
-    height: 140px;
+    width: 1.4rem;
+    height: 1.4rem;
     & > .jpg {
-      top: 20px;
-      left: 20px;
-      width: 100px;
-      height: 100px;
+      top: .2rem;
+      left: .2rem;
+      width: 1rem;
+      height: 1rem;
     }
   }
 }

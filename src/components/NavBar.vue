@@ -1,7 +1,7 @@
 <template>
   <div id="NavBar">
     <div v-show="showBar" class="bar-container" @mouseleave="showBar = false">
-      <div class="bar" :style="barStyle">
+      <div class="bar">
         <router-link :to="{ name: 'navigation', query: { loop: true } }"/>
         <router-link to="/Roaming"/>
         <router-link to="/"/>
@@ -10,10 +10,10 @@
         <router-link to="/JianSheDaShiJi"/>
         <router-link to="/JiaoHu"/>
       </div>
-      <router-link v-show="backAndNext" class="back" :to="to.back" :style="{ width: barStyle.height, height: barStyle.height }">
+      <router-link v-show="backAndNext" class="back" :to="to.back">
         <img src="@/assets/img/back.png" alt="返回">
       </router-link>
-      <router-link v-show="backAndNext" class="next" :to="to.next" :style="{ width: barStyle.height, height: barStyle.height }">
+      <router-link v-show="backAndNext" class="next" :to="to.next">
         <img src="@/assets/img/next.png" alt="前进">
       </router-link>
     </div>
@@ -27,10 +27,6 @@ export default {
   props: {
     backAndNext: {
       type: Boolean,
-    },
-    size: {
-      type: String,
-      default: 'lg',
     },
   },
   data () {
@@ -57,22 +53,6 @@ export default {
         next,
       }
     },
-    barStyle () {
-      const widthMap = {
-        lg: '700px',
-        md: '550px',
-        sm: '400px',
-      }
-      const heightMap = {
-        lg: '120px',
-        md: '100px',
-        sm: '80px',
-      }
-      return {
-        width: widthMap[this.size] || '700px',
-        height: heightMap[this.size] || '120px',
-      }
-    },
   },
 }
 </script>
@@ -85,14 +65,13 @@ export default {
   bottom: 0;
   font-size: 0;
   .bar-container {
-    margin-bottom: 10px;
+    margin-bottom: .1rem;
     text-align: center;
     .bar {
       display: inline-block;
-      width: 700px;
-      height: 120px;
-      padding-left: 50px;
-      padding-right: 50px;
+      width: 7rem;
+      height: 1.2rem;
+      padding: 0 0.5rem;
       background-image: url(../assets/img/navbar.png);
       background-size: 100% 100%;
       box-sizing: border-box;
@@ -104,15 +83,16 @@ export default {
     }
   }
   .display-btn {
-    width: 100px;
+    width: 1rem;
     cursor: pointer;
   }
   .back ,
   .next {
     position: absolute;
+    top: 0;
     display: inline-block;
-    font-size: 24px;
-    color: #eeeeee;
+    width: 1.2rem;
+    height: 1.2rem;
     text-decoration: none;
     img {
       width: 100%;
@@ -120,12 +100,10 @@ export default {
     }
   }
   .back {
-    top: 0;
-    right: 150px;
+    right: 1.5rem;
   }
   .next {
-    top: 0;
-    right: 20px;
+    right: .2rem;
   }
 }
 </style>

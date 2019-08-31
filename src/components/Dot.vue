@@ -41,29 +41,29 @@ export default {
   }
   &:hover > .text-wrap {
     position: absolute;
-    top: -60px;
-    left: -150%;
+    top: -1rem;
+    left: -4.8rem;
     display: inline-block;
-    width: 400%;
+    width: 10rem;
     .text {
       display: inline-block;
-      padding: 5px 15px;
-      border: 5px double #eeeeee;
-      border-radius: 22px;
+      padding: 0.05rem 0.15rem;
+      border: 0.05rem double #eeeeee;
+      border-radius: 0.22rem;
       color: #eeeeee;
-      font-size: 22px;
+      font-size: 0.22rem;
     }
   }
 }
-$dot-color: #79C3CD;
-$dot-size: 20px;
-$circle-size: 30px;
+$dot-color: #79c3cd;
+$dot-size: 0.2rem;
+$circle-size: 0.3rem;
 $animation-time: 4s;
 
-$color-yellow: #FBD301;
-$color-red: #FF3270;
-$color-blue: #208BF1;
-$color-green: #AFE102;
+$color-yellow: #fbd301;
+$color-red: #ff3270;
+$color-blue: #208bf1;
+$color-green: #afe102;
 
 $colors: ($color-yellow, $color-red, $color-blue, $color-green);
 
@@ -91,7 +91,7 @@ $colors: ($color-yellow, $color-red, $color-blue, $color-green);
 		content: '';
 		width: $dot-size;
 		height: $dot-size;
-		border-radius: 50px;
+		border-radius: 0.5rem;
 		background: $color-yellow;
 		position: absolute;
 		left: 50%;

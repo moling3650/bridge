@@ -28,29 +28,29 @@ export default {
 
 <style lang="scss" scoped>
 #Loader {
-  width: 100%;
-  height: 100%;
-  // padding-top: 200px;
+  width: 19.2rem;
+  height: 10.8rem;
+  // padding-top: 2rem;
   text-align: center;
   background-image: url(../../public/img/poster/Home-1-p.jpg);
-  background-size: 100% ;
+  background-size: 100%;
 }
 .loading {
   position: relative;
-  top: 200px;
+  top: 2rem;
   background: transparent;
-  margin: 0 auto 100px;
-  width: 100px;
-  height: 100px;
+  margin: 0 auto 1rem;
+  width: 1rem;
+  height: 1rem;
   animation: spin 10s infinite;
   .square {
     background: #1ab7ea;
-    border-radius: 5px;
+    border-radius: 0.05rem;
     float: left;
     clear: right;
-    margin: 3px;
-    width: 27px;
-    height: 27px;
+    margin: 0.03rem;
+    width: 0.27rem;
+    height: 0.27rem;
     animation-name: disappear;
     animation-direction: alternate;
     animation-duration: 800ms;
@@ -98,9 +98,9 @@ export default {
 
 .loading-text {
   position: relative;
-  top: 150px;
+  top: 1.5rem;
   display: inline-block;
-  font-size: 24px;
+  font-size: 0.24rem;
   .text {
     color: #1ab7ea;
     font-weight: bold;
@@ -111,14 +111,14 @@ export default {
   }
   .blob-group {
     display: inline-block;
-    width: 40px;
+    width: 0.4rem;
   }
   .blob {
     position: relative;
     display: inline-block;
-    width: 5px;
-    height: 5px;
-    margin: 5px 3px;
+    width: 0.05rem;
+    height: 0.05rem;
+    margin: 0.05rem 0.03rem;
     border-radius: 50%;
     background-color: #1ab7ea;
     animation: loading-blob 1.6s infinite;
@@ -136,9 +136,9 @@ export default {
 }
 
 @keyframes loading-blob {
-	0% { height: 3px; width: 3px;}
-	25% { height: 7px; width: 7px;}
-	50% { height: 5px; width: 5px; }
-	100% { height: 3px; width: 3px; }
+	0% { height: 0.03rem; width: 0.03rem;}
+	25% { height: 0.07rem; width: 0.07rem;}
+	50% { height: 0.05rem; width: 0.05rem; }
+	100% { height: 0.03rem; width: 0.03rem; }
 }
 </style>
