@@ -41,6 +41,8 @@ export default {
       })
     },
     close () {
+      this.$refs.player.dp.pause()
+      this.$refs.player.dp.seek(0)
       this.show = false
       this.callback()
     },

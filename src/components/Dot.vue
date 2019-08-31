@@ -45,6 +45,7 @@ export default {
     left: -4.8rem;
     display: inline-block;
     width: 10rem;
+    text-align: center;
     .text {
       display: inline-block;
       padding: 0.05rem 0.15rem;
