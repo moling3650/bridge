@@ -1,58 +1,71 @@
 <template>
   <div id="ZhiShiMoFang" ref="page">
-    <div class="top-nav">
-      <img
-        class="top-nav-img"
-        :src="require('../../../public/img/icons/top-text-nav.png')"
-        alt="topNav"
-      >
-      <span class="text-des">知识魔方</span>
-    </div>
-    <template v-if="!dialogVisiable">
-      <section class="content-display-wrapper">
-        <div class="tech-container">
-          <ul class="tech-list" :style="{ width: `${col * 206}px` }">
-            <li
-              v-for="(d, i) in filteredData"
-              :key="i"
-              class="out-right"
-              @mouseenter="handleMouseEnter"
-              @mouseleave="handleMouseLeave"
-              @click="showDialog(d)"
-            >
-              <div class="picBox">
-                <div class="show">
-                  <img :src="d.img">
+    <video
+      v-if="!showDetail"
+      class="v"
+      :src="require('./loading.mp4')"
+      autoplay
+      @ended="showDetail = true"
+    >
+      您的浏览器不支持 video 标签。
+    </video>
+    <template v-if="showDetail">
+      <div class="top-nav">
+        <img
+          class="logo"
+          width="120px"
+          height="120px"
+          :src="require('./logo.png')"
+          alt="topNav"
+        >
+        <span class="text-des">知识魔方</span>
+      </div>
+      <template v-if="!dialogVisiable">
+        <section class="content-display-wrapper">
+          <div class="tech-container">
+            <ul class="tech-list" :style="{ width: `${col * 206}px` }">
+              <li
+                v-for="(d, i) in filteredData"
+                :key="i"
+                class="out-right"
+                @mouseenter="handleMouseEnter"
+                @mouseleave="handleMouseLeave"
+                @click="showDialog(d)"
+              >
+                <div class="picBox">
+                  <div class="show">
+                    <img :src="d.img">
+                  </div>
+                  <div class="hide">
+                    <h3>{{ d.question }}</h3>
+                  </div>
                 </div>
-                <div class="hide">
-                  <h3>{{ d.question }}</h3>
-                </div>
+              </li>
+            </ul>
+          </div>
+          <i v-show="index > 0" class="left" @click="index -= 1"/>
+          <i v-show="index < data.length / size - 1" class="right" @click="index += 1"/>
+        </section>
+        <nav-bar/>
+      </template>
+      <transition name="fade">
+        <div v-if="dialogVisiable" class="dialog">
+          <div class="header">
+            <i class="close" @click="dialogVisiable = false"/>
+          </div>
+          <div class="body">
+            <h3 class="question">{{ item.question }}</h3>
+            <div class="content">
+              <img :src="item.img" alt class="photo">
+              <div class="line"/>
+              <div class="answer">
+                <p v-for="(p, i) in item.answer" :key="i">{{ p }}</p>
               </div>
-            </li>
-          </ul>
-        </div>
-        <i v-show="index > 0" class="left" @click="index -= 1"/>
-        <i v-show="index < data.length / size - 1" class="right" @click="index += 1"/>
-      </section>
-      <nav-bar/>
-    </template>
-    <transition name="fade">
-      <div v-if="dialogVisiable" class="dialog">
-        <div class="header">
-          <i class="close" @click="dialogVisiable = false"/>
-        </div>
-        <div class="body">
-          <h3 class="question">{{ item.question }}</h3>
-          <div class="content">
-            <img :src="item.img" alt class="photo">
-            <div class="line"/>
-            <div class="answer">
-              <p v-for="(p, i) in item.answer" :key="i">{{ p }}</p>
             </div>
           </div>
         </div>
-      </div>
-    </transition>
+      </transition>
+    </template>
   </div>
 </template>
 
@@ -63,6 +76,7 @@ export default {
   data () {
     return {
       dialogVisiable: false,
+      showDetail: false,
       data: data,
       index: 0,
       col: 7,
@@ -127,6 +141,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.v {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 19.2rem;
+  height: 10.8rem;
+  z-index: 2;
+}
 #ZhiShiMoFang {
   width: 100%;
   height: 100%;
