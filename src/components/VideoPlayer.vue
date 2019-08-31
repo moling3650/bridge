@@ -1,8 +1,8 @@
 <template>
-  <div class="v-player-mask">
+  <div v-show="show" class="v-player-mask">
     <div class="v-player-wrap core">
-      <i class="close" @click="$emit('close')"/>
-      <v-player ref="player" class="v-player" :options="opts"/>
+      <i class="close" @click="close"/>
+      <v-player ref="player" class="v-player" :options="options"/>
       <div class="core2"/>
     </div>
   </div>
@@ -11,38 +11,38 @@
 <script>
 import VueDPlayer from 'vue-dplayer'
 import 'vue-dplayer/dist/vue-dplayer.css'
+
 export default {
   name: 'VideoPlayer',
   components: {
     vPlayer: VueDPlayer,
   },
-  props: {
-    autoplay: {
-      type: Boolean,
-    },
-    loop: {
-      type: Boolean,
-    },
-  },
-  computed: {
-    opts () {
-      return {
-        autoplay: this.autoplay,
+  data () {
+    return {
+      show: false,
+      options: {
+        autoplay: true,
         theme: '#fadfa3',
-        loop: this.loop,
+        loop: false,
         screenshot: false,
         hotkey: true,
         preload: 'auto',
         mutex: true,
-      }
-    },
+      },
+      callback () {},
+    }
   },
   methods: {
     play (video) {
+      this.show = true
       this.$refs.player.dp.switchVideo(video)
       this.$nextTick(() => {
         this.$refs.player.dp.play()
       })
+    },
+    close () {
+      this.show = false
+      this.callback()
     },
   },
 }
@@ -119,7 +119,7 @@ $offset: -0.04rem;
 .core2 {
   position: absolute;
   top: $offset;
-  left: $offset;
+  left: 0;
   width: 100%;
   height: 100%;
   z-index: 0;
@@ -133,12 +133,12 @@ $offset: -0.04rem;
     border: 0.05rem solid $borderColor;
   }
   &:after {
-    left: 0;
+    left: $offset;
     border-right-width: 0;
     border-bottom-width: 0;
   }
   &:before {
-    right: $offset * 2;
+    right: $offset;
     border-left-width: 0;
     border-bottom-width: 0;
   }
