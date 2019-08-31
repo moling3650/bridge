@@ -43,6 +43,7 @@ export default {
   },
   methods: {
     goback () {
+      this.$refs.v.currentTime = 0
       this.bgi = ''
       this.showDetail = false
       this.show = false
