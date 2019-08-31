@@ -1,10 +1,10 @@
 <template>
   <div id="ShengTaiBaoHu">
-    <page page-name="ShengTaiBaoHu" autoplay can-skip>
-      <template slot-scope="{ isLoop }">
-        <nav-bar v-show="isLoop" back-and-next/>
-        <dot v-show="isLoop" :style="{ marginTop: '22%', right: '34%' }" text="保护海豚"/>
-        <dot v-show="isLoop" :style="{ marginTop: '20%', right: '16%' }" text="生态保护"/>
+    <page page-name="ShengTaiBaoHu" autoplay can-skip :opacity="opacity">
+      <template v-if="isLoop" slot-scope="{ isLoop }">
+        <nav-bar back-and-next/>
+        <dot :style="{ top: '4rem', left: '12rem' }" text="保护海豚" @click.native="clickDot(1)"/>
+        <dot :style="{ top: '3.6rem', left: '15.4rem' }" text="生态保护"/>
       </template>
     </page>
   </div>
@@ -13,5 +13,21 @@
 <script>
 export default {
   name: 'ShengTaiBaoHu',
+  data () {
+    return {
+      opacity: 0,
+    }
+  },
+  methods: {
+    clickDot (index) {
+      const video = {
+        url: require(`../../public/video/dot/3-${index}.mp4`),
+      }
+      this.opacity = 5
+      this.$playVideo(video).then(() => {
+        this.opacity = 0
+      })
+    },
+  },
 }
 </script>
