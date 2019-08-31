@@ -19,13 +19,13 @@
       您的浏览器不支持 video 标签。
     </video>
     <div v-show="showDetail" class="details" :class="bgi">
-      <dot :style="{ top: '1.4rem', left: '4.2rem' }" text="整体介绍" @click.native="checkDetail(1)"/>
+      <dot :style="{ top: '1.4rem', left: '4.3rem' }" text="整体介绍" @click.native="checkDetail(1)"/>
       <dot :style="{ top: '2.3rem', left: '6.2rem' }" text="主体建筑" @click.native="checkDetail(2)"/>
-      <dot :style="{ top: '3.2rem', left: '8rem' }" text="隧道入口" @click.native="checkDetail(5)"/>
-      <dot :style="{ top: '4rem', left: '5.5rem' }" text="环岛公路" @click.native="checkDetail(4)"/>
+      <dot :style="{ top: '3.1rem', left: '8.1rem' }" text="隧道入口" @click.native="checkDetail(5)"/>
+      <dot :style="{ top: '3.8rem', left: '5.7rem' }" text="环岛公路" @click.native="checkDetail(4)"/>
       <dot :style="{ top: '5rem', left: '6.6rem' }" text="防波堤" @click.native="checkDetail(3)"/>
       <dot :style="{ top: '7rem', left: '7.5rem' }" text="钢圆筒" @click.native="checkDetail(6)"/>
-      <dot :style="{ top: '1rem', right: '1rem' }" text="后退" @click.native="goback"/>
+      <back :style="{ top: '1rem', right: '1rem', width: '1rem', height: '1rem' }" @click.native="goback"/>
     </div>
   </div>
 </template>
