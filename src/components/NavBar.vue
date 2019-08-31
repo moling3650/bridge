@@ -37,9 +37,9 @@ export default {
         '/JiangHaiQiao',
         '/ShengTaiBaoHu',
         '/QingZhouQiao',
-        '/DongRenGongDao',
-        '/HaiDiSuiDao',
         '/XiRenGongDao',
+        '/HaiDiSuiDao',
+        '/DongRenGongDao',
       ],
     }
   },
@@ -64,6 +64,7 @@ export default {
   text-align: center;
   bottom: 0;
   font-size: 0;
+  z-index: 101;
   .bar-container {
     margin-bottom: .1rem;
     text-align: center;
