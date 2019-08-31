@@ -91,5 +91,11 @@ export default new Router({
       component: () =>
         import(/* webpackChunName: "Views"*/ './views/JiaoHu.vue'),
     },
+    {
+      path: '/HaidiConstructor',
+      name: 'HaidiConstructor',
+      component: () =>
+        import(/* webpackChunName: "Views"*/ './views/HaidiConstructor.vue'),
+    },
   ],
 })

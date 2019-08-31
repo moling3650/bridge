@@ -22,7 +22,7 @@ export default {
   methods: {
     clickDot (index) {
       const video = {
-        url: require(`../../public/video/dot/4-${index}.mp4`),
+        // url: require(`../../public/video/dot/4-${index}.mp4`),
       }
       this.opacity = 5
       this.$playVideo(video).then(() => {
