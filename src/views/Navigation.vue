@@ -9,6 +9,9 @@
         <nav-link to="XiRenGongDao" text="西人工岛" :style="{ marginTop: '9%', left: '57%' }"/>
         <nav-link to="HaiDiSuiDao" text="海底隧道" :style="{ marginTop: '24%', left: '63%' }"/>
         <nav-link to="DongRenGongDao" text="东人工岛" :style="{ marginTop: '13%', left: '73%' }"/>
+        <div class="text zuh">珠海</div>
+        <div class="text hk">香港</div>
+        <div class="text macau">澳门</div>
         <nav-bar/>
       </template>
     </page>
@@ -25,3 +28,24 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.text {
+  position: absolute;
+  font-size: 0.48rem;
+  color: #eeeeee;
+  font-weight: bold;
+}
+.zuh {
+ top: 1.8rem;
+ left: 3rem;
+}
+.macau {
+  top: 6rem;
+  left: 0.5rem;
+}
+.hk {
+  top: 3rem;
+  left: 17rem;
+}
+</style>
