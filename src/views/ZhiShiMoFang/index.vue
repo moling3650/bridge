@@ -1,10 +1,25 @@
 <template>
   <div id="ZhiShiMoFang" ref="page">
+    <div class="top-nav">
+      <img
+        class="top-nav-img"
+        :src="require('../../../public/img/icons/top-text-nav.png')"
+        alt="topNav"
+      >
+      <span class="text-des">知识魔方</span>
+    </div>
     <template v-if="!dialogVisiable">
       <section class="content-display-wrapper">
         <div class="tech-container">
           <ul class="tech-list" :style="{ width: `${col * 206}px` }">
-            <li v-for="(d, i) in filteredData" :key="i" class="out-right" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" @click="showDialog(d)">
+            <li
+              v-for="(d, i) in filteredData"
+              :key="i"
+              class="out-right"
+              @mouseenter="handleMouseEnter"
+              @mouseleave="handleMouseLeave"
+              @click="showDialog(d)"
+            >
               <div class="picBox">
                 <div class="show">
                   <img :src="d.img">
@@ -29,7 +44,7 @@
         <div class="body">
           <h3 class="question">{{ item.question }}</h3>
           <div class="content">
-            <img :src="item.img" alt="" class="photo">
+            <img :src="item.img" alt class="photo">
             <div class="line"/>
             <div class="answer">
               <p v-for="(p, i) in item.answer" :key="i">{{ p }}</p>
@@ -60,10 +75,12 @@ export default {
       return this.row * this.col
     },
     filteredData () {
-      return this.data.map((item, index) => {
-        item.img = require(`./img/${index + 1}.jpg`)
-        return item
-      }).slice(this.index * this.size, (this.index + 1) * this.size)
+      return this.data
+        .map((item, index) => {
+          item.img = require(`./img/${index + 1}.jpg`)
+          return item
+        })
+        .slice(this.index * this.size, (this.index + 1) * this.size)
     },
   },
   mounted () {
@@ -80,21 +97,22 @@ export default {
       this.row = parseInt((rect.height - 350) / 206)
     },
     _getDirection (event) {
-      const x = event.pageX - event.target.offsetLeft// (得到鼠标在框中的坐标)
-      const y = event.pageY - event.target.offsetTop - 200// (得到鼠标在框中的坐标)
+      const x = event.pageX - event.target.offsetLeft // (得到鼠标在框中的坐标)
+      const y = event.pageY - event.target.offsetTop - 200 // (得到鼠标在框中的坐标)
       const H = event.target.clientHeight
       const W = event.target.clientWidth
-      const k = Math.floor(H / W)// 为了防止不能整除
-      if ((k * x) >= y && (H - k * x) >= y) { // 这是判断从上方进入,这边简化处理不对等于情况做特别处理
+      const k = Math.floor(H / W) // 为了防止不能整除
+      if (k * x >= y && H - k * x >= y) {
+        // 这是判断从上方进入,这边简化处理不对等于情况做特别处理
         return 'top'
       }
-      if ((k * x) < y && (H - k * x) < y) {
+      if (k * x < y && H - k * x < y) {
         return 'bottom'
       }
-      if ((k * x) < y && (H - k * x) > y) {
+      if (k * x < y && H - k * x > y) {
         return 'left'
       }
-      if ((k * x) > y && (H - k * x) < y) {
+      if (k * x > y && H - k * x < y) {
         return 'right'
       }
     },
@@ -117,9 +135,24 @@ export default {
   background-size: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  padding: 0.4rem 0.2rem;
+  .top-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.72rem;
+    .top-nav-img {
+      height: 1.55rem;
+      width: 4.92rem;
+      margin-right: 0.4rem;
+    }
+    .text-des {
+      font-size: 0.8rem;
+      color: #fff;
+    }
+  }
   .content-display-wrapper {
-    display:flex;
+    display: flex;
     flex-direction: row;
     align-items: center;
     flex-direction: row;
@@ -152,7 +185,11 @@ export default {
     width: 70%;
     height: 70%;
     border: 2px solid #b5e5f4;
-    background: radial-gradient(rgba(101, 172, 218, 0.6), rgba(101, 172, 218, 0.9), #508eb7);
+    background: radial-gradient(
+      rgba(101, 172, 218, 0.6),
+      rgba(101, 172, 218, 0.9),
+      #508eb7
+    );
     .header {
       height: 48px;
       background-color: #105e8b;
@@ -167,7 +204,7 @@ export default {
         z-index: 10;
         &:before,
         &:after {
-          content: '';
+          content: "";
           position: absolute;
           top: 14px;
           right: 4px;
@@ -196,7 +233,7 @@ export default {
       .question {
         // height: 20px;
         margin: 20px auto;
-        font-size: .34rem
+        font-size: 0.34rem;
       }
       .content {
         // position: absolute;
@@ -211,7 +248,7 @@ export default {
           height: 3rem;
           vertical-align: top;
         }
-        .line{
+        .line {
           height: 4rem;
           background: #fff;
           width: 3px;
@@ -226,16 +263,16 @@ export default {
           // border-left: 1px solid #eee;
           box-sizing: border-box;
           overflow: auto;
-          font-size: .24rem;
+          font-size: 0.24rem;
           p {
             line-height: 1.4;
+            text-indent: 0.48rem;
           }
           p:nth-child(1) {
             margin-top: 0;
           }
         }
       }
-
     }
   }
 }
@@ -279,14 +316,14 @@ export default {
     left: 0;
     z-index: 101;
   }
-  .hide{
+  .hide {
     color: #fff;
     background-color: #1ab7ea;
     text-align: center;
     height: 200px;
     display: flex;
     align-items: center;
-    transform: translate3d(0,0,-1px);
+    transform: translate3d(0, 0, -1px);
     cursor: pointer;
     h3 {
       font-size: 21px;
@@ -299,7 +336,7 @@ export default {
   .in-top .hide,
   .out-top .hide {
     transform-origin: 0% 100%;
-    transform: translate3d(0, -100%, 0) rotate3d(1,0,0,90deg);
+    transform: translate3d(0, -100%, 0) rotate3d(1, 0, 0, 90deg);
   }
   .in-top .picBox {
     animation-name: in-top;
@@ -313,7 +350,7 @@ export default {
   .in-right .hide,
   .out-right .hide {
     transform-origin: 0% 0%;
-    transform: translate3d(100%, 0, 0) rotate3d(0,1,0,90deg);
+    transform: translate3d(100%, 0, 0) rotate3d(0, 1, 0, 90deg);
   }
   .in-right .picBox {
     animation-name: in-right;
@@ -326,12 +363,12 @@ export default {
   .in-bottom .hide,
   .out-bottom .hide {
     transform-origin: 0% 0%;
-    transform: translate3d(0, 100%, 0) rotate3d(-1,0,0,90deg);
+    transform: translate3d(0, 100%, 0) rotate3d(-1, 0, 0, 90deg);
   }
   .in-bottom .picBox {
     animation-name: in-bottom;
     animation-play-state: running;
-    }
+  }
   .out-bottom .picBox {
     animation-name: out-bottom;
     animation-play-state: running;
@@ -339,7 +376,7 @@ export default {
   .in-left .hide,
   .out-left .hide {
     transform-origin: 100% 0;
-    transform: translate3d(-100%,0,0) rotate3d(0,-1,0,90deg);
+    transform: translate3d(-100%, 0, 0) rotate3d(0, -1, 0, 90deg);
   }
   .in-left .picBox {
     animation-name: in-left;
@@ -352,40 +389,72 @@ export default {
 }
 
 @keyframes in-top {
-    from  {transform: rotate3d(0,0,0,0deg)}
-    to    {transform: rotate3d(-1,0,0,90deg)}
+  from {
+    transform: rotate3d(0, 0, 0, 0deg);
+  }
+  to {
+    transform: rotate3d(-1, 0, 0, 90deg);
+  }
 }
 
 @keyframes out-top {
-    from {transform: rotate3d(-1,0,0,90deg)}
-    to   {transform: rotate3d(0,0,0,0deg)}
+  from {
+    transform: rotate3d(-1, 0, 0, 90deg);
+  }
+  to {
+    transform: rotate3d(0, 0, 0, 0deg);
+  }
 }
 
 @keyframes in-right {
-    from  {transform: rotate3d(0,0,0,0deg)}
-    to    {transform: rotate3d(0,-1,0,90deg)}
+  from {
+    transform: rotate3d(0, 0, 0, 0deg);
+  }
+  to {
+    transform: rotate3d(0, -1, 0, 90deg);
+  }
 }
 
 @keyframes out-right {
-    from  {transform: rotate3d(0,-1,0,90deg)}
-    to    {transform: rotate3d(0,0,0,0deg)}
+  from {
+    transform: rotate3d(0, -1, 0, 90deg);
+  }
+  to {
+    transform: rotate3d(0, 0, 0, 0deg);
+  }
 }
 
 @keyframes in-bottom {
-    from  {transform: rotate3d(0,0,0,0deg)}
-    to    {transform: rotate3d(1,0,0,90deg)}
+  from {
+    transform: rotate3d(0, 0, 0, 0deg);
+  }
+  to {
+    transform: rotate3d(1, 0, 0, 90deg);
+  }
 }
 @keyframes out-bottom {
-    from  {transform: rotate3d(1,0,0,90deg)}
-    to    {transform: rotate3d(0,0,0,0deg)}
+  from {
+    transform: rotate3d(1, 0, 0, 90deg);
+  }
+  to {
+    transform: rotate3d(0, 0, 0, 0deg);
+  }
 }
 
 @keyframes in-left {
-    from  {transform: rotate3d(0,0,0,0deg)}
-    to    {transform: rotate3d(0,1,0,90deg)}
+  from {
+    transform: rotate3d(0, 0, 0, 0deg);
+  }
+  to {
+    transform: rotate3d(0, 1, 0, 90deg);
+  }
 }
 @keyframes out-left {
-    from  {transform: rotate3d(0,1,0,90deg)}
-    to    {transform: rotate3d(0,0,0,0deg)}
+  from {
+    transform: rotate3d(0, 1, 0, 90deg);
+  }
+  to {
+    transform: rotate3d(0, 0, 0, 0deg);
+  }
 }
 </style>
