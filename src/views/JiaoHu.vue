@@ -87,6 +87,7 @@ export default {
           height: 1.55rem;
           background: url("../../public/img/icons/like-number.png") no-repeat;
           background-size: 100%;
+          margin-bottom: .55rem;
         }
         .recommend-des {
           margin-bottom: 0.62rem;
