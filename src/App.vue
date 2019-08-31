@@ -40,8 +40,7 @@ export default {
           this.height = this.width / baseRate
           this.top = (document.body.clientHeight - this.height) / 2
         }
-        var docEl = document.documentElement
-        docEl.style.fontSize = 100 * (this.width / 1920) + 'px'
+        document.documentElement.style.fontSize = 100 * (this.width / 1920) + 'px'
         this.showView = true
       })
     },

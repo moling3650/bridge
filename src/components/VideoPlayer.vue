@@ -1,7 +1,7 @@
 <template>
   <div class="v-player-mask">
     <div class="v-player-wrap core">
-      <i class="close" @click="$emit('close')">X</i>
+      <i class="close" @click="$emit('close')"/>
       <v-player ref="player" class="v-player" :options="opts"/>
       <div class="core2"/>
     </div>
@@ -59,63 +59,88 @@ export default {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  z-index: 10;
 }
 .v-player-wrap {
   position: relative;
-  width: 960px;
-  height: 540px;
-  padding: 15px 15px 50px 15px;
+  width: 14.4rem;
+  height: 8.1rem;
+  padding: 0.15rem;
+  background-color: #214858;
+  .v-player {
+    font-size: 0.12rem;
+    z-index: 11;
+  }
   .dplayer-fulled {
     width: 100%;
     height: 100%;
   }
   .close {
     position: absolute;
-    top: 15px;
-    right: 25px;
-    font-size: 20px;
-    color: #ffffff;
-    z-index: 101;
+    top: -1rem;
+    right: -1.5rem;
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    background-image: url(../assets/img/back.png);
+    background-size: cover;
     cursor: pointer;
-  }
-  .v-player {
-    border-top: 30px solid #04212b;
   }
 }
 
 /*四个角效果*/
-    .core{
-        position: relative;border:2px solid #60D8FD;
-    }
-    .core:before,.core:after{
-        content:"" ;display: block;position: absolute;bottom:-3px;width:16px;height:16px;
-    }
-    .core:after{
-        right:-4px;border:5px solid #60D8FD;border-left-width: 0;border-top-width: 0;
-    }
-    .core:before{
-        left:-4px;border:5px solid #60D8FD;border-right-width: 0;border-top-width: 0;
-    }
+$borderColor: #60d8fd;
+$coreWidth: 0.16rem;
+$offset: -0.04rem;
+.core {
+  position: relative;
+  border: 0.02rem solid $borderColor;
+  &:before,
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: $offset;
+    width: $coreWidth;
+    height: $coreWidth;
+    border: 0.05rem solid $borderColor;
+  }
+  &:after {
+    right: $offset;
+    border-left-width: 0;
+    border-top-width: 0;
+  }
+  &:before {
+    left: $offset;
+    border-right-width: 0;
+    border-top-width: 0;
+  }
+}
 
-    .core2{
-        position: relative;
-        // top: 10px;
-        top: -580px;
-    }
-    .core2:before,.core2:after{
-        content:"" ;display: block;position: absolute;bottom:-12px;width:16px;height:16px;
-    }
-    .core2:after{
-        left: -19px;
-        border: 5px solid #60D8FD;
-        border-right-width: 0;
-        border-bottom-width: 0;
-    }
-    .core2:before{
-        right: -19px;
-        border: 5px solid #60D8FD;
-        border-left-width: 0;
-        border-bottom-width: 0;
-    }
+.core2 {
+  position: absolute;
+  top: $offset;
+  left: $offset;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  &:before,
+  &:after  {
+    content: "";
+    display: block;
+    position: absolute;
+    width: $coreWidth;
+    height: $coreWidth;
+    border: 0.05rem solid $borderColor;
+  }
+  &:after {
+    left: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+  }
+  &:before {
+    right: $offset * 2;
+    border-left-width: 0;
+    border-bottom-width: 0;
+  }
+}
 </style>
