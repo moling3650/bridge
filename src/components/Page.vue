@@ -26,7 +26,6 @@
     </video>
     <div class="content">
       <slot :is-loop="isLoop"/>
-
       <a v-show="!isLoop && canSkip" class="skip" @click="handleEnded">
         跳过
       </a>
