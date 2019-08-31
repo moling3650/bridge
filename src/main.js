@@ -9,6 +9,7 @@ import NavLink from '@/components/NavLink'
 import NavBar from '@/components/NavBar'
 import Dot from '@/components/Dot'
 import VideoPlayer from '@/components/VideoPlayer'
+import './scss/reset.scss'
 Vue.component(Loader.name, Loader)
 Vue.component(Page.name, Page)
 Vue.component(NavLink.name, NavLink)
