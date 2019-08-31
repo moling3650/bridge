@@ -74,10 +74,10 @@ export default new Router({
         import(/* webpackChunkName: "Views" */ './views/End.vue'),
     },
     {
-      path: '/Constructer',
-      name: 'Constructer',
+      path: '/JianSheDaShiJi',
+      name: 'JianSheDaShiJi',
       component: () =>
-        import(/* webpackChunkName: "Views" */ './views/Constructer.vue'),
+        import(/* webpackChunkName: "Views" */ './views/JianSheDaShiJi'),
     },
     {
       path: '/ZhiShiMoFang',
