@@ -68,4 +68,20 @@ body,
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
+.blur {
+  filter: blur(3px);
+  z-index: 10;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    background-image: url(../public/img/bg/grid.png);
+    background-size: contain;
+    z-index: 11;
+  }
+}
 </style>
