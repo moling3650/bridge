@@ -69,9 +69,10 @@ export default {
     text-align: center;
     .bar {
       display: inline-block;
-      width: 7rem;
-      height: 1.2rem;
-      padding: 0 0.5rem;
+      width: 8.700rem;
+      height: 1.20rem;
+      padding-left: .50rem;
+      padding-right: .50rem;
       background-image: url(../assets/img/navbar.png);
       background-size: 100% 100%;
       box-sizing: border-box;

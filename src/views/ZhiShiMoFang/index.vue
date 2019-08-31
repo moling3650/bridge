@@ -1,22 +1,24 @@
 <template>
   <div id="ZhiShiMoFang" ref="page">
     <template v-if="!dialogVisiable">
-      <div class="tech-container">
-        <ul class="tech-list" :style="{ width: `${col * 206}px` }">
-          <li v-for="(d, i) in filteredData" :key="i" class="out-right" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" @click="showDialog(d)">
-            <div class="picBox">
-              <div class="show">
-                <img :src="d.img">
+      <section class="content-display-wrapper">
+        <div class="tech-container">
+          <ul class="tech-list" :style="{ width: `${col * 206}px` }">
+            <li v-for="(d, i) in filteredData" :key="i" class="out-right" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" @click="showDialog(d)">
+              <div class="picBox">
+                <div class="show">
+                  <img :src="d.img">
+                </div>
+                <div class="hide">
+                  <h3>{{ d.question }}</h3>
+                </div>
               </div>
-              <div class="hide">
-                <h3>{{ d.question }}</h3>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <i v-show="index > 0" class="left" @click="index -= 1"/>
-      <i v-show="index < data.length / size - 1" class="right" @click="index += 1"/>
+            </li>
+          </ul>
+        </div>
+        <i v-show="index > 0" class="left" @click="index -= 1"/>
+        <i v-show="index < data.length / size - 1" class="right" @click="index += 1"/>
+      </section>
       <nav-bar/>
     </template>
     <transition name="fade">
@@ -28,6 +30,7 @@
           <h3 class="question">{{ item.question }}</h3>
           <div class="content">
             <img :src="item.img" alt="" class="photo">
+            <div class="line"/>
             <div class="answer">
               <p v-for="(p, i) in item.answer" :key="i">{{ p }}</p>
             </div>
@@ -112,6 +115,16 @@ export default {
   background-repeat: no-repeat;
   background-image: url(../../../public/img/bg/magic_cube.jpg);
   background-size: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .content-display-wrapper {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+  }
   .left,
   .right {
     position: absolute;
@@ -139,7 +152,7 @@ export default {
     width: 70%;
     height: 70%;
     border: 2px solid #b5e5f4;
-    background: radial-gradient(rgba(101, 172, 218, 0.6), rgba(101, 172, 218, 0.9), rgba(101, 172, 218, 1));
+    background: radial-gradient(rgba(101, 172, 218, 0.6), rgba(101, 172, 218, 0.9), #508eb7);
     .header {
       height: 48px;
       background-color: #105e8b;
@@ -181,31 +194,39 @@ export default {
       right: 0;
       color: #eeeeee;
       .question {
-        height: 20px;
-        margin: 5px auto;
-        font-size: 24px;
-
+        // height: 20px;
+        margin: 20px auto;
+        font-size: .34rem
       }
       .content {
-        position: absolute;
-        top: 50px;
-        bottom: 10px;
-        right: 0;
-        left: 0;
-
+        // position: absolute;
+        // top: 50px;
+        // bottom: 10px;
+        // right: 0;
+        // left: 0;
+        display: flex;
+        flex-direction: row;
         .photo {
-          width: 20%;
+          width: 3rem;
+          height: 3rem;
           vertical-align: top;
+        }
+        .line{
+          height: 4rem;
+          background: #fff;
+          width: 3px;
+          margin-left: 30px;
         }
         .answer {
           display: inline-block;
           width: 75%;
-          height: 100%;
+          height: 5rem;
           margin-left: 5%;
           padding-left: 5%;
-          border-left: 1px solid #eee;
+          // border-left: 1px solid #eee;
           box-sizing: border-box;
           overflow: auto;
+          font-size: .24rem;
           p {
             line-height: 1.4;
           }
@@ -220,7 +241,6 @@ export default {
 }
 .tech-container {
   position: relative;
-  top: 200px;
   .tech-list {
     margin: 0 auto;
     padding: 0;
