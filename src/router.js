@@ -74,6 +74,12 @@ export default new Router({
         import(/* webpackChunkName: "Views" */ './views/End.vue'),
     },
     {
+      path: '/Constructer',
+      name: 'Constructer',
+      component: () =>
+        import(/* webpackChunkName: "Views" */ './views/Constructer.vue'),
+    },
+    {
       path: '/ZhiShiMoFang',
       name: 'ZhiShiMoFang',
       component: () =>

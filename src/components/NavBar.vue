@@ -6,7 +6,8 @@
         <router-link to="/Roaming"/>
         <router-link to="/"/>
         <router-link to="/ZhiShiMoFang"/>
-        <a href="http://news.southcn.com/n/node_395653.htm"/>
+        <!-- <a href="http://news.southcn.com/n/node_395653.htm"/> -->
+        <router-link to="/Constructer"/>
         <router-link to="/JiaoHu"/>
       </div>
       <router-link v-show="backAndNext" class="back" :to="to.back" :style="{ width: barStyle.height, height: barStyle.height }">

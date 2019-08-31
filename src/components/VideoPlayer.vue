@@ -1,8 +1,9 @@
 <template>
   <div class="v-player-mask">
-    <div class="v-player-wrap">
-      <i class="close" @click="$emit('close')"/>
-      <v-player ref="player" :options="opts"/>
+    <div class="v-player-wrap core">
+      <i class="close" @click="$emit('close')">X</i>
+      <v-player ref="player" class="v-player" :options="opts"/>
+      <div class="core2"/>
     </div>
   </div>
 </template>
@@ -51,36 +52,70 @@ export default {
 .v-player-mask {
   position: absolute;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
   display: flex;
+  width: 100%;
+  height: 100%;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   z-index: 10;
-  background-color: rgba(0,0,0,0.5);
-  .v-player-wrap {
-    position: relative;
-    width: 50%;
-    height: 50%;
-    align-self: center;
-    border: 2px solid #ceffff;
-    .dplayer-fulled {
-      width: 100%;
-      height: 100%;
-    }
-    .close {
-      position: absolute;
-      top: -120px;
-      right: -120px;
-      display: inline-block;
-      width: 100px;
-      height: 100px;
-      background-image: url(../assets/img/back.png);
-      background-size: 100%;
-      cursor: pointer;
-    }
+}
+.v-player-wrap {
+  position: relative;
+  width: 960px;
+  height: 540px;
+  padding: 15px 15px 50px 15px;
+  .dplayer-fulled {
+    width: 100%;
+    height: 100%;
+  }
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 20px;
+    color: #ffffff;
+    z-index: 101;
+    cursor: pointer;
+  }
+  .v-player {
+    border-top: 30px solid #04212b;
   }
 }
+
+/*四个角效果*/
+    .core{
+        position: relative;border:2px solid #60D8FD;
+    }
+    .core:before,.core:after{
+        content:"" ;display: block;position: absolute;bottom:-3px;width:16px;height:16px;
+    }
+    .core:after{
+        right:-4px;border:5px solid #60D8FD;border-left-width: 0;border-top-width: 0;
+    }
+    .core:before{
+        left:-4px;border:5px solid #60D8FD;border-right-width: 0;border-top-width: 0;
+    }
+
+    .core2{
+        position: relative;
+        // top: 10px;
+        top: -580px;
+    }
+    .core2:before,.core2:after{
+        content:"" ;display: block;position: absolute;bottom:-12px;width:16px;height:16px;
+    }
+    .core2:after{
+        left: -19px;
+        border: 5px solid #60D8FD;
+        border-right-width: 0;
+        border-bottom-width: 0;
+    }
+    .core2:before{
+        right: -19px;
+        border: 5px solid #60D8FD;
+        border-left-width: 0;
+        border-bottom-width: 0;
+    }
 </style>
