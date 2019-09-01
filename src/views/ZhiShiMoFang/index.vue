@@ -293,6 +293,21 @@ export default {
           box-sizing: border-box;
           overflow: auto;
           font-size: 0.24rem;
+          &::-webkit-scrollbar {
+            /*滚动条整体样式*/
+            width: 12px; /*高宽分别对应横竖滚动条的尺寸*/
+            height: 12px;
+          }
+          &::-webkit-scrollbar-thumb {
+            /*滚动条里面小方块*/
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.2);
+          }
+          &::-webkit-scrollbar-track {
+            /*滚动条里面轨道*/
+            border-radius: 0;
+            background: rgba(0, 0, 0, 0.1);
+          }
           p {
             margin-bottom: 0.2rem;
             line-height: 1.4;
