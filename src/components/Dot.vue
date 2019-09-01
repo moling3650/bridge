@@ -1,9 +1,8 @@
 <template>
   <div class="dot-wrap" v-bind="$attrs">
     <div class="text-wrap">
-      <div class="text">{{ text }}</div>
+      <div class="text" :style="{color: `${color}`,borderColor:`${color}`}">{{ text }}</div>
     </div>
-
     <div class="dots">
       <div v-for="i in 5" :key="i" class="dot"/>
     </div>
@@ -28,6 +27,11 @@ export default {
       type: String,
       default: '',
     },
+  },
+  data () {
+    return {
+      // color: 'red',
+    }
   },
 }
 </script>
