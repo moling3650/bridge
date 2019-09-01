@@ -135,14 +135,21 @@ li {
     width: 1.1rem;
     background-size: cover;
     cursor: pointer;
+    transition: all 0.3s ease-out;
   }
   .left {
     left: 5%;
     background-image: url(../../assets/img/left.png);
+    &:hover{
+      transform: scale(1.2) translateX(-0.08rem);
+    }
   }
   .right {
     right: 5%;
     background-image: url(../../assets/img/right.png);
+    &:hover{
+      transform: scale(1.2) translateX(0.08rem);
+    }
   }
 }
 .list-complete-enter,
