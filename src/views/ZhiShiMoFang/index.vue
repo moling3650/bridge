@@ -21,6 +21,7 @@
         <span class="text-des">知识魔方</span>
       </div>
       <template v-if="!dialogVisiable">
+        <back :style="{ top: '1rem', right: '1rem', width: '1rem', height: '1rem' }" @click.native="$router.push({ name: 'navigation', query: { loop: true } })"/>
         <section class="content-display-wrapper">
           <div class="tech-container">
             <ul class="tech-list" :style="{ width: `${col * 206}px` }">
@@ -204,7 +205,7 @@ export default {
   }
   .dialog {
     position: absolute;
-    top: 15%;
+    top: 20%;
     left: 15%;
     width: 70%;
     height: 70%;
@@ -289,6 +290,7 @@ export default {
           overflow: auto;
           font-size: 0.24rem;
           p {
+            margin-bottom: 0.2rem;
             line-height: 1.4;
             text-indent: 0.48rem;
           }

@@ -44,10 +44,10 @@ export default {
     left: 0;
   }
   & > .ring-1 {
-    animation: spin-left 1.5s linear infinite;
+    animation: spin-left 2.5s linear infinite;
   }
   & > .ring-2 {
-    animation: spin-right 1.5s linear infinite;
+    animation: spin-right 2.5s linear infinite;
   }
   & > .text {
     position: absolute;
@@ -55,8 +55,9 @@ export default {
     top: -.4rem;
     left: 0;
     width: 100%;
-    font-size: .24rem;
-    color: #4ec6ff;
+    font-size: .28rem;
+    font-weight: 300;
+    color: #eee;
   }
 }
 @keyframes spin-left {
