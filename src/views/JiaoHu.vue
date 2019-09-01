@@ -95,7 +95,7 @@ export default {
           color: #fff;
         }
         .like-icon {
-          width: 3.04rem;
+          width: 2.7rem;
           height: 0.72rem;
         }
       }

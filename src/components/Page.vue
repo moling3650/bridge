@@ -113,7 +113,7 @@ export default {
   overflow: hidden;
   & > video {
     width: 19.2rem;
-    height: 10.8rem;
+    // height: 10.8rem;
     // object-fit: cover;
     &:nth-child(2) {
       position: absolute;
