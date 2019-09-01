@@ -10,6 +10,8 @@ import NavBar from '@/components/NavBar'
 import Dot from '@/components/Dot'
 import Back from '@/components/Back'
 import Next from '@/components/Next'
+import Carousel from '@/components/Carousel'
+import MaxCard from '@/components/MaxCard'
 import playVideo from '@/utils/playVideo'
 import './scss/reset.scss'
 
@@ -20,6 +22,8 @@ Vue.component(NavBar.name, NavBar)
 Vue.component(Dot.name, Dot)
 Vue.component(Back.name, Back)
 Vue.component(Next.name, Next)
+Vue.component(Carousel.name, Carousel)
+Vue.component(MaxCard.name, MaxCard)
 Vue.prototype.$playVideo = playVideo
 
 Vue.config.productionTip = false

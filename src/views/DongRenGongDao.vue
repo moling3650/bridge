@@ -8,6 +8,7 @@
     </page>
     <div v-if="qrVisiable" class="qr" @click="qrVisiable = false">
       <img src="@/assets/img/QRcode.png" alt="浏览展厅">
+      <!-- 扫码预览港珠澳大桥展览馆(东人工岛) -->
     </div>
     <div v-if="qrVisiable" class="mask" :class="{ blur: true }"/>
   </div>

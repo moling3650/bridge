@@ -10,6 +10,9 @@
         <nav-bar back-and-next/>
       </template>
     </page>
+    <transition name="fade">
+      <MaxCard v-if="show" @close="close"/>
+    </transition>
   </div>
 </template>
 
@@ -19,17 +22,18 @@ export default {
   data () {
     return {
       opacity: 0,
+      show: false,
     }
   },
   methods: {
     clickDot (index) {
-      // const video = {
-      //   url: require(`../../public/video/dot/4-${index}.mp4`),
-      // }
-      // this.opacity = 5
-      // this.$playVideo(video).then(() => {
-      //   this.opacity = 0
-      // })
+      if (index === 4) {
+        console.log('海底隧道')
+        this.show = true
+      }
+    },
+    close () {
+      this.show = false
     },
   },
 }

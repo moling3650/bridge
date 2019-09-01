@@ -84,7 +84,7 @@ export default {
       width: 7.7rem;
       height: 1.2rem;
       padding: 0.18rem 0.4rem;
-      background-image: url(/img/jiaohunavbar.a22f457f.png);
+      background-image: url(../assets/img/jiaohunavbar.png);
       background-size: 100% 100%;
       -webkit-box-sizing: border-box;
       box-sizing: border-box;
