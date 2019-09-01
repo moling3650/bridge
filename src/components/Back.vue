@@ -13,5 +13,6 @@ export default {
   position: absolute;
   background-image: url(../assets/img/back.png);
   background-size: contain;
+  cursor: pointer;
 }
 </style>

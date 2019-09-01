@@ -3,7 +3,7 @@
     <video
       v-if="!showDetail"
       class="v"
-      :src="require('./loading.mp4')"
+      :src="require('../../../public/video/ZhiShiMoFang.mp4')"
       autoplay
       @ended="showDetail = true"
     >您的浏览器不支持 video 标签。</video>
