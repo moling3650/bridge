@@ -9,6 +9,7 @@ import NavLink from '@/components/NavLink'
 import NavBar from '@/components/NavBar'
 import Dot from '@/components/Dot'
 import Back from '@/components/Back'
+import Next from '@/components/Next'
 import playVideo from '@/utils/playVideo'
 import './scss/reset.scss'
 
@@ -18,6 +19,7 @@ Vue.component(NavLink.name, NavLink)
 Vue.component(NavBar.name, NavBar)
 Vue.component(Dot.name, Dot)
 Vue.component(Back.name, Back)
+Vue.component(Next.name, Next)
 Vue.prototype.$playVideo = playVideo
 
 Vue.config.productionTip = false

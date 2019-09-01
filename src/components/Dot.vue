@@ -53,10 +53,11 @@ export default {
     .text {
       display: inline-block;
       padding: 0.05rem 0.15rem;
-      border: 0.05rem double #eeeeee;
+      border: 0.05rem double #eee;
       border-radius: 0.22rem;
       color: #eeeeee;
-      font-size: 0.22rem;
+      font-size: 0.28rem;
+      text-shadow:5px 2px 6px #000;
     }
   }
 }
@@ -67,7 +68,7 @@ $animation-time: 4s;
 
 $color-yellow: #fbd301;
 $color-red: #ff3270;
-$color-blue: #208bf1;
+$color-blue: #eeeeee;
 $color-green: #afe102;
 
 $colors: ($color-yellow, $color-red, $color-blue, $color-green);

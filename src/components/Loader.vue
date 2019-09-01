@@ -102,7 +102,7 @@ export default {
   display: inline-block;
   font-size: 0.24rem;
   .text {
-    color: #1ab7ea;
+    color: #eee;
     font-weight: bold;
     &.done {
       cursor: pointer;
@@ -120,7 +120,7 @@ export default {
     height: 0.05rem;
     margin: 0.05rem 0.03rem;
     border-radius: 50%;
-    background-color: #1ab7ea;
+    background-color: #eee;
     animation: loading-blob 1.6s infinite;
     animation-timing-function: ease-in-out;
     transform: translate3d(0, 0, 0);
