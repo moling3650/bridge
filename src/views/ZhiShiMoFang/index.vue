@@ -6,18 +6,10 @@
       :src="require('./loading.mp4')"
       autoplay
       @ended="showDetail = true"
-    >
-      您的浏览器不支持 video 标签。
-    </video>
+    >您的浏览器不支持 video 标签。</video>
     <template v-if="showDetail">
       <div class="top-nav">
-        <img
-          class="logo"
-          width="120px"
-          height="120px"
-          :src="require('./logo.png')"
-          alt="topNav"
-        >
+        <img class="logo" width="120px" height="120px" :src="require('./logo.png')" alt="topNav">
         <span class="text-des">知识魔方</span>
       </div>
       <template v-if="!dialogVisiable">
@@ -98,6 +90,12 @@ export default {
         .slice(this.index * this.size, (this.index + 1) * this.size)
     },
   },
+  watch: {
+    showDetail () {
+      console.log(this.showDetail)
+      if (window.reload) false
+    },
+  },
   mounted () {
     this._setSize()
   },
@@ -144,9 +142,11 @@ export default {
 <style lang="scss" scoped>
 .v {
   position: absolute;
+  top: 0.05rem;
   top: 0;
   bottom: 0;
   right: 0;
+  left: 0.05rem;
   left: 0;
   width: 19.2rem;
   height: 10.8rem;
@@ -161,19 +161,23 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 0.4rem 0.2rem;
+  transition: all 0.3s ease;
   .top-nav {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 0.72rem;
+
     .top-nav-img {
       height: 1.55rem;
       width: 4.92rem;
       margin-right: 0.4rem;
     }
     .text-des {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: #fff;
+      letter-spacing: 0.1rem;
+      margin-left: 0.3rem;
     }
   }
   .content-display-wrapper {
