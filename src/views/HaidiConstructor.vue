@@ -20,7 +20,6 @@ export default {
   name: 'HaidiConstructor',
   data () {
     return {
-      isLoop: true,
       start: this.$route.query.loop ? 'LoopVideo' : 'Cutscenes',
     }
   },
