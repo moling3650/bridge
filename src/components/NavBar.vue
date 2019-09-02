@@ -6,24 +6,12 @@
         <router-link to="/Roaming"/>
         <router-link to="/"/>
         <router-link to="/ZhiShiMoFang"/>
-        <a href="http://news.southcn.com/n/node_395653.htm"/>
-        <!-- <a @click="iframe=true"/> -->
+        <router-link to="/JianSheZhe"/>
+        <!-- <a href="http://news.southcn.com/n/node_395653.htm" @click.prevent="showFrame"/> -->
         <router-link to="/JiaoHu"/>
       </div>
     </div>
     <img v-show="!always" class="display-btn" src="@/assets/img/display-btn.png" alt="显示导航的按钮" @click="showBar = !showBar">
-    <!-- <iframe
-      v-if="iframe"
-      src="http://news.southcn.com/n/node_395653.htm"
-      width="1200"
-      height="300"
-      frameborder="0"
-      scrolling="auto"
-      style="    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 999;"
-    /> -->
   </div>
 </template>
 
@@ -38,7 +26,7 @@ export default {
   data () {
     return {
       showBar: false,
-      // iframe: false,
+      showFrame: false,
     }
   },
 }

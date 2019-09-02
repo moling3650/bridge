@@ -97,5 +97,15 @@ export default new Router({
       component: () =>
         import(/* webpackChunName: "Views"*/ './views/HaidiConstructor.vue'),
     },
+    {
+      path: '/JianSheZhe',
+      name: 'JianSheZhe',
+      component: () =>
+        import(/* webpackChunName: "Views"*/ './views/JianSheZhe.vue'),
+      beforeEnter: (to, from, next) => {
+        to.meta.from = from.name
+        next()
+      },
+    },
   ],
 })
