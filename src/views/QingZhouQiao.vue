@@ -2,10 +2,12 @@
   <div id="QingZhouQiao">
     <page page-name="QingZhouQiao" autoplay can-skip :opacity="opacity">
       <template v-if="isLoop" slot-scope="{ isLoop }">
-        <nav-bar back-and-next/>
-        <dot :style="{ top: '2.2rem', left: '9.3rem' }" text="同心结" @click.native="clickDot(1)"/>
-        <dot :style="{ top: '9rem', left: '3rem' }" text="SS级护栏"/>
-        <dot :style="{ top: '9.8rem', left: '14rem' }" text="世界最大地面沥青铺装"/>
+        <nav-bar/>
+        <dot :style="{ top: '2.2rem', left: '9.3rem' }" text="中国结" @click.native="clickDot(1)"/>
+        <dot :style="{ top: '9rem', left: '3rem' }" text="SS级护栏" @click.native="clickDot(2)"/>
+        <dot :style="{ top: '9.3rem', left: '12rem' }" text="世界最大面积沥青铺装" @click.native="clickDot(3)"/>
+        <back :style="{ bottom: '0.2rem', right: '1.4rem', width: '1rem', height: '1rem' }" @click.native="$router.push('/ShengTaiBaoHu')"/>
+        <next :style="{ bottom: '0.2rem', right: '0.2rem', width: '1rem', height: '1rem' }" @click.native="$router.push('/XiRenGongDao')"/>
       </template>
     </page>
   </div>

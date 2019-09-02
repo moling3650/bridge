@@ -33,8 +33,9 @@ export default {
 .text {
   position: absolute;
   font-size: 0.48rem;
-  color: #eeeeee;
+  color: #00a4c7;
   font-weight: bold;
+  opacity: 0.8;
 }
 .zuh {
  top: 1.8rem;

@@ -28,6 +28,10 @@ export default {
   position: absolute;
   width: 2rem;
   height: 2rem;
+  transition: all 0.3s ease-out;
+  &:hover {
+    transform: scale(1.1);
+  }
   & > .jpg {
     position: absolute;
     top: .3rem;
@@ -44,19 +48,20 @@ export default {
     left: 0;
   }
   & > .ring-1 {
-    animation: spin-left 2.5s linear infinite;
+    animation: spin-left 3s linear infinite;
   }
   & > .ring-2 {
-    animation: spin-right 2.5s linear infinite;
+    animation: spin-right 3s linear infinite;
   }
   & > .text {
     position: absolute;
     display: inline-block;
     top: -.4rem;
-    left: 0;
-    width: 100%;
+    left: -1.25rem;
+    width: 4rem;
     font-size: .28rem;
-    font-weight: 300;
+    font-weight: 200;
+    letter-spacing: 0.05rem;
     color: #eee;
   }
 }

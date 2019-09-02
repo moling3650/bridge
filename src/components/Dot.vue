@@ -50,14 +50,16 @@ export default {
     display: inline-block;
     width: 10rem;
     text-align: center;
+
     .text {
       display: inline-block;
-      padding: 0.05rem 0.15rem;
+      padding: 0.1rem 0.15rem;
       border: 0.05rem double #eee;
       border-radius: 0.22rem;
       color: #eeeeee;
       font-size: 0.28rem;
-      text-shadow:5px 2px 6px #000;
+      letter-spacing: 0.03rem;
+      background-color: #00a4c6;
     }
   }
 }
