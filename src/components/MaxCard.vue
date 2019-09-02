@@ -2,16 +2,16 @@
   <div id="MaxCard" @click="close">
     <div class="main">
       <div class="MaxCardBorder"/>
-      <div class="left">
+      <div>
         <h3>港珠澳大桥海底沉管对接</h3>
-        <span>
+        <span class="left">
           港珠澳大桥海底沉管对接被称为“最精准深海之吻”。
           33节沉管在海平面以下13米至48米不等的深度进行海底无人对接，对接误差控制在2厘米以内，是目前世界上最精准的深海对接。而最终接头安装偏差更是从最初的17厘米降至2.5毫米，更是达到了毫米级的安装精度。
           <br>海底沉管对接，可以说是智慧与工艺的双重挑战。我们专门制作了一个沉管对接小游戏，您可以扫描二维码体验这一过程。
         </span>
-      </div>
-      <div class="right">
-        <img src="@/assets/img/haidi4.png" alt>
+        <div class="right">
+          <img src="@/assets/img/haidi4.png" alt>
+        </div>
       </div>
     </div>
   </div>
@@ -75,19 +75,16 @@ export default {
       bottom: -0.15rem;
       border-radius: 30px;
     }
+    h3 {
+      font-size: 0.3rem;
+      margin-bottom: 0.3rem;
+      line-height: 0.45rem;
+    }
     .left {
       float: left;
       width: 5.2rem;
-      h3 {
-        font-size: 0.3rem;
-        margin-bottom: 0.3rem;
-        line-height: 0.45rem;
-      }
-      span {
-        font-size: 0.25rem;
-        line-height: 0.4rem;
-        display: inline-block;
-      }
+      font-size: 0.25rem;
+      line-height: 0.4rem;
     }
     .right {
       float: right;

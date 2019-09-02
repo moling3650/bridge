@@ -51,6 +51,10 @@ export default {
     width: 5rem;
     height: 4.8rem;
     margin-top: 3rem;
+    img {
+      width: 100%;
+      height: 100%;
+    }
     .text {
       position: absolute;
       bottom: 0.3rem;
