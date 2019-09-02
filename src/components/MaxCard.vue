@@ -1,7 +1,6 @@
 <template>
-  <div id="MaxCard">
+  <div id="MaxCard" @click="close">
     <div class="main">
-      <i class="close" @click="close"/>
       <div class="MaxCardBorder"/>
       <div class="left">
         <h3>港珠澳大桥海底沉管对接</h3>
@@ -56,17 +55,17 @@ export default {
       rgba(101, 172, 218, 0.9),
       #6fcaee
     );
-    .close {
-      position: absolute;
-      top: -1rem;
-      right: -1.5rem;
-      display: block;
-      width: 1rem;
-      height: 1rem;
-      background-image: url(../assets/img/back.png);
-      background-size: cover;
-      cursor: pointer;
-    }
+    // .close {
+    //   position: absolute;
+    //   top: -1rem;
+    //   right: -1.5rem;
+    //   display: block;
+    //   width: 1rem;
+    //   height: 1rem;
+    //   background-image: url(../assets/img/back.png);
+    //   background-size: cover;
+    //   cursor: pointer;
+    // }
     .MaxCardBorder {
       border: 0.03rem solid #6fcaee;
       position: absolute;
@@ -92,6 +91,10 @@ export default {
     }
     .right {
       float: right;
+      &>img {
+        width: 3rem;
+        height: 3rem;
+      }
     }
   }
 }
