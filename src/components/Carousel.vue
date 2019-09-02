@@ -1,27 +1,21 @@
 <template>
   <div id="Carousel">
     <div class="slider core">
-      <i class="close" @click="close"/>
       <ul class="container">
         <transition-group name="list-complete">
-          <li v-for="i in items" :key="i">
-            <!-- <img :src="require(`${url}${i}.jpg`)"> -->
-
-            <img src="../assets/worldlong/1.jpg">
-            <span class="info">1、钢箱梁制造分为板单元制造、箱梁段组拼、桥位吊装三个阶段，其中板单元是基本元件。图为河北山海关的板单元机械化生产车间。</span>
-
-            <!-- <img :src="`../assets/worldlong/${i}.jpg`"> -->
-            <!-- <div>{{ items }}</div> -->
-            <!-- <img src="../assets/worldlong/1.jpg" alt=""> -->
+          <li v-for="item in items" :key="item.url">
+            <img :src="item.url">
+            <span class="info">{{ item.text }}</span>
           </li>
         </transition-group>
       </ul>
+      <ul class="direction">
+        <li v-show="index > 0" class="left" @click="index--"/>
+        <li v-show="index < total - size" class="right" @click="index++"/>
+      </ul>
       <div class="core2"/>
     </div>
-    <ul class="direction">
-      <li v-show="index > 0" class="left" @click="index--"/>
-      <li v-show="index < total - size" class="right" @click="index++"/>
-    </ul>
+    <back :style="{ top: '0.2rem', right: '0.2rem', width: '1.2rem', height: '1.2rem' }" @click.native="$emit('close')"/>
   </div>
 </template>
 
@@ -29,9 +23,9 @@
 export default {
   name: 'Carousel',
   props: {
-    url: {
-      type: String,
-      default: '',
+    images: {
+      type: Array,
+      required: true,
     },
   },
   data () {
@@ -41,30 +35,12 @@ export default {
     }
   },
   computed: {
-    nums () {
-      return new Array(5).fill(0).map((n, i) => i + 1)
-    },
     total () {
-      return this.nums.length
+      return this.images.length
     },
     items () {
-      const preIdex = (this.index + this.total - 1) % this.total
-      return [
-        this.nums[preIdex],
-        ...this.nums.slice(this.index, this.index + this.size + 1),
-      ]
-    },
-  },
-  created () {
-    console.log(this.url)
-  },
-  methods: {
-    close () {
-      // this.$refs.player.dp.pause()
-      // this.$refs.player.dp.seek(0)
-      // this.show = false
-      this.$emit('close', false)
-      // this.callback()
+      // const preIdex = (this.index + this.total - 1) % this.total
+      return this.images.slice(this.index, this.index + this.size + 1)
     },
   },
 }
@@ -83,73 +59,67 @@ export default {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 10rem;
-      padding: 0.15rem;
+  width: 14.4rem;
+  height: 8.1rem;
+  padding: 0.15rem;
   transform: translate3d(-50%, -50%, 0);
   background-color: #214858;
   // overflow: hidden;
-  .close {
-    position: absolute;
-    top: -1rem;
-    right: -1.5rem;
-    display: block;
-    width: 1rem;
-    height: 1rem;
-    background-image: url(../assets/img/back.png);
-    background-size: cover;
-    cursor: pointer;
-  }
   .container {
     position: relative;
-    // padding: 0.15rem 0;
+    width: 11.5rem;
     margin: 0 auto;
-    // margin-top: 4rem;
     z-index: 1;
     white-space: nowrap;
-    width: 10rem;
     overflow: hidden;
     li {
       display: inline-block;
-      width: 10rem;
+      width: 100%;
       transition: all 0.3s ease-out;
       img {
-        width: 10rem;
-        height: 7rem;
         float: left;
+        width: 100%;
+        height: 7rem;
       }
       span {
         float: left;
-        width: 10rem;
+        width: 100%;
         font-size: 0.3rem;
         color: #fff;
         white-space: pre-wrap;
         text-align: left;
-            line-height: 0.38rem;
+        line-height: 0.38rem;
       }
     }
   }
 }
 .direction {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   .left,
   .right {
     position: absolute;
-    top: 4.5rem;
+    top: 3.5rem;
     display: block;
-    height: 2rem;
-    width: 1.1rem;
+    width: 0.55rem;
+    height: 1rem;
+    z-index: 2;
     background-size: cover;
     cursor: pointer;
     transition: all 0.3s ease-out;
   }
   .left {
-    left: 5%;
+    left: 0.5rem;
     background-image: url(../assets/img/left.png);
     &:hover {
       transform: scale(1.2) translateX(-0.08rem);
     }
   }
   .right {
-    right: 5%;
+    right: 0.5rem;
     background-image: url(../assets/img/right.png);
     &:hover {
       transform: scale(1.2) translateX(0.08rem);
