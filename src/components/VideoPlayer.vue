@@ -1,7 +1,7 @@
 <template>
   <div v-show="show" class="v-player-mask">
+    <back :style="{ top: '0.2rem', right: '0.2rem', width: '1.2rem', height: '1.2rem' }" @click.native="close"/>
     <div class="v-player-wrap core">
-      <i class="close" @click="close"/>
       <v-player ref="player" class="v-player" :options="options"/>
       <div class="core2"/>
     </div>
@@ -79,17 +79,6 @@ export default {
   .dplayer-fulled {
     width: 100%;
     height: 100%;
-  }
-  .close {
-    position: absolute;
-    top: -1rem;
-    right: -1.5rem;
-    display: block;
-    width: 1rem;
-    height: 1rem;
-    background-image: url(../assets/img/back.png);
-    background-size: cover;
-    cursor: pointer;
   }
 }
 
