@@ -1,17 +1,24 @@
 <template>
   <div id="NavBar">
-    <div v-show="always || showBar" class="bar-container" @mouseleave="showBar = false">
-      <div class="bar">
-        <router-link :to="{ name: 'navigation', query: { loop: true } }"/>
-        <router-link to="/Roaming"/>
-        <router-link to="/"/>
-        <router-link to="/ZhiShiMoFang"/>
-        <router-link to="/JianSheZhe"/>
-        <!-- <a href="http://news.southcn.com/n/node_395653.htm" @click.prevent="showFrame"/> -->
-        <router-link to="/JiaoHu"/>
+    <transition name="fade">
+      <div v-show="always || showBar" class="bar-container" @mouseleave="showBar = false">
+        <div class="bar">
+          <router-link tag="div" :to="{ name: 'navigation', query: { loop: true } }"/>
+          <router-link tag="div" to="/Roaming"/>
+          <router-link tag="div" to="/"/>
+          <router-link tag="div" to="/ZhiShiMoFang"/>
+          <router-link tag="div" to="/JianSheZhe"/>
+          <router-link tag="div" to="/JiaoHu"/>
+        </div>
       </div>
-    </div>
-    <img v-show="!always" class="display-btn" src="@/assets/img/display-btn.png" alt="显示导航的按钮" @click="showBar = !showBar">
+    </transition>
+    <img
+      v-show="!always"
+      class="display-btn"
+      src="@/assets/img/display-btn.png"
+      alt="显示导航的按钮"
+      @click="showBar = !showBar"
+    >
   </div>
 </template>
 
@@ -44,19 +51,71 @@ export default {
     position: relative;
     bottom: .1rem;
     text-align: center;
+    // .bar {
+    //   display: inline-block;
+    //   width: 8.700rem;
+    //   height: 1.20rem;
+    //   padding-left: .50rem;
+    //   padding-right: .50rem;
+    //   background-image: url(../assets/img/navbar.png);
+    //   background-size: 100% 100%;
+    //   box-sizing: border-box;
+    //   & > a {
+    //     float: left;
+    //     height: 100%;
+    //     width: 16.6%;
+    //      transition: all 0.3s ease-out;
+    //     &:hover{
+    //       transform: scale(1.2) translateX(-0.08rem);
+    //     }
+    //   }
+    // }
     .bar {
       display: inline-block;
-      width: 8.700rem;
-      height: 1.20rem;
-      padding-left: .50rem;
-      padding-right: .50rem;
-      background-image: url(../assets/img/navbar.png);
+      // width: 8.700rem;
+      // height: 1.20rem;
+      // padding-left: .50rem;
+      // padding-right: .50rem;
+      // background-image: url(../assets/img/navbar.png);
+      width: 7.7rem;
+      height: 1.2rem;
+      padding: 0.21rem 0.5rem;
+      background-image: url(../assets/img/jiaohunavbar.png);
       background-size: 100% 100%;
+      -webkit-box-sizing: border-box;
       box-sizing: border-box;
-      & > a {
+      // & > a {
+      & > div {
         float: left;
         height: 100%;
-        width: 16.6%;
+        // width: 16.6%;
+        width: 14.66%;
+        margin: 0 1%;
+        background-size: 100% 100%;
+        box-sizing: border-box;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+        &:hover {
+          transform: scale(1.15) translateY(-0.03rem);
+        }
+      }
+      & > div:nth-child(1) {
+        background-image: url(../assets/img/navigation.png);
+      }
+      & > div:nth-child(2) {
+        background-image: url(../assets/img/Roaming.png);
+      }
+      & > div:nth-child(3) {
+        background-image: url(../assets/img/wordfirst.png);
+      }
+      & > div:nth-child(4) {
+        background-image: url(../assets/img/ZhiShiMoFang.png);
+      }
+      & > div:nth-child(5) {
+        background-image: url(../assets/img/JianSheDaShiJi.png);
+      }
+      & > div:nth-child(6) {
+        background-image: url(../assets/img/JiaoHu.png);
       }
     }
   }
