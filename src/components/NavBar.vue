@@ -6,7 +6,8 @@
         <router-link to="/Roaming"/>
         <router-link to="/"/>
         <router-link to="/ZhiShiMoFang"/>
-        <a href="http://news.southcn.com/n/node_395653.htm"/>
+        <router-link to="/JianSheZhe"/>
+        <!-- <a href="http://news.southcn.com/n/node_395653.htm" @click.prevent="showFrame"/> -->
         <router-link to="/JiaoHu"/>
       </div>
     </div>
@@ -25,6 +26,7 @@ export default {
   data () {
     return {
       showBar: false,
+      showFrame: false,
     }
   },
 }
