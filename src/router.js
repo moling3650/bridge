@@ -98,6 +98,12 @@ export default new Router({
         import(/* webpackChunName: "Views"*/ './views/HaidiConstructor.vue'),
     },
     {
+      path: '/QiaoDun',
+      name: 'QiaoDun',
+      component: () =>
+        import(/* webpackChunName: "Views"*/ './views/QiaoDun.vue'),
+    },
+    {
       path: '/JianSheZhe',
       name: 'JianSheZhe',
       component: () =>
