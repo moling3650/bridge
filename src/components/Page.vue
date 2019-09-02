@@ -72,6 +72,7 @@ export default {
     },
   },
   mounted () {
+    this.isLoop = this.$route.query.loop
     if (this.isLoop) {
       this.play(true)
     }

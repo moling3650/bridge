@@ -5,7 +5,7 @@
         <nav-bar/>
         <dot :style="{ top: '2.1rem', left: '6.3rem' }" text="东人工岛展览馆" @click.native="showQRCode"/>
         <dot :style="{ top: '1.1rem', left: '13.3rem' }" text="港珠澳大桥4K超清壁纸"/>
-        <dot :style="{ top: '5.8rem', left: '9.5rem' }" text="港珠澳大桥建设大事记"/>
+        <dot :style="{ top: '5.8rem', left: '9.5rem' }" text="港珠澳大桥建设大事记" @click.native="$router.push('/JianSheDaShiJi')"/>
         <back :style="{ bottom: '0.2rem', right: '1.4rem', width: '1rem', height: '1rem' }" @click.native="$router.push('/HaiDiSuiDao')"/>
         <next :style="{ bottom: '0.2rem', right: '0.2rem', width: '1rem', height: '1rem' }" @click.native="$router.push('/End')"/>
       </template>

@@ -25,7 +25,7 @@
       <li v-show="index < total - size" class="right" @click="index++"/>
     </ul>
     <nav-bar/>
-    <back :style="{ top: '1rem', right: '1rem', width: '1rem', height: '1rem' }" @click.native="$router.push({ name: 'navigation', query: { loop: true } })"/>
+    <back :style="{ top: '1rem', right: '1rem', width: '1rem', height: '1rem' }" @click.native="$router.push({ name: 'DongRenGongDao', query: { loop: true } })"/>
   </div>
 </template>
 
