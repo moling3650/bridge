@@ -27,7 +27,6 @@
       <dot :style="{ top: '1.4rem', left: '4.3rem' }" text="主体建筑" @click.native="checkDetail(2)"/>
       <dot :style="{ top: '2.3rem', left: '6.2rem' }" text="隧道入口" @click.native="checkDetail(5)"/>
       <dot :style="{ top: '3.1rem', left: '8.1rem' }" text="环岛公路" @click.native="checkDetail(4)"/>
-      <!-- <dot :style="{ top: '3.8rem', left: '5.7rem' }" text="环岛公路" @click.native="checkDetail(4)"/> -->
       <dot :style="{ top: '5rem', left: '6.6rem' }" text="防波堤" @click.native="checkDetail(3)"/>
       <dot :style="{ top: '7rem', left: '7.5rem' }" text="钢圆筒" @click.native="checkDetail(6)"/>
       <back :style="{ bottom: '0.4rem', right: '0.4rem', width: '1rem', height: '1rem' }" @click.native="goback"/>
@@ -56,6 +55,7 @@ export default {
     clickDot (index) {
       if (index === 1) {
         this.show = true
+        this.checkDetail(1)
         this.$nextTick(() => {
           this.$refs.v.play()
         })
