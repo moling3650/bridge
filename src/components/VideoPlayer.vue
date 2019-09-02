@@ -76,6 +76,9 @@ export default {
     width: 100%;
     height: 100%;
   }
+  .dplayer-setting {
+    display: none;
+  }
   .close {
     position: absolute;
     top: -1rem;
