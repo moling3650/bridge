@@ -31,22 +31,23 @@ export default {
   methods: {
     clickDot (index) {
       if (index === 4) {
-        console.log('海底隧道')
+        this.opacity = 5
         this.show = true
+        return
+      }
+      if (~[2, 5, 6].indexOf(index)) {
+        const video = {
+          url: require(`../../public/video/dot/6-${index}.mp4`),
+        }
+        this.opacity = 5
+        this.$playVideo(video).then(() => {
+          this.opacity = 0
+        })
       }
     },
     close () {
       this.show = false
-      // if (index < 5 && index !== 2) {
-      //   return
-      // }
-      const video = {
-        url: require(`../../public/video/dot/6-${index}.mp4`),
-      }
-      this.opacity = 5
-      this.$playVideo(video).then(() => {
-        this.opacity = 0
-      })
+      this.opacity = 0
     },
   },
 }
