@@ -5,10 +5,10 @@
       <ul class="container">
         <transition-group name="list-complete">
           <li v-for="i in items" :key="i">
-            <!-- <img :src="require(`${url}${i}.jpg`)"> -->
-
-            <img src="../assets/worldlong/1.jpg">
-            <span class="info">1、钢箱梁制造分为板单元制造、箱梁段组拼、桥位吊装三个阶段，其中板单元是基本元件。图为河北山海关的板单元机械化生产车间。</span>
+            <img :src="`${url}${i}.jpg`">
+            <span>{{ url }}{{ i }} .jpg</span>
+            <!-- <img src="../assets/worldlong/1.jpg"> -->
+            <!-- <span class="info">1、钢箱梁制造分为板单元制造、箱梁段组拼、桥位吊装三个阶段，其中板单元是基本元件。图为河北山海关的板单元机械化生产车间。</span> -->
 
             <!-- <img :src="`../assets/worldlong/${i}.jpg`"> -->
             <!-- <div>{{ items }}</div> -->

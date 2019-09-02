@@ -12,6 +12,7 @@ import Back from '@/components/Back'
 import Next from '@/components/Next'
 import Carousel from '@/components/Carousel'
 import MaxCard from '@/components/MaxCard'
+
 import playVideo from '@/utils/playVideo'
 import './scss/reset.scss'
 
