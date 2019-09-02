@@ -9,11 +9,12 @@
     >您的浏览器不支持 video 标签。</video>
     <template v-if="showDetail">
       <div class="top-nav">
-        <img class="logo" width="120px" height="120px" :src="require('./logo.png')" alt="topNav">
-        <span class="text-des">知识魔方</span>
+        <img src="../../assets/img/mofang_logo.png" alt="知识魔方">
+        <!-- <img class="logo" width="120px" height="120px" :src="require('./logo.png')" alt="topNav">
+        <span class="text-des">知识魔方</span> -->
       </div>
       <template v-if="!dialogVisiable">
-        <back :style="{ top: '1rem', right: '1rem', width: '1rem', height: '1rem' }" @click.native="$router.push({ name: 'navigation', query: { loop: true } })"/>
+        <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$router.push({ name: 'navigation', query: { loop: true } })"/>
         <section class="content-display-wrapper">
           <div class="tech-container">
             <ul class="tech-list" :style="{ width: `${col * 206}px` }">
@@ -166,19 +167,22 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 0.72rem;
+    // margin-bottom: 0.72rem;
+    img {
+      width: 9.6rem;
+    }
 
-    .top-nav-img {
-      height: 1.55rem;
-      width: 4.92rem;
-      margin-right: 0.4rem;
-    }
-    .text-des {
-      font-size: 0.85rem;
-      color: #fff;
-      letter-spacing: 0.1rem;
-      margin-left: 0.3rem;
-    }
+    // .top-nav-img {
+    //   height: 1.55rem;
+    //   width: 4.92rem;
+    //   margin-right: 0.4rem;
+    // }
+    // .text-des {
+    //   font-size: 0.85rem;
+    //   color: #fff;
+    //   letter-spacing: 0.1rem;
+    //   margin-left: 0.3rem;
+    // }
   }
   .content-display-wrapper {
     display: flex;
