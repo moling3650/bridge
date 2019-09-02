@@ -32,6 +32,10 @@ export default {
       callback () {},
     }
   },
+  mounted () {
+    const s = this.$refs.player.$el.querySelector('.dplayer-controller .dplayer-setting')
+    s.style.display = 'none'
+  },
   methods: {
     play (video) {
       this.show = true
@@ -75,9 +79,6 @@ export default {
   .dplayer-fulled {
     width: 100%;
     height: 100%;
-  }
-  .dplayer-setting {
-    display: none;
   }
   .close {
     position: absolute;
