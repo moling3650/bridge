@@ -1,12 +1,13 @@
 <template>
   <div class="home-wrapper">
     <section class="top-nav">
-      <img
+      <img src="../assets/img/hudong_logo.png" alt="交互">
+      <!-- <img
         class="top-nav-img"
         :src="require('../../public/img/icons/top-text-nav.png')"
         alt="topNav"
       >
-      <span class="text-des">网上展馆</span>
+      <span class="text-des">网上展馆</span> -->
     </section>
     <section class="conten-t-wrapper">
       <div class="left-content-container">
@@ -53,16 +54,19 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 0.72rem;
-    .top-nav-img {
-      height: 1.55rem;
-      width: 4.92rem;
-      margin-right: 0.4rem;
+    & > img {
+      width: 9.6rem;
     }
-    .text-des {
-      font-size: 0.8rem;
-      color: #fff;
-    }
+    // margin-bottom: 0.72rem;
+    // .top-nav-img {
+    //   height: 1.55rem;
+    //   width: 4.92rem;
+    //   margin-right: 0.4rem;
+    // }
+    // .text-des {
+    //   font-size: 0.8rem;
+    //   color: #fff;
+    // }
   }
   .conten-t-wrapper {
     display: flex;
