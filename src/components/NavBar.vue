@@ -15,7 +15,7 @@
     <img
       v-show="!always"
       class="display-btn"
-      src="@/assets/img/display-btn.png"
+      :src="require(`@/assets/img/display-btn${showBar ? '-show' : ''}.png`)"
       alt="显示导航的按钮"
       @click="showBar = !showBar"
     >
