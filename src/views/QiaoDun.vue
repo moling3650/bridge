@@ -5,6 +5,7 @@
       autoplay
       loop
     />
+    <img class="bg" src="@/assets/img/1-3.png">
     <div class="btn video-btn" @click="showVideo"/>
     <div class="btn atlas-btn" @click="show = 'imgs'"/>
 
@@ -66,6 +67,13 @@ export default {
   width: 19.2rem;
   height: 10.8rem;
   video {
+    width: 100%;
+    height: 100%;
+  }
+  .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
   }
