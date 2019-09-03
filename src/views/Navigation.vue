@@ -12,7 +12,13 @@
         <div class="text zuh">珠海</div>
         <div class="text hk">香港</div>
         <div class="text macau">澳门</div>
-        <div class="thinks">特别鸣谢</div>
+        <div class="thinks">
+          特别鸣谢
+          <span class="info">
+            港珠澳大桥管理局：王彦林 唐丽娟 曾小娟 林杨
+            <br>南方日报社：张由琼 徐杰
+          </span>
+        </div>
         <nav-bar always/>
       </template>
     </page>
@@ -34,8 +40,8 @@ export default {
   opacity: 0.8;
 }
 .zuh {
- top: 1.8rem;
- left: 3rem;
+  top: 1.8rem;
+  left: 3rem;
 }
 .macau {
   top: 6rem;
@@ -49,7 +55,24 @@ export default {
   position: absolute;
   bottom: 0.25rem;
   left: 0.25rem;
-  font-size: 0.24rem;
+  font-size: 0.18rem;
   color: #00a4c7;
+  z-index: 102;
+  .info {
+    display: none;
+  }
+  &:hover {
+    .info {
+      display: block;
+      text-align: left;
+      position: absolute;
+      left: 0;
+      bottom: 0.3rem;
+      width: 4rem;
+      line-height: 0.2rem;
+      color: #ccc;
+      font-size: 0.14rem;
+    }
+  }
 }
 </style>
