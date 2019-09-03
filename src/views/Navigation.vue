@@ -12,6 +12,7 @@
         <div class="text zuh">珠海</div>
         <div class="text hk">香港</div>
         <div class="text macau">澳门</div>
+        <div class="thinks">特别鸣谢</div>
         <nav-bar always/>
       </template>
     </page>
@@ -43,5 +44,12 @@ export default {
 .hk {
   top: 3rem;
   left: 17rem;
+}
+.thinks {
+  position: absolute;
+  bottom: 0.25rem;
+  left: 0.25rem;
+  font-size: 0.24rem;
+  color: #00a4c7;
 }
 </style>
