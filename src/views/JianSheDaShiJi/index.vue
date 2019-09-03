@@ -1,12 +1,7 @@
 <template>
   <div id="Constructer">
     <div class="top-nav">
-      <img
-        class="top-nav-img"
-        :src="require('../../../public/img/icons/top-text-nav.png')"
-        alt="topNav"
-      >
-      <span class="text-des">建设大事记</span>
+      <img src="../../assets/img/jianshedashiji_logo.png" alt="建设大事记">
     </div>
     <div id="slider">
       <ul class="container">
@@ -24,7 +19,6 @@
       <li v-show="index > 0" class="left" @click="index--"/>
       <li v-show="index < total - size" class="right" @click="index++"/>
     </ul>
-    <nav-bar/>
     <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$router.push({ name: 'DongRenGongDao', query: { loop: true } })"/>
   </div>
 </template>
