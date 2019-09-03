@@ -1,6 +1,7 @@
 <template>
   <div ref="page" class="page" :style="{ height, filter: `blur(${opacity}px)` }">
     <video
+      v-if="!noCutscenes"
       ref="Cutscenes"
       :poster="require(`../../public/img/poster/${pageName}${noLoop ? '' : '-1' }-p.jpg`)"
       :src="require(`../../public/video/${pageName}${noLoop ? '' : '-1' }.mp4`)"
@@ -16,9 +17,10 @@
     <video
       v-if="!noLoop"
       ref="LoopVideo"
-      :poster="require(`../../public/img/poster/${pageName}-2-p.jpg`)"
-      :src="require(`../../public/video/${pageName}-2.mp4`)"
+      :poster="require(`../../public/img/poster/${pageName}${noCutscenes ? '' : '-2'}-p.jpg`)"
+      :src="require(`../../public/video/${pageName}${noCutscenes ? '' : '-2'}.mp4`)"
       :preload="loopPreLoad"
+      :autoplay="noCutscenes"
       loop
       :style="{ zIndex }"
     >
@@ -48,6 +50,9 @@ export default {
       type: Boolean,
     },
     noLoop: {
+      type: Boolean,
+    },
+    noCutscenes: {
       type: Boolean,
     },
     start: {
