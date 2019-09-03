@@ -107,6 +107,7 @@ export default {
       this.app.audio.src = require(`../../public/audio/${this.pageName}.mp3`)
       this.app.audio.load()
     }
+    this.app.bg.style.backgroundImage = `url(${require(`../../public/img/poster/${this.pageName}-2-p.jpg`)})`
     this.isLoop = this.$route.query.loop
     if (this.isLoop) {
       this.play(true)
