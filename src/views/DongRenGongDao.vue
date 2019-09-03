@@ -13,7 +13,6 @@
     <div v-if="qrVisiable" class="qr-mask" @click="qrVisiable = false">
       <div class="qr">
         <img src="@/assets/img/QRcode.png" alt="浏览展厅">
-        <div class="text">扫码预览港珠澳大桥展览馆(东人工岛)</div>
       </div>
     </div>
   </div>

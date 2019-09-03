@@ -90,6 +90,10 @@ export default new Router({
       name: 'JiaoHu',
       component: () =>
         import(/* webpackChunName: "Views"*/ './views/JiaoHu.vue'),
+      beforeEnter: (to, from, next) => {
+        to.meta.from = from.name
+        next()
+      },
     },
     {
       path: '/HaidiConstructor',

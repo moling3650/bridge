@@ -35,12 +35,21 @@
       </div>
     </section>
     <nav-bar/>
+    <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 1000 }" @click.native="$router.push(from)"/>
   </div>
 </template>
 
 <script>
 export default {
   name: 'JiaoHu',
+  data () {
+    return {
+      from: {
+        name: this.$route.meta.from || 'navigation',
+        query: { loop: true },
+      },
+    }
+  },
 }
 </script>
 <style lang="scss" scoped>
