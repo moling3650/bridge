@@ -6,12 +6,12 @@
       loop
     />
     <div class="btn video-btn" @click="showVideo"/>
-    <div class="btn atlas-btn" @click="showAtlas">图集atlas</div>
+    <div class="btn atlas-btn" @click="show = 'imgs'"/>
 
     <transition name="fade">
-      <Carousel v-show="showImages" :images="images" @close="showImages = false"/>
+      <Carousel v-show="show === 'imgs'" :images="images" @close="show = 'main'"/>
     </transition>
-    <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$router.push({ name: 'JiuZhouQiao', query: { loop: true } })"/>
+    <back v-show="show === 'main'" :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$router.push({ name: 'JiuZhouQiao', query: { loop: true } })"/>
   </div>
 </template>
 
@@ -20,11 +20,12 @@ export default {
   name: 'QiaoDun',
   data () {
     return {
+      show: 'main',
       showImages: false,
       textList: [
         '2013年2月21日，港珠澳大桥桥梁工程首件混凝土预制墩台完成整体预制。',
         '2013年2月22日，桥梁工程首个承台墩身在项目部中山基地预制完成。',
-        '2013年4月11日晚，港珠澳大桥珠澳口岸连接桥第一个承台钢管复合桩钢桩插打成功。_',
+        '2013年4月11日晚，港珠澳大桥珠澳口岸连接桥第一个承台钢管复合桩钢桩插打成功。',
         '2013年6月3日，港珠澳大桥首个承台墩身整体顺利安装到位。',
         '2013年6月20日上午12时，港珠澳大桥首个整体埋置式墩台成功安装。',
         '2013年8月26日，港珠澳大桥桥梁工程首个围堰下放到位。',
@@ -40,7 +41,7 @@ export default {
     images () {
       return this.textList.map((text, index) => {
         return {
-          url: require(`../assets/worldlong/${index + 1}.jpg`),
+          url: require(`../assets/atlas/${index + 1}.jpg`),
           text,
         }
       })
@@ -48,13 +49,13 @@ export default {
   },
   methods: {
     showVideo () {
+      this.show = 'video'
       const video = {
         url: require(`../../public/video/dot/1-3-1.mp4`),
       }
-      this.$playVideo(video)
-    },
-    showAtlas () {
-      this.showImages = true
+      this.$playVideo(video).then(() => {
+        this.show = 'main'
+      })
     },
   },
 }
@@ -71,7 +72,7 @@ export default {
   .btn {
     width: 3rem;
     height: 0.9rem;
-    background-color: #fff;
+    background-color: transparent;
     cursor: pointer;
   }
   .video-btn {
@@ -81,10 +82,8 @@ export default {
   }
   .atlas-btn{
     position: absolute;
-    top: 5.7rem;
+    top: 6.2rem;
     right: 3.2rem;
-    font-size: .5rem;
-    text-align: center;
   }
 }
 </style>
