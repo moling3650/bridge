@@ -1,7 +1,7 @@
 <template>
   <div class="haidi-constructor">
-    <page page-name="HaiDiConstructor" autoplay can-skip>
-      <template slot-scope="{ isLoop }">
+    <page page-name="HaidiConstructor" no-cutscenes>
+      <template>
         <section class="btn-wrapper">
           <img class="btn-item icon-one" :src="require('../assets/img/icon-constructor-one.png')" @click="getInfo('rubberWterstop')">
           <img class="btn-item icon-two" :src="require('../assets/img/icon-constructor-two.png')" @click="getInfo('semirigidStructure')">
@@ -14,8 +14,8 @@
               {{ infoDataArr[infoType].info }}
             </p>
           </div>
+          <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$router.push({ name: 'HaiDiSuiDao', query: { loop: true } })"/>
         </section>
-        <nav-bar v-show="isLoop" back-and-next/>
       </template>
     </page>
   </div>
@@ -26,7 +26,6 @@ export default {
   name: 'HaidiConstructor',
   data () {
     return {
-      start: this.$route.query.loop ? 'LoopVideo' : 'Cutscenes',
       infoDataArr: {
         rubberWterstop: {
           title: '橡胶止水带：',
@@ -96,6 +95,9 @@ export default {
     .btn-wrapper {
       height: 100%;
       position: relative;
+      .btn-item {
+        cursor: pointer;
+      }
       .icon-one {
         width: 2.5rem;
         height: 0.9rem;
@@ -137,7 +139,7 @@ export default {
         padding: 0.5rem;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
-        background: url(/img/des-wrapper.8587bbc4.png) no-repeat;
+        background: url(../assets/img/des-wrapper.png) no-repeat;
         background-size: 100% 100%;
         position: absolute;
         top: 4rem;
