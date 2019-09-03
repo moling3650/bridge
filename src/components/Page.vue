@@ -9,7 +9,6 @@
       :autoplay="autoplay"
       @canplay="$emit('canplay')"
       @canplaythrough="loopPreLoad = 'auto'"
-      @play="handlePlay"
       @ended="handleEnded"
     >
       您的浏览器不支持 video 标签。
@@ -26,7 +25,7 @@
     >
       您的浏览器不支持 video 标签。
     </video>
-    <div class="content">
+    <div class="content" :style="contentStyle">
       <slot :is-loop="isLoop"/>
       <a v-show="!isLoop && canSkip" class="skip" @click="handleEnded">
         跳过
@@ -38,6 +37,13 @@
 <script>
 export default {
   name: 'Page',
+  inject: {
+    app: {
+      default: () => {
+        return null
+      },
+    },
+  },
   props: {
     pageName: {
       type: String,
@@ -75,18 +81,38 @@ export default {
     zIndex () {
       return this.isLoop ? 1 : -1
     },
+    hadAudio () {
+      return ~['Navigation',
+        'JiuZhouQiao',
+        'JiangHaiQiao',
+        'ShengTaiBaoHu',
+        'QingZhouQiao',
+        'DongRenGongDao',
+        'HaiDiSuiDao',
+        'XiRenGongDao',
+      ].indexOf(this.pageName)
+    },
+    contentStyle () {
+      return {
+        position: 'absolute',
+        width: `${this.app.width}px`,
+        height: `${this.app.height}px`,
+        top: 0,
+        left: 0,
+      }
+    },
   },
   mounted () {
+    if (this.hadAudio) {
+      this.app.audio.src = require(`../../public/audio/${this.pageName}.mp3`)
+      this.app.audio.load()
+    }
     this.isLoop = this.$route.query.loop
     if (this.isLoop) {
       this.play(true)
     }
   },
   methods: {
-    handlePlay () {
-      const rect = this.$refs.Cutscenes.getBoundingClientRect()
-      this.height = `${Math.min(document.body.clientHeight, rect.height)}px`
-    },
     handleEnded () {
       this.$emit('ended')
       if (!this.noLoop) {
@@ -101,8 +127,14 @@ export default {
       }
     },
     playLoopVideo () {
+      if (this.$refs.Cutscenes) {
+        this.$refs.Cutscenes.pause()
+      }
       this.isLoop = true
       this.$nextTick(() => {
+        if (this.hadAudio) {
+          this.app.audio.play()
+        }
         this.$refs.LoopVideo.play()
       })
     },
@@ -129,10 +161,6 @@ export default {
   }
   .content {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
     text-align: center;
     z-index: 10;
     .next {

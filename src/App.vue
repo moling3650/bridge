@@ -12,6 +12,12 @@
 <script>
 export default {
   name: 'App',
+  provide () {
+    return {
+      app: this,
+      // 提示：provide 和 inject 绑定并不是可响应的。这是刻意为之的。然而，如果你传入了一个可监听的对象，那么其对象的属性还是可响应的。
+    }
+  },
   data () {
     return {
       showView: true,
@@ -19,6 +25,7 @@ export default {
       height: 0,
       top: 0,
       left: 0,
+      audio: document.createElement('AUDIO'),
     }
   },
   mounted () {
