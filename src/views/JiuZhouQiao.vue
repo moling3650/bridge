@@ -5,9 +5,9 @@
         <nav-bar/>
         <dot :style="{ top: '1.1rem', left: '6.3rem' }" text="风帆塔" @click.native="showVideo('1-1')"/>
         <dot :style="{ top: '4.2rem', left: '10rem' }" text="世界最长的钢铁大桥" @click.native="showImages"/>
-        <dot :style="{ top: '3.8rem', left: '14.5rem' }" text="桥墩建造" @click.native="redirect('/QiaoDun')"/>
-        <back :style="{ bottom: '0.2rem', right: '1.4rem', width: '1rem', height: '1rem' }" @click.native="redirectn({ name: 'navigation', query: { loop: true } })"/>
-        <next :style="{ bottom: '0.2rem', right: '0.2rem', width: '1rem', height: '1rem' }" @click.native="redirectn('/JiangHaiQiao')"/>
+        <dot :style="{ top: '3.8rem', left: '14.5rem' }" text="桥墩建造" @click.native="$redirect('/QiaoDun')"/>
+        <back :style="{ bottom: '0.2rem', right: '1.4rem', width: '1rem', height: '1rem' }" @click.native="$redirect({ name: 'navigation', query: { loop: true } })"/>
+        <next :style="{ bottom: '0.2rem', right: '0.2rem', width: '1rem', height: '1rem' }" @click.native="$redirect('/JiangHaiQiao')"/>
       </template>
     </page>
     <transition name="fade">
@@ -24,7 +24,7 @@ export default {
       imgsVisiable: false,
       opacity: 0,
       textList: [
-        '',
+        '世界最长钢铁大桥',
         '1、港珠澳大桥凭借其长达15公里的钢箱梁桥面，成为目前世界上最长的钢铁大桥。图为港珠澳大桥桥梁部分。',
         '2、钢箱梁制造分为板单元制造、箱梁段组拼、桥位吊装三个阶段，其中板单元是基本元件。图为河北山海关的板单元机械化生产车间。',
         '3、我国自主研发的反变形机器人自动焊接系统，提高了钢箱梁板单元的制造质量。图为机器人焊接板单元',
@@ -76,10 +76,6 @@ export default {
       this.opacity = 0
       this.imgsVisiable = false
       this.$audio.play()
-    },
-    redirect (route) {
-      this.$audio.pause()
-      this.$router.push(route)
     },
   },
 }
