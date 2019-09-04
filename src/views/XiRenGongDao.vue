@@ -40,6 +40,13 @@
 <script>
 export default {
   name: 'XiRenGongDao',
+  inject: {
+    app: {
+      default: () => {
+        return null
+      },
+    },
+  },
   data () {
     return {
       show: false,
@@ -91,12 +98,14 @@ export default {
         })
         return
       }
+      this.app.audio.pause()
       const video = {
         url: require(`../../public/video/dot/5-${index}.mp4`),
       }
       this.opacity = 5
       this.$playVideo(video).then(() => {
         this.opacity = 0
+        this.app.audio.play()
       })
     },
     checkDetail (index) {

@@ -17,6 +17,13 @@
 <script>
 export default {
   name: 'JiangHaiQiao',
+  inject: {
+    app: {
+      default: () => {
+        return null
+      },
+    },
+  },
   data () {
     return {
       opacity: 0,
@@ -24,12 +31,14 @@ export default {
   },
   methods: {
     clickDot (index) {
+      this.app.audio.pause()
       const video = {
         url: require(`../../public/video/dot/2-${index}.mp4`),
       }
       this.opacity = 5
       this.$playVideo(video).then(() => {
         this.opacity = 0
+        this.app.audio.play()
       })
     },
   },

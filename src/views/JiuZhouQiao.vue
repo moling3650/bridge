@@ -19,6 +19,13 @@
 <script>
 export default {
   name: 'JiuZhouQiao',
+  inject: {
+    app: {
+      default: () => {
+        return null
+      },
+    },
+  },
   data () {
     return {
       showImages: false,
@@ -56,12 +63,14 @@ export default {
   },
   methods: {
     clickDot (index) {
+      this.app.audio.pause()
       const video = {
         url: require(`../../public/video/dot/1-${index}.mp4`),
       }
       this.showVideo = true
       this.$playVideo(video).then(() => {
         this.showVideo = false
+        this.app.audio.play()
       })
     },
   },

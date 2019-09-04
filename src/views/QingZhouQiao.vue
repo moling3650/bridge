@@ -18,6 +18,13 @@
 <script>
 export default {
   name: 'QingZhouQiao',
+  inject: {
+    app: {
+      default: () => {
+        return null
+      },
+    },
+  },
   data () {
     return {
       opacity: 0,
@@ -30,11 +37,13 @@ export default {
         this.showImg = true
         return
       }
+      this.app.audio.pause()
       const video = {
         url: require(`../../public/video/dot/4-${index}.mp4`),
       }
       this.$playVideo(video).then(() => {
         this.opacity = 0
+        this.app.audio.play()
       })
     },
     closeImg () {
