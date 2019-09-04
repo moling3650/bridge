@@ -15,13 +15,6 @@
 <script>
 export default {
   name: 'ShengTaiBaoHu',
-  inject: {
-    app: {
-      default: () => {
-        return null
-      },
-    },
-  },
   data () {
     return {
       opacity: 0,
@@ -32,11 +25,11 @@ export default {
       const video = {
         url: require(`../../public/video/dot/3-${index}.mp4`),
       }
-      this.app.audio.pause()
+      this.$audio.pause()
       this.opacity = 5
       this.$video.play(video).then(() => {
         this.opacity = 0
-        this.app.audio.play()
+        this.$audio.play()
       })
     },
   },

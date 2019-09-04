@@ -1,17 +1,17 @@
 <template>
   <div id="JiuZhouQiao">
-    <page page-name="JiuZhouQiao" autoplay can-skip :opacity="(showVideo || showImages) ? 5 : 0">
+    <page page-name="JiuZhouQiao" autoplay can-skip :opacity="opacity">
       <template v-if="isLoop" slot-scope="{ isLoop }">
         <nav-bar/>
-        <dot :style="{ top: '1.1rem', left: '6.3rem' }" text="风帆塔" @click.native="clickDot(1)"/>
-        <dot :style="{ top: '4.2rem', left: '10rem' }" text="世界最长的钢铁大桥" @click.native="showImages = true"/>
-        <dot :style="{ top: '3.8rem', left: '14.5rem' }" text="桥墩建造" @click.native="$router.push('/QiaoDun')"/>
-        <back :style="{ bottom: '0.2rem', right: '1.4rem', width: '1rem', height: '1rem' }" @click.native="$router.push({ name: 'navigation', query: { loop: true } })"/>
-        <next :style="{ bottom: '0.2rem', right: '0.2rem', width: '1rem', height: '1rem' }" @click.native="$router.push('/JiangHaiQiao')"/>
+        <dot :style="{ top: '1.1rem', left: '6.3rem' }" text="风帆塔" @click.native="showVideo('1-1')"/>
+        <dot :style="{ top: '4.2rem', left: '10rem' }" text="世界最长的钢铁大桥" @click.native="showImages"/>
+        <dot :style="{ top: '3.8rem', left: '14.5rem' }" text="桥墩建造" @click.native="redirect('/QiaoDun')"/>
+        <back :style="{ bottom: '0.2rem', right: '1.4rem', width: '1rem', height: '1rem' }" @click.native="redirectn({ name: 'navigation', query: { loop: true } })"/>
+        <next :style="{ bottom: '0.2rem', right: '0.2rem', width: '1rem', height: '1rem' }" @click.native="redirectn('/JiangHaiQiao')"/>
       </template>
     </page>
     <transition name="fade">
-      <Carousel v-show="showImages" :images="images" @close="showImages = false"/>
+      <Carousel v-show="imgsVisiable" :images="images" @close="hideImages"/>
     </transition>
   </div>
 </template>
@@ -19,17 +19,10 @@
 <script>
 export default {
   name: 'JiuZhouQiao',
-  inject: {
-    app: {
-      default: () => {
-        return null
-      },
-    },
-  },
   data () {
     return {
-      showImages: false,
-      showVideo: false,
+      imgsVisiable: false,
+      opacity: 0,
       textList: [
         '1、港珠澳大桥凭借其长达15公里的钢箱梁桥面，成为目前世界上最长的钢铁大桥。图为港珠澳大桥桥梁部分。',
         '2、钢箱梁制造分为板单元制造、箱梁段组拼、桥位吊装三个阶段，其中板单元是基本元件。图为河北山海关的板单元机械化生产车间。',
@@ -62,16 +55,30 @@ export default {
     },
   },
   methods: {
-    clickDot (index) {
-      this.app.audio.pause()
+    showVideo (filename) {
+      this.$audio.pause()
       const video = {
-        url: require(`../../public/video/dot/1-${index}.mp4`),
+        url: require(`../../public/video/dot/${filename}.mp4`),
       }
-      this.showVideo = true
+      this.opacity = 5
       this.$video.play(video).then(() => {
-        this.showVideo = false
-        this.app.audio.play()
+        this.opacity = 0
+        this.$audio.play()
       })
+    },
+    showImages () {
+      this.$audio.pause()
+      this.opacity = 5
+      this.imgsVisiable = true
+    },
+    hideImages () {
+      this.opacity = 0
+      this.imgsVisiable = false
+      this.$audio.play()
+    },
+    redirect (route) {
+      this.$audio.pause()
+      this.$router.push(route)
     },
   },
 }

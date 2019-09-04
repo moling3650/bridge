@@ -104,8 +104,8 @@ export default {
   },
   mounted () {
     if (this.hadAudio) {
-      this.app.audio.src = require(`../../public/audio/${this.pageName}.mp3`)
-      this.app.audio.load()
+      this.$audio.src = require(`../../public/audio/${this.pageName}.mp3`)
+      this.$audio.load()
     }
     if (this.app.bg) {
       this.app.bg.style.backgroundImage = `url(${require(`../../public/img/poster/${this.pageName}-2-p.jpg`)})`
@@ -136,7 +136,7 @@ export default {
       this.isLoop = true
       this.$nextTick(() => {
         if (this.hadAudio) {
-          this.app.audio.play()
+          this.$audio.play()
         }
         this.$refs.LoopVideo.play()
       })

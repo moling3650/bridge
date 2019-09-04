@@ -34,13 +34,6 @@
 <script>
 export default {
   name: 'HaiDiSuiDao',
-  inject: {
-    app: {
-      default: () => {
-        return null
-      },
-    },
-  },
   data () {
     return {
       opacity: 0,
@@ -55,14 +48,14 @@ export default {
         return
       }
       if (~[2, 5, 6].indexOf(index)) {
-        this.app.audio.pause()
+        this.$audio.pause()
         const video = {
           url: require(`../../public/video/dot/6-${index}.mp4`),
         }
         this.opacity = 5
         this.$video.play(video).then(() => {
           this.opacity = 0
-          this.app.audio.play()
+          this.$audio.play()
         })
       }
     },
