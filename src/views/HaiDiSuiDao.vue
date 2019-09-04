@@ -60,7 +60,7 @@ export default {
           url: require(`../../public/video/dot/6-${index}.mp4`),
         }
         this.opacity = 5
-        this.$playVideo(video).then(() => {
+        this.$video.play(video).then(() => {
           this.opacity = 0
           this.app.audio.play()
         })

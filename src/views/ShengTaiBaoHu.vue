@@ -34,7 +34,7 @@ export default {
       }
       this.app.audio.pause()
       this.opacity = 5
-      this.$playVideo(video).then(() => {
+      this.$video.play(video).then(() => {
         this.opacity = 0
         this.app.audio.play()
       })

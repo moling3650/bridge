@@ -72,7 +72,7 @@ export default {
       const video = {
         url: require(`../../public/video/dot/1-3-1.mp4`),
       }
-      this.$playVideo(video).then(() => {
+      this.$video.play(video).then(() => {
         this.show = 'main'
       })
     },

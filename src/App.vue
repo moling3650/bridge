@@ -30,6 +30,7 @@ export default {
     }
   },
   mounted () {
+    this.$video.init()
     this.createBlurBg()
     this.resize()
   },

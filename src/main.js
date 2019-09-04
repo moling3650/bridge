@@ -13,7 +13,7 @@ import Next from '@/components/Next'
 import Carousel from '@/components/Carousel'
 import MaxCard from '@/components/MaxCard'
 
-import playVideo from '@/utils/playVideo'
+import video from '@/utils/video'
 import './scss/reset.scss'
 
 Vue.component(Loader.name, Loader)
@@ -25,7 +25,7 @@ Vue.component(Back.name, Back)
 Vue.component(Next.name, Next)
 Vue.component(Carousel.name, Carousel)
 Vue.component(MaxCard.name, MaxCard)
-Vue.prototype.$playVideo = playVideo
+Vue.prototype.$video = video
 
 Vue.config.productionTip = false
 

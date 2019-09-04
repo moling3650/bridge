@@ -49,4 +49,7 @@ function playVideo (video) {
   }
 }
 
-export default playVideo
+export default {
+  init: initInstance,
+  play: playVideo,
+}

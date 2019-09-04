@@ -68,7 +68,7 @@ export default {
         url: require(`../../public/video/dot/1-${index}.mp4`),
       }
       this.showVideo = true
-      this.$playVideo(video).then(() => {
+      this.$video.play(video).then(() => {
         this.showVideo = false
         this.app.audio.play()
       })
