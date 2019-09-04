@@ -26,18 +26,18 @@ export default {
 <style lang="scss" scoped>
 .link {
   position: absolute;
-  width: 2rem;
-  height: 2rem;
+  width: 1.6rem;
+  height: 1.6rem;
   transition: all 0.3s ease-out;
   &:hover {
     transform: scale(1.1);
   }
   & > .jpg {
     position: absolute;
-    top: .3rem;
-    left: .3rem;
-    width: 1.4rem;
-    height: 1.4rem;
+    top: .24rem;
+    left: .24rem;
+    width: 1.12rem;
+    height: 1.12rem;
     border-radius: 50%;
   }
   & > .ring {
@@ -48,10 +48,10 @@ export default {
     left: 0;
   }
   & > .ring-1 {
-    animation: spin-left 3s linear infinite;
+    animation: spin-left 4.5s linear infinite;
   }
   & > .ring-2 {
-    animation: spin-right 3s linear infinite;
+    animation: spin-right 4.5s linear infinite;
   }
   & > .text {
     position: absolute;
