@@ -103,7 +103,9 @@ export default {
     },
   },
   mounted () {
-    if (this.hadAudio) {
+    if (this.$route.meta.audioReplay) {
+      this.$audio.play()
+    } else if (this.hadAudio) {
       this.$audio.src = require(`../../public/audio/${this.pageName}.mp3`)
       this.$audio.load()
     }

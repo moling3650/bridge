@@ -24,6 +24,12 @@ export default new Router({
       name: 'JiuZhouQiao',
       component: () =>
         import(/* webpackChunkName: "Views" */ './views/JiuZhouQiao.vue'),
+      beforeEnter: (to, from, next) => {
+        if (from.name === 'QiaoDun') {
+          to.meta.audioReplay = true
+        }
+        next()
+      },
     },
     {
       path: '/JiangHaiQiao',
