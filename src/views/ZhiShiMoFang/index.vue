@@ -93,7 +93,6 @@ export default {
   },
   watch: {
     showDetail () {
-      console.log(this.showDetail)
       if (window.reload) false
     },
   },

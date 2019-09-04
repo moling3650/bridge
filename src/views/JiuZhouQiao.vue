@@ -24,6 +24,7 @@ export default {
       imgsVisiable: false,
       opacity: 0,
       textList: [
+        '',
         '1、港珠澳大桥凭借其长达15公里的钢箱梁桥面，成为目前世界上最长的钢铁大桥。图为港珠澳大桥桥梁部分。',
         '2、钢箱梁制造分为板单元制造、箱梁段组拼、桥位吊装三个阶段，其中板单元是基本元件。图为河北山海关的板单元机械化生产车间。',
         '3、我国自主研发的反变形机器人自动焊接系统，提高了钢箱梁板单元的制造质量。图为机器人焊接板单元',
@@ -48,7 +49,7 @@ export default {
     images () {
       return this.textList.map((text, index) => {
         return {
-          url: require(`../assets/worldlong/${index + 1}.jpg`),
+          url: require(`../assets/worldlong/${index}.jpg`),
           text,
         }
       })

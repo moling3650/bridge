@@ -42,6 +42,7 @@ export default {
     return {
       show: 'main',
       textList: [
+        '',
         '2013年2月21日，港珠澳大桥桥梁工程首件混凝土预制墩台完成整体预制。',
         '2013年2月22日，桥梁工程首个承台墩身在项目部中山基地预制完成。',
         '2013年4月11日晚，港珠澳大桥珠澳口岸连接桥第一个承台钢管复合桩钢桩插打成功。',
@@ -60,7 +61,7 @@ export default {
     images () {
       return this.textList.map((text, index) => {
         return {
-          url: require(`../assets/atlas/${index + 1}.jpg`),
+          url: require(`../assets/atlas/${index}.jpg`),
           text,
         }
       })

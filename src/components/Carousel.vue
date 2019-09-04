@@ -15,7 +15,10 @@
       </ul>
       <div class="core2"/>
     </div>
-    <back :style="{ top: '0.2rem', right: '0.2rem', width: '1.2rem', height: '1.2rem' }" @click.native="$emit('close')"/>
+    <back
+      :style="{ top: '0.2rem', right: '0.2rem', width: '1.2rem', height: '1.2rem' }"
+      @click.native="$emit('close')"
+    />
   </div>
 </template>
 
@@ -59,11 +62,11 @@ export default {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 14.4rem;
-  height: 8.1rem;
+  width: 15rem;
+  min-height: 8rem;
   padding: 0.15rem;
   transform: translate3d(-50%, -50%, 0);
-  background-color: #214858;
+  background-color: #3a6aa2;
   // overflow: hidden;
   .container {
     position: relative;
@@ -80,6 +83,7 @@ export default {
         float: left;
         width: 100%;
         height: 7rem;
+        margin: 0.15rem 0;
       }
       span {
         float: left;
@@ -89,6 +93,8 @@ export default {
         white-space: pre-wrap;
         text-align: left;
         line-height: 0.38rem;
+        min-height: 0.76rem;
+        letter-spacing: 0.026rem;
       }
     }
   }

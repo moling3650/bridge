@@ -41,12 +41,14 @@ export default {
 
 <style lang="scss" scoped>
 #NavBar {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  bottom: 0;
-  font-size: 0;
-  z-index: 101;
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    font-size: 0;
+    z-index: 101;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%);
   .bar-container {
     position: relative;
     bottom: .1rem;
@@ -94,6 +96,7 @@ export default {
         background-size: 100% 100%;
         box-sizing: border-box;
         cursor: pointer;
+        z-index: 1;
         transition: all 0.3s ease-out;
         &:hover {
           transform: scale(1.15) translateY(-0.03rem);
