@@ -5,7 +5,7 @@
         <div class="bar">
           <router-link tag="div" :to="{ name: 'navigation', query: { loop: true } }"/>
           <router-link tag="div" to="/Roaming"/>
-          <router-link tag="div" to="/"/>
+          <router-link tag="div" to="/ShiJieZhiZui"/>
           <router-link tag="div" to="/ZhiShiMoFang"/>
           <router-link tag="div" to="/JianSheZhe"/>
           <router-link tag="div" to="/JiaoHu"/>

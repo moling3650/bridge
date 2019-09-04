@@ -117,5 +117,15 @@ export default new Router({
         next()
       },
     },
+    {
+      path: '/ShiJieZhiZui',
+      name: 'ShiJieZhiZui',
+      component: () =>
+        import(/* webpackChunName: "Views"*/ './views/ShiJieZhiZui.vue'),
+      beforeEnter: (to, from, next) => {
+        to.meta.from = from.name
+        next()
+      },
+    },
   ],
 })
