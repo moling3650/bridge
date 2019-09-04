@@ -27,6 +27,10 @@ Vue.component(Carousel.name, Carousel)
 Vue.component(MaxCard.name, MaxCard)
 Vue.prototype.$video = video
 Vue.prototype.$audio = document.createElement('AUDIO')
+Vue.prototype.$redirect = (route) => {
+  Vue.prototype.$audio.pause()
+  router.push(route)
+}
 
 Vue.config.productionTip = false
 
