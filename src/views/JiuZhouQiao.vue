@@ -3,6 +3,7 @@
     <page page-name="JiuZhouQiao" autoplay can-skip :opacity="opacity">
       <template v-if="isLoop" slot-scope="{ isLoop }">
         <nav-bar/>
+        <span class="hint" @click.native="showVideo('1-1')">点击查看</span>
         <dot :style="{ top: '1.1rem', left: '6.3rem' }" text="风帆塔" @click.native="showVideo('1-1')"/>
         <dot :style="{ top: '4.2rem', left: '10rem' }" text="世界最长的钢铁大桥" @click.native="showImages"/>
         <dot :style="{ top: '3.8rem', left: '14.5rem' }" text="桥墩建造" @click.native="$redirect('/QiaoDun')"/>
@@ -80,3 +81,13 @@ export default {
   },
 }
 </script>
+<style lang="scss" scoped>
+.hint{
+  position: absolute;
+  top: 1.6rem;
+  left: 6.9rem;
+  cursor: pointer;
+  font-size: 0.2rem;
+  color: #ddd;
+}
+</style>
