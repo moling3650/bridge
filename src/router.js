@@ -133,5 +133,11 @@ export default new Router({
         next()
       },
     },
+    {
+      path: '/HaidiSuiDaoChart',
+      name: 'HaidiSuiDaoChart',
+      component: () =>
+        import(/* webpackChunName: "Views"*/ './views/HaidiSuiDaoChart/index.vue'),
+    },
   ],
 })
