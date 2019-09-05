@@ -1,7 +1,7 @@
 /* Modernizr 2.6.2 (Custom Build) | MIT & BSD
  * Build: http://modernizr.com/download/#-csstransforms-csstransforms3d-csstransitions-shiv-cssclasses-prefixed-teststyles-testprop-testallprops-prefixes-domprefixes-load
  */
-
+/* eslint-disable */
 window.Modernizr = (function (a, b, c) {
   function z (a) {
     j.cssText = a
