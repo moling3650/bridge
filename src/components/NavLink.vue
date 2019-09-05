@@ -1,9 +1,8 @@
 <template>
   <router-link class="link" :to="`/${to}`">
-    <img class="jpg" :src="require(`@/assets/img/NavLink-${to}.jpg`)" :alt="text" v-bind="$attrs">
+    <img class="jpg" :src="require(`@/assets/img/NavLink-${to}.png`)" :alt="text" v-bind="$attrs">
     <img class="ring ring-1" src="@/assets/img/ring-1.png" alt="科技框1">
     <img class="ring ring-2" src="@/assets/img/ring-2.png" alt="科技框2">
-    <div class="text">{{ text }}</div>
   </router-link>
 </template>
 
@@ -29,6 +28,7 @@ export default {
   width: 1.6rem;
   height: 1.6rem;
   transition: all 0.3s ease-out;
+  z-index: 10;
   &:hover {
     transform: scale(1.1);
   }
