@@ -2,14 +2,14 @@
   <div class="Navigation">
     <page ref="page" page-name="Navigation" can-skip autoplay>
       <template v-if="isLoop" slot-scope="{ isLoop }">
-        <nav-link to="Roaming" text="大桥漫游" :style="{ top: '5.7rem', left: '0.9rem' }"/>
-        <nav-link to="JiuZhouQiao" text="九洲航道桥" :style="{ top: '2.15rem', left: '3.1rem' }"/>
+        <nav-link to="Roaming" text="大桥漫游" :style="{ top: '5.7rem', left: '0.95rem' }"/>
+        <nav-link to="JiuZhouQiao" text="九洲航道桥" :style="{ top: '2.05rem', left: '3rem' }"/>
         <nav-link to="JiangHaiQiao" text="江海航道桥" :style="{ top: '1.3rem', left: '6.4rem' }"/>
-        <nav-link to="ShengTaiBaoHu" text="生态保护" :style="{ top: '5.2rem', left: '4.7rem' }"/>
-        <nav-link to="QingZhouQiao" text="青州航道桥" :style="{ top: '4.5rem', left: '7.8rem' }"/>
-        <nav-link to="XiRenGongDao" text="西人工岛" :style="{ top: '1.6rem', left: '11.7rem' }"/>
-        <nav-link to="HaiDiSuiDao" text="海底隧道" :style="{ top: '5.1rem', left: '12.1rem' }"/>
-        <nav-link to="DongRenGongDao" text="东人工岛" :style="{ top: '2.2rem', left: '14.4rem' }"/>
+        <nav-link to="ShengTaiBaoHu" text="生态保护" :style="{ top: '5.2rem', left: '4.75rem' }"/>
+        <nav-link to="QingZhouQiao" text="青州航道桥" :style="{ top: '4.5rem', left: '7.85rem' }"/>
+        <nav-link to="XiRenGongDao" text="西人工岛" :style="{ top: '1.6rem', left: '11.65rem' }"/>
+        <nav-link to="HaiDiSuiDao" text="海底隧道" :style="{ top: '5.1rem', left: '12.15rem' }"/>
+        <nav-link to="DongRenGongDao" text="东人工岛" :style="{ top: '2.2rem', left: '14.3rem' }"/>
         <img class="bg-text" src="@/assets/img/navigation_text.png" alt="背景图">
         <!-- <div class="text zuh">珠海</div>
         <div class="text hk">香港</div>
