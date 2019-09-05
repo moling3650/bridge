@@ -40,9 +40,9 @@ export default {
 .start {
   position: relative;
   display: inline-block;
-  top: 5.4rem;
-  width: 2.5rem;
-  height: 1rem;
+  top: 5rem;
+  width: 3.24rem;
+  height: 1.06rem;
   img {
     width: 100%;
     height: 100%;
@@ -51,11 +51,11 @@ export default {
 .footer-text {
   position: absolute;
   right: 0;
-  bottom: 0;
+  bottom: 0.1rem;
   left: 0;
   text-align: center;
   img {
-    width: 11.5rem;
+    width: 8rem;
   }
 }
 </style>
