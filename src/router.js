@@ -146,5 +146,11 @@ export default new Router({
       component: () =>
         import(/* webpackChunName: "Views"*/ './views/HaidiSuiDaoChart/index.vue'),
     },
+    {
+      path: '/DynamicPicture',
+      name: 'DynamicPicture',
+      component: () =>
+        import(/* webpackChunName: "Views"*/ './views/DynamicPicture/index.vue'),
+    },
   ],
 })
