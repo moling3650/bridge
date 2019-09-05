@@ -35,18 +35,19 @@ export default {
   mounted () {
     const s = this.$refs.player.$el.querySelector('.dplayer-controller .dplayer-setting')
     s.style.display = 'none'
+    this.$refs.player.dp.on('canplay', () => {
+      this.$refs.player.dp.play()
+    })
   },
   methods: {
     play (video) {
       this.show = true
       this.$refs.player.dp.switchVideo(video)
-      this.$nextTick(() => {
-        this.$refs.player.dp.play()
-      })
+      this.$refs.player.dp.video.load()
     },
     close () {
-      this.$refs.player.dp.pause()
       this.$refs.player.dp.seek(0)
+      this.$refs.player.dp.pause()
       this.show = false
       this.callback()
     },
