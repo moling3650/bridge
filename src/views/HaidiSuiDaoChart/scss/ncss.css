@@ -38,7 +38,7 @@ html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockqu
   height: 100%;
   width: 100%;
   position: absolute;
-  background:url(../images/bga.jpg) no-repeat top #fff;
+  /* background:url(../images/bga.jpg) no-repeat top #fff; */
   background-size: 100% 100%;
 }
 a,a:visited{ text-decoration:none;}
@@ -58,7 +58,7 @@ strong{ font-weight:bold;}
   width: 15.30rem;
   height: 7.78rem;
   margin: 0 auto;
-  background: url(/img/chartbg.3ed3c042.jpg) no-repeat center;
+  background: url(../images/chartbg.jpg) no-repeat center;
   margin-top: 1.8rem;
   /* margin-bottom: 1rem; */
   position: relative;

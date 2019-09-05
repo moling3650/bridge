@@ -2,7 +2,7 @@
   <div id="HaiDiSuiDao">
     <page page-name="HaiDiSuiDao" autoplay can-skip :opacity="opacity">
       <template v-if="isLoop" slot-scope="{ isLoop }">
-        <dot :style="{ top: '5.2rem', left: '3rem' }" text="世界最长、最深的海底沉管隧道" @click.native="show('charts')"/>
+        <dot :style="{ top: '5.2rem', left: '3rem' }" text="世界最长、最深的海底沉管隧道" @click.native="$redirect('/HaidiSuiDaoChart')"/>
         <dot :style="{ top: '5.7rem', left: '6.7rem' }" text="世界最重沉管" @click.native="showVideo('6-2')"/>
         <dot :style="{ top: '5.7rem', left: '10.7rem' }" text="世界首次实现沉管隧道滴水不漏" @click.native="$redirect('/HaidiConstructor')"/>
         <dot :style="{ top: '5.6rem', left: '15.6rem' }" text="世界最精准的沉管对接" @click.native="show('qrCode')"/>

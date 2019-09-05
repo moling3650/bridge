@@ -60,6 +60,13 @@ export default new Router({
       name: 'HaiDiSuiDao',
       component: () =>
         import(/* webpackChunkName: "Views" */ './views/HaiDiSuiDao.vue'),
+      beforeEnter: (to, from, next) => {
+        if (from.name === 'HaidiSuiDaoChart') {
+          to.query.loop = true
+          to.meta.audioReplay = true
+        }
+        next()
+      },
     },
     {
       path: '/XiRenGongDao',
