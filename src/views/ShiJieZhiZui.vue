@@ -3,22 +3,22 @@
     <div class="anchor" :style="{ width: '2.4rem', height: '2.4rem', top: '3rem', left: '1rem' }">
       <p class="text"><span>世界最长</span><span>跨海大桥</span></p>
     </div>
-    <div class="anchor" :style="{ width: '2.7rem', height: '2.7rem', top: '1.9rem', left: '5.2rem' }">
+    <div class="anchor" :style="{ width: '2.7rem', height: '2.7rem', top: '1.9rem', left: '5.2rem' }" @click="$redirect('/HaidiSuiDaoChart')">
       <p class="text"><span>世界最长</span><span>海底公路</span><span>沉管隧道</span></p>
     </div>
     <div class="anchor" :style="{ width: '2.3rem', height: '2.3rem', top: '5.9rem', left: '3.1rem' }">
       <p class="text"><span>世界最长</span><span>钢铁大桥</span></p>
     </div>
-    <div class="anchor" :style="{ width: '2.1rem', height: '2.1rem', top: '4.9rem', left: '8.2rem' }">
+    <div class="anchor" :style="{ width: '2.1rem', height: '2.1rem', top: '4.9rem', left: '8.2rem' }" @click="showVideo('6-2')">
       <p class="text"><span>世界最重</span><span>沉管</span></p>
     </div>
-    <div class="anchor" :style="{ width: '2.9rem', height: '2.9rem', top: '2.2rem', left: '12rem' }">
+    <div class="anchor" :style="{ width: '2.9rem', height: '2.9rem', top: '2.2rem', left: '12rem' }" @click="$redirect('/HaidiConstructor')">
       <p class="text"><span>世界首次</span><span>实现海底</span><span>沉管滴水不漏</span></p>
     </div>
-    <div class="anchor" :style="{ width: '2.7rem', height: '2.7rem', top: '6rem', left: '13.2rem' }">
+    <div class="anchor" :style="{ width: '2.7rem', height: '2.7rem', top: '6rem', left: '13.2rem' }" @click="showVideo('4-3')">
       <p class="text"><span>世界规模</span><span>最大的单体</span><span>钢桥面铺装</span><span>工程</span></p>
     </div>
-    <div class="anchor" :style="{ width: '2.6rem', height: '2.6rem', top: '3.4rem', right: '0.6rem' }">
+    <div class="anchor" :style="{ width: '2.6rem', height: '2.6rem', top: '3.4rem', right: '0.6rem' }" @click="showVideo('5-4')">
       <p class="text"><span>世界首创</span><span>钢圆筒快速</span><span>筑岛技术</span></p>
     </div>
     <nav-bar/>
@@ -31,11 +31,23 @@ export default {
   name: 'ShiJieZhiZui',
   data () {
     return {
+      opacity: 0,
       from: {
         name: this.$route.meta.from || 'navigation',
         query: { loop: true },
       },
     }
+  },
+  methods: {
+    showVideo (filename) {
+      const video = {
+        url: require(`../../public/video/dot/${filename}.mp4`),
+      }
+      this.opacity = 5
+      this.$video.play(video).then(() => {
+        this.opacity = 0
+      })
+    },
   },
 }
 </script>
@@ -79,6 +91,7 @@ export default {
       display: block;
       white-space: nowrap;
       text-align: center;
+      margin-bottom: 0.1rem;
     }
   }
 }

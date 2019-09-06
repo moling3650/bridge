@@ -1,6 +1,6 @@
 <template>
   <div class="mchart-container ">
-    <back :style="{ top: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 101 }" @click.native="$redirect('/HaiDiSuiDao')"/>
+    <back :style="{ top: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 101 }" @click.native="$redirect(from)"/>
     <div class="mchart core">
       <div class="lengtmaxbut curre" @click="checkLeft">世界最长的海底沉管隧道</div>
       <div class="depthmaxbut" @click="checkRight">世界最深的海底沉管隧道</div>
@@ -71,6 +71,10 @@ export default {
   name: 'HaidiSuiDaoChart',
   data () {
     return {
+      from: {
+        name: this.$route.meta.from || 'navigation',
+        query: { loop: true },
+      },
       nums: ['', '', '', '', ''],
       marginLeft: '2.15rem',
       direction: '',

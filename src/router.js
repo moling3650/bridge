@@ -75,7 +75,7 @@ export default new Router({
       component: () =>
         import(/* webpackChunkName: "Views" */ './views/HaiDiSuiDao.vue'),
       beforeEnter: (to, from, next) => {
-        if (from.name === 'HaidiSuiDaoChart') {
+        if (from.name === 'HaidiSuiDaoChart' || from.name === 'HaidiConstructor') {
           to.query.loop = true
           to.meta.audioReplay = true
         }
@@ -127,6 +127,10 @@ export default new Router({
       name: 'HaidiConstructor',
       component: () =>
         import(/* webpackChunName: "Views"*/ './views/HaidiConstructor.vue'),
+      beforeEnter: (to, from, next) => {
+        to.meta.from = from.name
+        next()
+      },
     },
     {
       path: '/QiaoDun',
@@ -159,6 +163,10 @@ export default new Router({
       name: 'HaidiSuiDaoChart',
       component: () =>
         import(/* webpackChunName: "Views"*/ './views/HaidiSuiDaoChart/index.vue'),
+      beforeEnter: (to, from, next) => {
+        to.meta.from = from.name
+        next()
+      },
     },
     {
       path: '/DynamicPicture',

@@ -3,9 +3,9 @@
     <page page-name="QingZhouQiao" autoplay can-skip :opacity="opacity">
       <template v-if="isLoop" slot-scope="{ isLoop }">
         <nav-bar/>
-        <dot :style="{ top: '2.2rem', left: '9.3rem' }" text="中国结" @click.native="showVidio('4-1')"/>
+        <dot :style="{ top: '2.2rem', left: '9.3rem' }" text="中国结" @click.native="showVideo('4-1')"/>
         <dot :style="{ top: '9rem', left: '3rem' }" text="SS级护栏" @click.native="showImg"/>
-        <dot :style="{ top: '9.3rem', left: '12rem' }" text="世界最大单体钢桥面沥青铺装工程" @click.native="showVidio('4-3')"/>
+        <dot :style="{ top: '9.3rem', left: '12rem' }" text="世界最大单体钢桥面沥青铺装工程" @click.native="showVideo('4-3')"/>
         <back :style="{ bottom: '0.2rem', right: '1.4rem', width: '1rem', height: '1rem' }" @click.native="$redirect('/ShengTaiBaoHu')"/>
         <next :style="{ bottom: '0.2rem', right: '0.2rem', width: '1rem', height: '1rem' }" @click.native="$redirect('/XiRenGongDao')"/>
       </template>
@@ -25,7 +25,7 @@ export default {
     }
   },
   methods: {
-    showVidio (filename) {
+    showVideo (filename) {
       this.$audio.pause()
       const video = {
         url: require(`../../public/video/dot/${filename}.mp4`),
