@@ -18,6 +18,12 @@ export default new Router({
       name: 'navigation',
       component: () =>
         import(/* webpackChunkName: "Views" */ './views/Navigation.vue'),
+      beforeEnter: (to, from, next) => {
+        if (from.name !== 'home') {
+          to.query.loop = true
+        }
+        next()
+      },
     },
     {
       path: '/JiuZhouQiao',
@@ -56,7 +62,7 @@ export default new Router({
       component: () =>
         import(/* webpackChunkName: "Views" */ './views/DongRenGongDao.vue'),
       beforeEnter: (to, from, next) => {
-        if (from.name === 'DynamicPicture') {
+        if (from.name === 'DynamicPicture' || from.name === 'JianSheDaShiJi') {
           to.query.loop = true
           to.meta.audioReplay = true
         }
