@@ -90,4 +90,60 @@ body,
   background-size: contain;
   filter: blur(3px);
 }
+/*四个角效果*/
+$borderColor: #60d8fd;
+$coreWidth: 0.16rem;
+$offset: -0.04rem;
+.core {
+  position: relative;
+  border: 0.02rem solid $borderColor;
+  &:before,
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: $offset;
+    width: $coreWidth;
+    height: $coreWidth;
+    border: 0.05rem solid $borderColor;
+  }
+  &:after {
+    right: $offset;
+    border-left-width: 0;
+    border-top-width: 0;
+  }
+  &:before {
+    left: $offset;
+    border-right-width: 0;
+    border-top-width: 0;
+  }
+}
+
+.core2 {
+  position: absolute;
+  top: $offset;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  &:before,
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: $coreWidth;
+    height: $coreWidth;
+    border: 0.05rem solid $borderColor;
+  }
+  &:after {
+    left: $offset;
+    border-right-width: 0;
+    border-bottom-width: 0;
+  }
+  &:before {
+    right: $offset;
+    border-left-width: 0;
+    border-bottom-width: 0;
+  }
+}
 </style>

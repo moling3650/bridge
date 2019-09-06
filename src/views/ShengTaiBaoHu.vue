@@ -8,13 +8,17 @@
         <mini-map/>
       </template>
     </page>
+    <back v-show="show" :style="{ top: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="hide"/>
     <transition name="fade">
-      <div v-show="show" ref="longDiv" class="longDiv" style="font-size:0.3rem">
-        <img ref="longImg" src="../assets/img/long.jpg" alt="" :style=" {left:`${left}px`}">
+      <div v-show="show" class="slider core">
+        <div ref="longDiv" class="longDiv" style="font-size:0.3rem">
+          <img ref="longImg" src="../assets/img/long.jpg" alt="" :style="{ left: `${left}rem` }">
+        </div>
         <ul class="direction">
           <li v-show="left < 0" class="left" @click="clickLeft"/>
-          <li v-show=" (left > -8828) && isShow" class="right" @click="clickRight"/>
+          <li v-show="left > -90" class="right" @click="clickRight"/>
         </ul>
+        <div class="core2"/>
       </div>
     </transition>
   </div>
@@ -29,44 +33,9 @@ export default {
       show: false,
       left: 0,
       screenWidth: document.body.clientWidth, // body宽度
-      num: 10500 / this.screenWidth,
       isShow: true,
     }
   },
-  // computed () {
-
-  // },
-  // watch: {
-  //   // screenWidth (val) {
-  //   //   this.screenWidth = val
-  //   // },
-  //   screenWidth (val) {
-  //     // console.log(val)
-  //     this.screenWidth = val
-  //     this.num = (10500 / this.screenWidth)
-  //     console.log(10500 / this.screenWidth)
-  //     console.log(this.num)
-  //     // if (!this.timer) {
-  //     //   this.screenWidth = val
-  //     //   this.timer = true
-  //     //   const that = this
-  //     //   setTimeout(function () {
-  //     //     that.timer = false
-  //     //   }, 400)
-  //     // }
-  //   },
-  // },
-  // created () {
-  //   console.log(this.left)
-  // },
-  // mounted () {
-  //   window.onresize = () => {
-  //     return (() => {
-  //       window.screenWidth = document.body.clientWidth
-  //       this.screenWidth = window.screenWidth
-  //     })()
-  //   }
-  // },
   methods: {
     showVideo (filename) {
       const video = {
@@ -80,62 +49,72 @@ export default {
       })
     },
     showImg () {
+      this.$audio.pause()
+      this.opacity = 5
       this.show = true
     },
+    hide () {
+      this.$audio.play()
+      this.opacity = 0
+      this.show = false
+      this.left = 0
+    },
     clickLeft () {
-      this.left -= -this.screenWidth / 5
-      if (this.left > -8828) {
-        this.isShow = true
-      }
+      this.left += 5
     },
     clickRight () {
-      let left1 = this.left
-      left1 += -this.screenWidth / 5
-      if (left1 < -8828) {
-        this.isShow = false
-      } else {
-        this.left = left1
-      }
+      this.left -= 5
     },
   },
 }
 </script>
 <style lang="scss" scoped>
-.longDiv{
+.slider {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 101;
+  width: 16.5rem;
+  height: 7.5rem;
+  transform: translate3d(-50%, -50%, 0);
+  background-color: #3a6aa2;
+  .longDiv {
     position: absolute;
     top: 0;
-    left: 0;
+    left: 0.75rem;
     bottom: 0;
-    right: 0;
-    img{
+    right: 0.75rem;
+    overflow: hidden;
+    img {
       position: absolute;
-      top: 50%;
-      transform: translate(0, -50%);
-      height: 750px;
+      height: 100%;
       transition: all 1s ease-out;
     }
+  }
 }
+
 .direction {
   .left,
   .right {
     position: absolute;
-    top: 4.5rem;
+    top: 3.5rem;
+    z-index: 20;
     display: block;
-    height: 2rem;
-    width: 1.1rem;
+    height: 1rem;
+    width: 0.55rem;
     background-size: cover;
     cursor: pointer;
     transition: all 0.3s ease-out;
   }
   .left {
-    left: 2%;
+    left: 0;
     background-image: url(../assets/img/left.png);
     &:hover{
       transform: scale(1.2) translateX(-0.08rem);
     }
   }
   .right {
-    right: 2%;
+    right: 0;
     background-image: url(../assets/img/right.png);
     &:hover{
       transform: scale(1.2) translateX(0.08rem);
