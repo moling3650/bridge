@@ -26,6 +26,7 @@ export default new Router({
         import(/* webpackChunkName: "Views" */ './views/JiuZhouQiao.vue'),
       beforeEnter: (to, from, next) => {
         if (from.name === 'QiaoDun') {
+          to.query.loop = true
           to.meta.audioReplay = true
         }
         next()
@@ -54,6 +55,13 @@ export default new Router({
       name: 'DongRenGongDao',
       component: () =>
         import(/* webpackChunkName: "Views" */ './views/DongRenGongDao.vue'),
+      beforeEnter: (to, from, next) => {
+        if (from.name === 'DynamicPicture') {
+          to.query.loop = true
+          to.meta.audioReplay = true
+        }
+        next()
+      },
     },
     {
       path: '/HaiDiSuiDao',

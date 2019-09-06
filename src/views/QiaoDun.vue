@@ -31,7 +31,7 @@
     </max-card>
     <back v-show="show === 'story'" :style="{ top: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 101 }" @click.native="show = 'main'"/>
 
-    <back v-show="show === 'main'" :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$router.push({ name: 'JiuZhouQiao', query: { loop: true } })"/>
+    <back v-show="show === 'main'" :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$router.push('/JiuZhouQiao')"/>
   </div>
 </template>
 

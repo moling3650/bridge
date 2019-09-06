@@ -13,6 +13,7 @@
         <a @click.prevent="slicebox && slicebox.previous()">Previous</a>
       </div>
     </div>
+    <back :style="{ top: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$redirect('/DongRenGongDao')"/>
   </div>
 </template>
 <script>
