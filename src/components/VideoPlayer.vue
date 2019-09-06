@@ -46,7 +46,6 @@ export default {
       this.$refs.player.dp.video.load()
     },
     close () {
-      this.$refs.player.dp.seek(0)
       this.$refs.player.dp.pause()
       this.show = false
       this.callback()
