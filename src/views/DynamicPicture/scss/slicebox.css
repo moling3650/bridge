@@ -67,7 +67,6 @@
 
 .sb-perspective > div {
 	position: absolute;
-
 	-webkit-transform-style: preserve-3d;
 	-moz-transform-style: preserve-3d;
 	-o-transform-style: preserve-3d;
@@ -85,9 +84,6 @@
 	margin: 0;
 	display: block;
 	position: absolute;
-
-	-moz-backface-visibility : hidden;
-
 	-webkit-transform-style: preserve-3d;
 	-moz-transform-style: preserve-3d;
 	-o-transform-style: preserve-3d;

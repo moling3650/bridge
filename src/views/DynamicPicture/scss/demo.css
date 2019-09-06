@@ -1,10 +1,8 @@
-@import url(http://fonts.useso.com/css?family=PT+Sans+Narrow|Volkhov:400italic,700);
+/* @import url(http://fonts.useso.com/css?family=PT+Sans+Narrow|Volkhov:400italic,700); */
 
 *,
 *:after,
 *:before {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
@@ -18,7 +16,7 @@
 }
 
 /* General Demo Style */
-body {
+/* body {
 	background: #e4ebe9 url(../images/fancy_deboss.png) repeat top left;
 	color: #444;
 	font-family: "PT Sans Narrow", Arial, sans-serif;
@@ -27,7 +25,7 @@ body {
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
     min-width: 320px;
-}
+} */
 
 a {
 	color: #000;

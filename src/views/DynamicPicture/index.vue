@@ -1,21 +1,16 @@
 <template>
   <div class="container">
     <div class="wrapper">
-      <ul id="sb-slider" class="sb-slider">
+      <ul id="sb-slider" class="sb-slider" :style="{ maxWidth }">
         <li v-for="(item, index) in wallpaper" :key="index">
-          <a href="http://www.flickr.com/photos/strupler/2969141180" target="_blank">
-            <img :src="item" alt="index">
-          </a>
-          <!-- <div class="sb-description">
-            <h3>Creative Lifesaver</h3>
-          </div> -->
+          <img :src="item" alt="index">
         </li>
       </ul>
 
       <div id="shadow" class="shadow"/>
       <div id="nav-arrows" class="nav-arrows">
-        <a href="#">Next</a>
-        <a href="#">Previous</a>
+        <a @click.prevent="slicebox && slicebox.next()">Next</a>
+        <a @click.prevent="slicebox && slicebox.previous()">Previous</a>
       </div>
     </div>
   </div>
@@ -23,11 +18,14 @@
 <script>
 import $ from 'jquery'
 require('../../libs/jquery.slicebox')
+
 export default {
   name: 'DynamicPicture',
   data () {
     return {
       wallpaper: [],
+      maxWidth: '',
+      slicebox: null,
     }
   },
   mounted () {
@@ -36,36 +34,19 @@ export default {
   },
   methods: {
     initStart () {
-      $(function () {
-        const Page = (function () {
-          const $navArrows = $('#nav-arrows').hide()
-          const $shadow = $('#shadow').hide()
-          const slicebox = $('#sb-slider').slicebox({
-            onReady: function () {
-              $navArrows.show()
-              $shadow.show()
-            },
-            orientation: 'r',
-            cuboidsRandom: true,
-            disperseFactor: 30,
-          })
-          const init = function () {
-            initEvents()
-          }
-          const initEvents = function () {
-            // add navigation events
-            $navArrows.children(':first').on('click', function () {
-              slicebox.next()
-              return false
-            })
-            $navArrows.children(':last').on('click', function () {
-              slicebox.previous()
-              return false
-            })
-          }
-          return { init: init }
-        })()
-        Page.init()
+      $(() => {
+        const $navArrows = $('#nav-arrows').hide()
+        const $shadow = $('#shadow').hide()
+        this.slicebox = $('#sb-slider').slicebox({
+          onReady: () => {
+            $navArrows.show()
+            $shadow.show()
+            this.maxWidth = '100%'
+          },
+          orientation: 'r',
+          cuboidsRandom: true,
+          disperseFactor: 30,
+        })
       })
     },
     initWallArr () {
