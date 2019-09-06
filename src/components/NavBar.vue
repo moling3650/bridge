@@ -3,12 +3,12 @@
     <transition name="fade">
       <div v-show="always || showBar" class="bar-container" @mouseleave="showBar = false">
         <div class="bar">
-          <router-link tag="div" :to="{ name: 'navigation', query: { loop: true } }"/>
-          <router-link tag="div" to="/Roaming"/>
-          <router-link tag="div" to="/ShiJieZhiZui"/>
-          <router-link tag="div" to="/ZhiShiMoFang"/>
-          <router-link tag="div" to="/JianSheZhe"/>
-          <router-link tag="div" to="/JiaoHu"/>
+          <div @click="$redirect('/navigation')"/>
+          <div @click="$redirect('/Roaming')"/>
+          <div @click="$redirect('/ShiJieZhiZui')"/>
+          <div @click="$redirect('/ZhiShiMoFang')"/>
+          <div @click="$redirect('/JianSheZhe')"/>
+          <div @click="$redirect('/JiaoHu')"/>
         </div>
       </div>
     </transition>
