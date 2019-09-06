@@ -7,8 +7,7 @@
         <dot :style="{ top: '1.1rem', left: '6.3rem' }" text="风帆塔" @click.native="showVideo('1-1')"/>
         <dot :style="{ top: '4.2rem', left: '10rem' }" text="世界最长的钢铁大桥" @click.native="showImages"/>
         <dot :style="{ top: '3.8rem', left: '14.5rem' }" text="桥墩建造" @click.native="$redirect('/QiaoDun')"/>
-        <back :style="{ bottom: '0.2rem', right: '1.4rem', width: '1rem', height: '1rem' }" @click.native="$redirect({ name: 'navigation', query: { loop: true } })"/>
-        <next :style="{ bottom: '0.2rem', right: '0.2rem', width: '1rem', height: '1rem' }" @click.native="$redirect('/JiangHaiQiao')"/>
+        <mini-map/>
       </template>
     </page>
     <transition name="fade">

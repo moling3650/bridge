@@ -6,8 +6,7 @@
         <dot :style="{ top: '2.2rem', left: '9.3rem' }" text="中国结" @click.native="showVideo('4-1')"/>
         <dot :style="{ top: '9rem', left: '3rem' }" text="SS级护栏" @click.native="showImg"/>
         <dot :style="{ top: '9.3rem', left: '12rem' }" text="世界最大单体钢桥面沥青铺装工程" @click.native="showVideo('4-3')"/>
-        <back :style="{ bottom: '0.2rem', right: '1.4rem', width: '1rem', height: '1rem' }" @click.native="$redirect('/ShengTaiBaoHu')"/>
-        <next :style="{ bottom: '0.2rem', right: '0.2rem', width: '1rem', height: '1rem' }" @click.native="$redirect('/XiRenGongDao')"/>
+        <mini-map/>
       </template>
     </page>
     <img v-show="imgVisiable" class="ss" src="@/assets/img/4-2.png" alt="SS级护栏">

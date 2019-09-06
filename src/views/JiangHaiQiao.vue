@@ -7,8 +7,7 @@
         <dot :style="{ top: '2rem', left: '9.6rem' }" text="全球首例巨型钢塔翻身吊装" @click.native="showVideo('2-2')"/>
         <dot :style="{ top: '4rem', left: '15rem' }" text="全球首次采用锌－铝合金超强钢丝" @click.native="showVideo('2-3')"/>
         <dot :style="{ top: '2rem', left: '16.5rem' }" text="建设者专访" @click.native="showVideo('2-4')"/>
-        <back :style="{ bottom: '0.2rem', right: '1.4rem', width: '1rem', height: '1rem' }" @click.native="$redirect('/JiuZhouQiao')"/>
-        <next :style="{ bottom: '0.2rem', right: '0.2rem', width: '1rem', height: '1rem' }" @click.native="$redirect('/ShengTaiBaoHu')"/>
+        <mini-map/>
       </template>
     </page>
   </div>

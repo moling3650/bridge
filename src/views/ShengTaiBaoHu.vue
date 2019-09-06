@@ -5,8 +5,7 @@
         <nav-bar/>
         <dot :style="{ top: '4rem', left: '12rem' }" text="保护海豚" @click.native="showVideo('3-1')"/>
         <dot :style="{ top: '3.6rem', left: '15.4rem' }" text="一图读懂生态保护" @click.native="showImg"/>
-        <back :style="{ bottom: '0.2rem', right: '1.4rem', width: '1rem', height: '1rem' }" @click.native="$redirect('/JiangHaiQiao')"/>
-        <next :style="{ bottom: '0.2rem', right: '0.2rem', width: '1rem', height: '1rem' }" @click.native="$redirect('/QingZhouQiao')"/>
+        <mini-map/>
       </template>
     </page>
     <transition name="fade">

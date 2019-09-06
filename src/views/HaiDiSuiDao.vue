@@ -9,8 +9,7 @@
         <dot :style="{ top: '4.4rem', left: '15.9rem' }" text="建设者专访：岛隧项目总工程师 林鸣" @click.native="showVideo('6-5')"/>
         <dot :style="{ top: '7.5rem', left: '13rem' }" text="建设者专访：混凝土超级配方打造者 张宝兰" @click.native="showVideo('6-6')"/>
         <nav-bar/>
-        <back :style="{ bottom: '0.2rem', right: '1.4rem', width: '1rem', height: '1rem' }" @click.native="$redirect('/XiRenGongDao')"/>
-        <next :style="{ bottom: '0.2rem', right: '0.2rem', width: '1rem', height: '1rem' }" @click.native="$redirect('/DongRenGongDao')"/>
+        <mini-map/>
       </template>
     </page>
     <transition name="fade">

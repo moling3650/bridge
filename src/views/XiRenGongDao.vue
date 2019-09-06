@@ -8,8 +8,7 @@
         <dot :style="{ top: '7rem', left: '9rem' }" text="世界最大钢圆筒的海上之旅" @click.native="showVideo('5-3')"/>
         <dot :style="{ top: '5rem', left: '11.4rem' }" text="世界首创钢圆筒快速筑岛技术" @click.native="showVideo('5-4')"/>
         <dot :style="{ top: '6rem', left: '5rem' }" text="人工岛设计师专访" @click.native="showVideo('5-2')"/>
-        <back :style="{ bottom: '0.2rem', right: '1.4rem', width: '1rem', height: '1rem' }" @click.native="$redirect('/QingZhouQiao')"/>
-        <next :style="{ bottom: '0.2rem', right: '0.2rem', width: '1rem', height: '1rem' }" @click.native="$redirect('/HaiDiSuiDao')"/>
+        <mini-map/>
       </template>
     </page>
     <video
