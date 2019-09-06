@@ -110,7 +110,7 @@ export default {
       this.$audio.load()
     }
     if (this.app.bg) {
-      this.app.bg.style.backgroundImage = `url(${require(`../../public/img/poster/${this.pageName}-2-p.jpg`)})`
+      this.app.bg.style.backgroundImage = `url(${require(`../../public/img/poster/${this.pageName}${this.noLoop ? '' : '-2'}-p.jpg`)})`
     }
     this.isLoop = this.$route.query.loop
     if (this.isLoop) {

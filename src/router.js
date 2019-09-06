@@ -4,12 +4,18 @@ import Home from './views/Home.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
+      name: 'Landing',
+      component: () =>
+        import(/* webpackChunkName: "Views" */ './views/Landing.vue'),
+    },
+    {
+      path: '/home',
       name: 'home',
       component: Home,
     },
@@ -176,3 +182,5 @@ export default new Router({
     },
   ],
 })
+
+export default router

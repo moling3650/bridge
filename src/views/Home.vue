@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-    <loader v-show="loadingVisiable" :is-loading="isLoading" @click-start="watchVideo"/>
-    <page v-show="!loadingVisiable" ref="page" page-name="Home" can-skip @canplay="showVideo">
+    <page ref="page" page-name="Home" can-skip autoplay>
       <template slot-scope="{ isLoop }">
         <router-link v-show="isLoop" class="start" to="/navigation">
           <img src="@/assets/img/start.png" alt="">
@@ -18,21 +17,6 @@
 
 export default {
   name: 'Home',
-  data () {
-    return {
-      isLoading: true,
-      loadingVisiable: true,
-    }
-  },
-  methods: {
-    watchVideo () {
-      this.loadingVisiable = false
-      this.$refs.page.play()
-    },
-    showVideo () {
-      this.isLoading = false
-    },
-  },
 }
 </script>
 
