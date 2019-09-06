@@ -12,6 +12,7 @@ import Back from '@/components/Back'
 import Next from '@/components/Next'
 import Carousel from '@/components/Carousel'
 import MaxCard from '@/components/MaxCard'
+import MiniMap from '@/components/MiniMap'
 
 import video from '@/utils/video'
 import './scss/reset.scss'
@@ -25,6 +26,7 @@ Vue.component(Back.name, Back)
 Vue.component(Next.name, Next)
 Vue.component(Carousel.name, Carousel)
 Vue.component(MaxCard.name, MaxCard)
+Vue.component(MiniMap.name, MiniMap)
 Vue.prototype.$video = video
 Vue.prototype.$audio = document.createElement('AUDIO')
 Vue.prototype.$redirect = (route) => {
