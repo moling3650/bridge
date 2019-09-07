@@ -62,13 +62,17 @@ li {
   text-align: center;
   background-image: url(./img/bg.jpg);
   background-size: 100%;
-  padding: 0.4rem 0.2rem;
+  padding: 0.4rem 0;
 }
 .top-nav {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 0.72rem;
+  img {
+    margin-top: 0.5rem;
+    width: 8rem;
+  }
   .top-nav-img {
     height: 1.55rem;
     width: 4.92rem;
