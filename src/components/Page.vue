@@ -6,8 +6,7 @@
       :poster="require(`../../public/img/poster/${pageName}${noLoop ? '' : '-1' }-p.jpg`)"
       :src="require(`../../public/video/${pageName}${noLoop ? '' : '-1' }.mp4`)"
       preload
-      :autoplay="autoplay"
-      @canplay="$emit('canplay')"
+      @canplay="handleCanPlay"
       @canplaythrough="loopPreLoad = 'auto'"
       @ended="handleEnded"
     >
@@ -118,6 +117,12 @@ export default {
     }
   },
   methods: {
+    handleCanPlay () {
+      if (this.autoplay && !this.$route.query.loop) {
+        this.play()
+      }
+      this.$emit('canplay')
+    },
     handleEnded () {
       this.app.bg.style.backgroundImage = 'none'
       this.$emit('ended')
