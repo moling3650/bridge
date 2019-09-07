@@ -15,10 +15,7 @@
       </ul>
       <div class="core2"/>
     </div>
-    <back
-      :style="{ top: '0.2rem', right: '0.2rem', width: '1.2rem', height: '1.2rem' }"
-      @click.native="$emit('close')"
-    />
+    <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$emit('close')"/>
   </div>
 </template>
 
@@ -62,7 +59,7 @@ export default {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 15rem;
+  width: 12rem;
   min-height: 8rem;
   padding: 0.15rem;
   transform: translate3d(-50%, -50%, 0);
@@ -118,14 +115,14 @@ export default {
     transition: all 0.3s ease-out;
   }
   .left {
-    left: 0.5rem;
+    left: -0.6rem;
     background-image: url(../assets/img/left.png);
     &:hover {
       transform: scale(1.2) translateX(-0.08rem);
     }
   }
   .right {
-    right: 0.5rem;
+    right: -0.6rem;
     background-image: url(../assets/img/right.png);
     &:hover {
       transform: scale(1.2) translateX(0.08rem);
