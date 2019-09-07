@@ -10,7 +10,7 @@
       </template>
     </page>
     <img v-show="imgVisiable" class="ss" src="@/assets/img/4-2.png" alt="SS级护栏">
-    <back v-show="imgVisiable" :style="{ top: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="hideImg"/>
+    <back v-show="imgVisiable" :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="hideImg"/>
   </div>
 </template>
 
