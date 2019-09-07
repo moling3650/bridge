@@ -32,7 +32,7 @@ export default {
   height: 10.8rem;
   // padding-top: 2rem;
   text-align: center;
-  background-image: url(../../public/img/poster/Home-1-p.jpg);
+  background-image: url(../../public/img/poster/Loader.jpg);
   background-size: 100%;
 }
 .loading {

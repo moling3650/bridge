@@ -95,8 +95,9 @@ export default {
 .desc {
   position: absolute;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
+  display: block;
+  width: 19.2rem;
+  height: 10.8rem;
 }
 </style>
