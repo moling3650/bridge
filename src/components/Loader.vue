@@ -9,9 +9,10 @@
         <span v-for="i in 3" :key="i" :class="['blob', `blob${i}`]"/>
       </div>
     </div>
-    <div v-show="!isLoading" class="loading-text">
+    <img class="start" src="@/assets/img/click_start.png" alt="点击开始" @click="$emit('click-start')">
+    <!-- <div v-show="!isLoading" class="loading-text">
       <span class="text done" @click="$emit('click-start')">请点击开始</span>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -37,7 +38,7 @@ export default {
 }
 .loading {
   position: relative;
-  top: 2rem;
+  top: 6rem;
   background: transparent;
   margin: 0 auto 1rem;
   width: 1rem;
@@ -76,6 +77,13 @@ export default {
     background-color : lighten(#1ab7ea, 40%);
     transform: scale(0, 0);
   }
+}
+
+.start {
+  width: 3rem;
+  height: 1rem;
+  margin-top: 5.5rem;
+  cursor: pointer;
 }
 
 @keyframes spin {
