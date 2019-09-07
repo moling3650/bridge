@@ -7,5 +7,8 @@
 <script>
 export default {
   name: 'Roaming',
+  mounted () {
+    this.$audio.pause()
+  },
 }
 </script>
