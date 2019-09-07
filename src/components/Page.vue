@@ -108,10 +108,14 @@ export default {
       this.$audio.src = require(`../../public/audio/${this.pageName}.mp3`)
       this.$audio.load()
     }
-    if (this.app.bg) {
-      this.app.bg.style.backgroundImage = `url(${require(`../../public/img/poster/${this.pageName}${this.noLoop ? '' : '-2'}-p.jpg`)})`
-    }
     this.isLoop = this.$route.query.loop
+    if (this.app.bg) {
+      if (this.isLoop) {
+        this.app.bg.style.backgroundImage = `url(${require(`../../public/img/poster/${this.pageName}${this.noLoop ? '' : '-2'}-p.jpg`)})`
+      } else {
+        this.app.bg.style.backgroundImage = `url(${require(`../../public/img/poster/${this.pageName}${this.noCutscenes ? '' : '-1'}-p.jpg`)})`
+      }
+    }
     if (this.isLoop) {
       this.play(true)
     }
@@ -127,6 +131,7 @@ export default {
       this.app.bg.style.backgroundImage = 'none'
       this.$emit('ended')
       if (!this.noLoop) {
+        this.app.bg.style.backgroundImage = `url(${require(`../../public/img/poster/${this.pageName}${this.noLoop ? '' : '-2'}-p.jpg`)})`
         this.playLoopVideo()
       }
     },
