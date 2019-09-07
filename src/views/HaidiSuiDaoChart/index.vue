@@ -1,9 +1,9 @@
 <template>
   <div class="mchart-container ">
-    <back :style="{ top: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 101 }" @click.native="$redirect(from)"/>
+    <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 101 }" @click.native="$redirect(from)"/>
     <div class="mchart core">
-      <div class="lengtmaxbut curre" @click="checkLeft">世界最长的海底沉管隧道</div>
-      <div class="depthmaxbut" @click="checkRight">世界最深的海底沉管隧道</div>
+      <div class="lengtmaxbut" :class="{ curre: direction === 'left' }" @click="checkLeft">世界海底沉管隧道长度对比</div>
+      <div class="depthmaxbut" :class="{ curre: direction === 'right' }" @click="checkRight">世界海底沉管隧道深度对比</div>
       <div id="munmin" ref="munmin">
         <div ref="numa" class="numa">{{ nums[0] }}</div>
         <div ref="numb" class="numb">{{ nums[1] }}</div>
@@ -44,10 +44,10 @@
         <p>2018年10月前是世界最长海底沉管隧道</p>
       </div>
       <div id="ctipsmian" ref="ctipsmian">
-        <p>2018年10月通车后成为世界最长海底沉管隧道，是第二名的1.6倍。</p>
+        <p>2018年10月通车成为世界最长海底沉管隧道，是第二名的1.6倍。</p>
       </div>
       <div id="dtipsmian" ref="dtipsmian">
-        <p>为保证通行30万吨轮船，港珠澳大桥沉管需埋到海床以下20多米，是全世界埋进海床最深的沉管隧道。.6倍。</p>
+        <p>为保证通行30万吨轮船，港珠澳大桥沉管隧道需要埋到海床以下20多米，是全世界埋进海床最深的沉管隧道。</p>
       </div>
 
       <div id="xline" ref="xline"/>
