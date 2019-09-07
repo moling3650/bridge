@@ -10,6 +10,8 @@ import NavBar from '@/components/NavBar'
 import Dot from '@/components/Dot'
 import Back from '@/components/Back'
 import Next from '@/components/Next'
+import Left from '@/components/Left'
+import Right from '@/components/Right'
 import Carousel from '@/components/Carousel'
 import MaxCard from '@/components/MaxCard'
 import MiniMap from '@/components/MiniMap'
@@ -25,6 +27,8 @@ Vue.component(NavBar.name, NavBar)
 Vue.component(Dot.name, Dot)
 Vue.component(Back.name, Back)
 Vue.component(Next.name, Next)
+Vue.component(Left.name, Left)
+Vue.component(Right.name, Right)
 Vue.component(Carousel.name, Carousel)
 Vue.component(MaxCard.name, MaxCard)
 Vue.component(MiniMap.name, MiniMap)
