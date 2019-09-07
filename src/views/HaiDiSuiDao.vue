@@ -13,7 +13,8 @@
       </template>
     </page>
     <transition name="fade">
-      <MaxCard v-show="qrCodeVisiable" @close="hide('qrCode')">
+      <!-- <MaxCard v-show="qrCodeVisiable" @close="hide('qrCode')"> -->
+      <div v-show="qrCodeVisiable" class="maxcard" @click="qrCode">
         <div class="qr">
           <h3>海底沉管对接小游戏，等你挑战！</h3>
           <span class="left">
@@ -25,7 +26,8 @@
             <img src="@/assets/img/haidi4.png" alt>
           </div>
         </div>
-      </MaxCard>
+      </div>
+      <!-- </MaxCard> -->
     </transition>
   </div>
 </template>
@@ -62,18 +64,56 @@ export default {
       this.opacity = 0
       this[`${key}Visiable`] = false
     },
+    qrCode () {
+      this.qrCodeVisiable = false
+      this.hide(false)
+    },
   },
 }
 </script>
 
 <style lang="scss" scoped>
-.qr {
-  h3 {
-    text-align: center;
-  }
-  p {
-    text-indent: 0.48rem;
-    margin-bottom: 0.12rem;
+.maxcard{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+  .qr {
+    background: url(./HaidiSuiDaoChart/images/haidi4bg.png);
+    background-size: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8.2rem;
+    height: 5rem;
+    font-size: 0.2rem;
+    padding: 0.5rem;
+    color:#fff;
+    h3 {
+        font-size: 0.3rem;
+        margin-bottom: 0.3rem;
+        line-height: 0.45rem;
+        text-align: center;
+      }
+      .left {
+        float: left;
+        width: 5.2rem;
+        font-size: 0.25rem;
+        line-height: 0.4rem;
+      }
+      .right {
+        float: right;
+        &>img {
+          width: 3rem;
+          height: 3rem;
+        }
+      }
+    p {
+      text-indent: 0.48rem;
+      margin-bottom: 0.12rem;
+    }
   }
 }
 </style>
