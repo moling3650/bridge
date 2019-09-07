@@ -1,6 +1,6 @@
 <template>
   <div v-show="show" class="v-player-mask">
-    <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="close"/>
+    <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 10000 }" @click.native="close"/>
     <div class="v-player-wrap core">
       <v-player ref="player" class="v-player" :options="options"/>
       <div class="core2"/>
@@ -36,7 +36,9 @@ export default {
     const s = this.$refs.player.$el.querySelector('.dplayer-controller .dplayer-setting')
     s.style.display = 'none'
     this.$refs.player.dp.on('canplay', () => {
-      this.$refs.player.dp.play()
+      if (this.show) {
+        this.$refs.player.dp.play()
+      }
     })
   },
   methods: {
