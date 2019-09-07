@@ -1,7 +1,7 @@
 <template>
   <div class="map-wrap">
     <div class="mini-map">
-      <router-link v-for="l in links" :key="l.to" class="btn" :style="{ top: l.top, left: l.left }" :to="l.to">{{ l.text }}</router-link>
+      <div v-for="l in links" :key="l.to" class="btn" :style="{ top: l.top, left: l.left }" @click="$redirect(l.to)">{{ l.text }}</div>
     </div>
     <div v-if="current" class="btn current" :style="{ top: current.top, left: current.left }">{{ current.text }}</div>
   </div>
@@ -53,17 +53,24 @@ export default {
   &:hover {
     opacity: 1;
     z-index: 100;
+    .btn {
+      opacity: 0;
+    }
   }
 }
 .btn {
   position: absolute;
   padding: 0.05rem 0.1rem;
-  text-decoration: none;
+  border-radius: 0.03rem;
   font-size: 0.16rem;
+  text-decoration: none;
   color: rgba(0, 0, 0, 0);
+  cursor: pointer;
   &.current {
+    border: 1px solid;
     background-color: #ff6031;
     color: #eee;
+    font-weight: bold;
   }
 }
 </style>
