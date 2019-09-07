@@ -8,7 +8,7 @@
         <mini-map/>
       </template>
     </page>
-    <back v-show="show" :style="{ top: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="hide"/>
+    <back v-show="show" :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="hide"/>
     <transition name="fade">
       <div v-show="show" class="slider core">
         <div ref="longDiv" class="longDiv" style="font-size:0.3rem">
@@ -16,7 +16,7 @@
         </div>
         <ul class="direction">
           <li v-show="left < 0" class="left" @click="clickLeft"/>
-          <li v-show="left > -90" class="right" @click="clickRight"/>
+          <li v-show="left > -88" class="right" @click="clickRight"/>
         </ul>
         <div class="core2"/>
       </div>
@@ -60,10 +60,10 @@ export default {
       this.left = 0
     },
     clickLeft () {
-      this.left += 5
+      this.left += 8
     },
     clickRight () {
-      this.left -= 5
+      this.left -= 8
     },
   },
 }
@@ -74,16 +74,16 @@ export default {
   top: 50%;
   left: 50%;
   z-index: 101;
-  width: 16.5rem;
+  width: 17rem;
   height: 7.5rem;
   transform: translate3d(-50%, -50%, 0);
   background-color: #3a6aa2;
   .longDiv {
     position: absolute;
     top: 0;
-    left: 0.75rem;
+    left: 0rem;
     bottom: 0;
-    right: 0.75rem;
+    right: 0rem;
     overflow: hidden;
     img {
       position: absolute;
@@ -107,14 +107,14 @@ export default {
     transition: all 0.3s ease-out;
   }
   .left {
-    left: 0;
+    left: -0.6rem;
     background-image: url(../assets/img/left.png);
     &:hover{
       transform: scale(1.2) translateX(-0.08rem);
     }
   }
   .right {
-    right: 0;
+    right: -0.6rem;
     background-image: url(../assets/img/right.png);
     &:hover{
       transform: scale(1.2) translateX(0.08rem);
