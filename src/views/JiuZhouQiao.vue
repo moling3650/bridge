@@ -1,7 +1,8 @@
 <template>
   <div id="JiuZhouQiao">
-    <page page-name="JiuZhouQiao" autoplay can-skip :opacity="opacity">
+    <page page-name="JiuZhouQiao" autoplay can-skip :opacity="opacity" @ended="handleEnd">
       <template v-if="isLoop" slot-scope="{ isLoop }">
+        <img v-show="showDesc" src="@/assets/img/desc.png" alt="desc" class="desc" @click="showDesc = false">
         <nav-bar/>
         <dot :style="{ top: '1.1rem', left: '6.3rem' }" text="风帆塔" @click.native="showVideo('1-1')"/>
         <dot :style="{ top: '4.2rem', left: '10rem' }" text="世界最长的钢铁大桥" @click.native="showImages"/>
@@ -20,6 +21,7 @@ export default {
   name: 'JiuZhouQiao',
   data () {
     return {
+      showDesc: false,
       imgsVisiable: false,
       opacity: 0,
       textList: [
@@ -54,6 +56,9 @@ export default {
     },
   },
   methods: {
+    handleEnd () {
+      this.showDesc = true
+    },
     showVideo (filename) {
       this.$audio.pause()
       const video = {
@@ -86,5 +91,12 @@ export default {
   cursor: pointer;
   font-size: 0.2rem;
   color: #ddd;
+}
+.desc {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 </style>
