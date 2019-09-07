@@ -6,11 +6,9 @@
           <img :src="item" alt="index">
         </li>
       </ul>
-
-      <div id="shadow" class="shadow"/>
       <div id="nav-arrows" class="nav-arrows">
-        <a @click.prevent="slicebox && slicebox.next()">Next</a>
-        <a @click.prevent="slicebox && slicebox.previous()">Previous</a>
+        <left @click="slicebox && slicebox.previous()"/>
+        <right @click="slicebox && slicebox.next()"/>
       </div>
     </div>
     <back :style="{ top: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$redirect('/DongRenGongDao')"/>
@@ -62,4 +60,19 @@ export default {
 @import "./scss/demo.css";
 @import "./scss/slicebox.css";
 @import "./scss/custom.css";
+.nav-arrows {
+  .left,
+  .right {
+    width: 1.1rem;
+    height: 2rem;
+    top: 50%;
+    margin-top: -1rem;
+  }
+  .left {
+    left: 0.5rem;
+  }
+  .right {
+    right: 0.5rem;
+  }
+}
 </style>
