@@ -7,7 +7,7 @@
           <div @click="$redirect('/Roaming')"/>
           <div @click="$redirect('/ShiJieZhiZui')"/>
           <div @click="$redirect('/ZhiShiMoFang')"/>
-          <div @click="$redirect('/JianSheZhe')"/>
+          <div @click="$showFrame('http://news.southcn.com/n/node_395653.htm')"/>
           <div @click="$redirect('/JiaoHu')"/>
         </div>
       </div>

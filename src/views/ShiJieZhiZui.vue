@@ -1,6 +1,6 @@
 <template>
   <div id="ShiJieZhiZui">
-    <div class="anchor" :style="{ width: '2.4rem', height: '2.4rem', top: '3rem', left: '1rem' }">
+    <div class="anchor" :style="{ width: '2.4rem', height: '2.4rem', top: '3rem', left: '1rem' }" @click="$showFrame('http://newscenter.southcn.com/zt/20190902sjbri/index.html')">
       <p class="text"><span>世界最长</span><span>跨海大桥</span></p>
     </div>
     <div class="anchor" :style="{ width: '2.7rem', height: '2.7rem', top: '1.9rem', left: '5.2rem' }" @click="$redirect('/HaidiSuiDaoChart')">
