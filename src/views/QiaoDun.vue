@@ -4,7 +4,6 @@
       :src="require(`../../public/video/dot/1-3.mp4`)"
       autoplay
       loop
-      :style="{ filter: `blur(${show === 'main' ? '0px' : '5px' })` }"
     />
     <img class="bg" src="@/assets/img/1-3.png">
     <div class="btn video-btn" @click="showVideo"/>
@@ -42,7 +41,7 @@ export default {
     return {
       show: 'main',
       textList: [
-        '港珠澳大桥桥墩是这样建造的',
+        '',
         '2013年2月21日，港珠澳大桥桥梁工程首件混凝土预制墩台完成整体预制。',
         '2013年2月22日，桥梁工程首个承台墩身在项目部中山基地预制完成。',
         '2013年4月11日晚，港珠澳大桥珠澳口岸连接桥第一个承台钢管复合桩钢桩插打成功。',
