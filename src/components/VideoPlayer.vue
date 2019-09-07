@@ -1,6 +1,6 @@
 <template>
   <div v-show="show" class="v-player-mask">
-    <back :style="{ top: '0.2rem', right: '0.2rem', width: '1.2rem', height: '1.2rem' }" @click.native="close"/>
+    <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="close"/>
     <div class="v-player-wrap core">
       <v-player ref="player" class="v-player" :options="options"/>
       <div class="core2"/>
@@ -71,7 +71,7 @@ export default {
   width: 14.4rem;
   height: 8.1rem;
   padding: 0.15rem;
-  background-color: #214858;
+  background-color: #3a6aa2;
   .v-player {
     font-size: 0.12rem;
     z-index: 11;

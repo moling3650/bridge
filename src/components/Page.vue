@@ -119,6 +119,7 @@ export default {
   },
   methods: {
     handleEnded () {
+      this.app.bg.style.backgroundImage = 'none'
       this.$emit('ended')
       if (!this.noLoop) {
         this.playLoopVideo()

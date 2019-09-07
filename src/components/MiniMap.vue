@@ -20,12 +20,17 @@ export default {
 <style lang="scss" scoped>
 .mini-map {
   position: absolute;
-  right: 0;
-  bottom: 0;
+  right: 0.1rem;
+  bottom: 0.1rem;
   width: 5rem;
   height: 2.06rem;
   background-image: url(../assets/img/mini_map.png);
   background-size: 100% 100%;
+  transition: opacity .5s;
+  opacity: 0.2;
+  &:hover {
+    opacity: 1;
+  }
 }
 .btn {
   position: absolute;

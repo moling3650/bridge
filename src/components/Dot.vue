@@ -59,7 +59,7 @@ export default {
       color: #eeeeee;
       font-size: 0.28rem;
       letter-spacing: 0.03rem;
-      background-color: #00a4c6;
+      background-color: #3a6aa2;
     }
   }
 }

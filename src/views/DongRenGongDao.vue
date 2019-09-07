@@ -56,8 +56,8 @@ export default {
     position: relative;
     display: inline-block;
     width: 5rem;
-    height: 4.8rem;
-    margin-top: 3rem;
+    height: 5.32rem;
+    margin-top: 2.5rem;
     img {
       width: 100%;
       height: 100%;
