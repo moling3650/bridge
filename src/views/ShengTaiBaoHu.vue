@@ -15,8 +15,8 @@
           <img ref="longImg" src="../assets/img/long.jpg" alt="" :style="{ left: `${left}rem` }">
         </div>
         <ul class="direction">
-          <li v-show="left < 0" class="left" @click="clickLeft"/>
-          <li v-show="left > -88" class="right" @click="clickRight"/>
+          <left v-show="left < 0" class="left" @click="clickLeft"/>
+          <right v-show="left > -88" class="right" @click="clickRight"/>
         </ul>
         <div class="core2"/>
       </div>
@@ -96,29 +96,16 @@ export default {
 .direction {
   .left,
   .right {
-    position: absolute;
     top: 3.5rem;
     z-index: 20;
-    display: block;
     height: 1rem;
     width: 0.55rem;
-    background-size: cover;
-    cursor: pointer;
-    transition: all 0.3s ease-out;
   }
   .left {
     left: -0.6rem;
-    background-image: url(../assets/img/left.png);
-    &:hover{
-      transform: scale(1.2) translateX(-0.08rem);
-    }
   }
   .right {
     right: -0.6rem;
-    background-image: url(../assets/img/right.png);
-    &:hover{
-      transform: scale(1.2) translateX(0.08rem);
-    }
   }
 }
 </style>

@@ -37,8 +37,8 @@
               </li>
             </ul>
           </div>
-          <i v-show="index > 0" class="left" @click="index -= 1"/>
-          <i v-show="index < data.length / size - 1" class="right" @click="index += 1"/>
+          <left v-show="index > 0" class="left" @click="index -= 1"/>
+          <right v-show="index < data.length / size - 1" class="right" @click="index += 1"/>
         </section>
         <nav-bar/>
       </template>
@@ -192,23 +192,16 @@ export default {
   }
   .left,
   .right {
-    position: absolute;
     top: 50%;
-    margin-top: -100px;
-    display: block;
-    width: 110px;
-    height: 200px;
-    cursor: pointer;
+    width: 1.1rem;
+    height: 2rem;
+    margin-top: -1rem;
   }
   .left {
-    left: 10px;
-    background-image: url(../../assets/img/left.png);
-    background-size: 100% 100%;
+    left: 0.5rem;
   }
   .right {
-    right: 10px;
-    background-image: url(../../assets/img/right.png);
-    background-size: 100% 100%;
+    right: 0.5rem;
   }
   .dialog {
     position: absolute;

@@ -16,8 +16,8 @@
       </div>
     </div>
     <ul class="direction">
-      <li v-show="index > 0" class="left" @click="index--"/>
-      <li v-show="index < total - size" class="right" @click="index++"/>
+      <left v-show="index > 0" :style="{ width: '1.1rem', height: '2rem', top: '4.3rem', left: '0.8rem'}" @click="index--"/>
+      <right v-show="index < total - size" :style="{ width: '1.1rem', height: '2rem', top: '4.3rem', right: '0.8rem'}" @click="index++"/>
     </ul>
     <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$router.push({ name: 'DongRenGongDao', query: { loop: true } })"/>
   </div>
@@ -124,33 +124,7 @@ li {
     background-size: 100%;
   }
 }
-.direction {
-  .left,
-  .right {
-    position: absolute;
-    top: 4.5rem;
-    display: block;
-    height: 2rem;
-    width: 1.1rem;
-    background-size: cover;
-    cursor: pointer;
-    transition: all 0.3s ease-out;
-  }
-  .left {
-    left: 5%;
-    background-image: url(../../assets/img/left.png);
-    &:hover{
-      transform: scale(1.2) translateX(-0.08rem);
-    }
-  }
-  .right {
-    right: 5%;
-    background-image: url(../../assets/img/right.png);
-    &:hover{
-      transform: scale(1.2) translateX(0.08rem);
-    }
-  }
-}
+
 .list-complete-enter,
 .list-complete-leave-to {
   opacity: 0;
