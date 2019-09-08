@@ -21,9 +21,16 @@
             @click="actionForRecommendOrDis"
           >
         </div>
+        <ul class="icon-wrapper">
+          <li class="icon-item icon-one"/>
+          <li class="icon-item icon-two"/>
+          <li class="icon-item icon-three"/>
+          <li class="icon-item icon-four"/>
+        </ul>
       </div>
       <div class="right-content-container">
         <div class="talk-content-area">
+          <span class="view-word">参观留言</span>
           <ul class="approval-content-area">
             <li v-for="(item, index) in commentList" :key="index" class="content-wrapper">
               <span class="item-icon"/>
@@ -41,6 +48,7 @@
               <span class="send-btn" @click="releaseComments"/>
             </div>
           </div>
+          <span class="bottom-text-des">对网上展馆工作有何意见和建议？</span>
         </div>
       </div>
     </section>
@@ -164,26 +172,26 @@ export default {
       align-items: flex-end;
       flex: 1;
       height: 100%;
-      padding-top: 0.82rem;
       .content-wrapper {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        width: 6.7rem;
+        margin-bottom: 0.5rem;
         .recommend {
-          min-width: 4.98rem;
+          width:100%;
           height: 1.55rem;
           line-height: 1.55rem;
           text-align: center;
-          background: url(/img/recommend-bg.ad9136fb.png) no-repeat;
+          background: url(../../public/img/icons/recommend-bg.png) no-repeat;
           background-size: 100% 100%;
-          margin-bottom: .55rem;
-          color: #CEF9FF;
-          padding: 0 0.3rem;
+          margin-bottom: .5rem;
+          color: #feffff;
           text-shadow: 1px 1px 6px white;
         }
         .recommend-des {
-          margin-bottom: 0.62rem;
+          margin-bottom: 0.4rem;
           font-size: 0.34rem;
           color: #fff;
         }
@@ -193,6 +201,38 @@ export default {
           cursor:pointer;
         }
       }
+      .icon-wrapper {
+        display: flex;
+        flex-direction: row;
+        width:6.7rem;
+        height: 2.5rem;
+        flex-wrap: wrap;
+        margin-top: .3rem;
+        .icon-item {
+          width: 3.3rem;
+          margin-right: .1rem;
+          margin-top: 0.1rem;
+          &:nth-child(2n) {
+           margin-right: 0
+          }
+          &.icon-one {
+            background: url('../../public/img/icons/game.png') no-repeat;
+            background-size: 100% 100%;
+          }
+          &.icon-two {
+            background: url('../../public/img/icons/question.png') no-repeat;
+            background-size: 100% 100%;
+          }
+          &.icon-three {
+            background: url('../../public/img/icons/wallpicture.png') no-repeat;
+            background-size: 100% 100%;
+          }
+          &.icon-four {
+            background: url('../../public/img/icons/more.png') no-repeat;
+            background-size: 100% 100%;
+          }
+        }
+      }
     }
     .right-content-container {
       flex: 1;
@@ -200,17 +240,29 @@ export default {
       padding-left: 0.96rem;
       .talk-content-area {
         position: relative;
-        width: 6.6rem;
+        width: 6.7rem;
         height: 6.27rem;
         padding: 0.6rem 0.2rem;
         box-sizing: border-box;
         background: url("../../public/img/bg/talk-bg.png") no-repeat;
         background-size: 100% 100%;
+        .view-word {
+          position: absolute;
+          font-size: .2rem;
+          top: 0.08rem;
+          color: #fff;
+        }
+        .bottom-text-des {
+          position: absolute;
+          bottom: 0.13rem;
+          font-size: .2rem;
+          color: #fff;
+        }
         .approval-content-area {
           // width:100%;
           display:flex;
           flex-direction: column;
-          height: 4.3rem;
+          height: 4rem;
           overflow: auto;
           &::-webkit-scrollbar {
             /*滚动条整体样式*/
@@ -233,10 +285,10 @@ export default {
             align-items: center;
             margin-bottom: .18rem;
             &.load-more-wrapper {
-              height: .7rem;
+              height: .5rem;
               font-size: .24rem;
-              color: #004878;
-              background: #6FCCE3;
+              color: #2f6c98;
+              background: #cdddff;
               text-align: center;
               line-height: .7rem;
               border-radius: 30px;
@@ -261,8 +313,8 @@ export default {
               width: 5.33rem;
               -webkit-box-sizing: border-box;
               box-sizing: border-box;
-              background: #6FCCE3;
-              color: #004878;
+              background: #cdddff;
+              color: #195780;
               font-size: 0.2rem;
               line-height: 0.3rem;
             }
