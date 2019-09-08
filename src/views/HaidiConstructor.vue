@@ -3,17 +3,25 @@
     <page page-name="HaidiConstructor" no-cutscenes>
       <template>
         <section class="btn-wrapper">
-          <img class="btn-item icon-one" :src="require('../assets/img/icon-constructor-one.png')" @click="getInfo('rubberWterstop')">
+          <!-- <img class="btn-item icon-one" :src="require('../assets/img/icon-constructor-one.png')" @click="getInfo('rubberWterstop')">
           <img class="btn-item icon-two" :src="require('../assets/img/icon-constructor-two.png')" @click="getInfo('semirigidStructure')">
           <img class="btn-item icon-three" :src="require('../assets/img/icon-constructor-three.png')" @click="getInfo('processManagement')">
           <img class="btn-item icon-four" :src="require('../assets/img/icon-constructor-four.png')" @click="getInfo('compositeFoundation')">
-          <img class="btn-item icon-five" :src="require('../assets/img/icon-constructor-five.png')" @click="getInfo('bestProportionOfConcrete')">
-          <div v-if="infoType" class="des-detail">
-            <p class="title">{{ infoDataArr[infoType].title }}</p>
-            <p class="detail">
-              {{ infoDataArr[infoType].info }}
-            </p>
-          </div>
+          <img class="btn-item icon-five" :src="require('../assets/img/icon-constructor-five.png')" @click="getInfo('bestProportionOfConcrete')"> -->
+          <img class="btn-item icon-one" :src="require('../assets/HaidiConstructor/d01.png')" @click="getInfo('rubberWterstop')">
+          <img class="btn-item icon-two" :src="require('../assets/HaidiConstructor/d02.png')" @click="getInfo('semirigidStructure')">
+          <img class="btn-item icon-three" :src="require('../assets/HaidiConstructor/d03.png')" @click="getInfo('processManagement')">
+          <img class="btn-item icon-four" :src="require('../assets/HaidiConstructor/d04.png')" @click="getInfo('compositeFoundation')">
+          <img class="btn-item icon-five" :src="require('../assets/HaidiConstructor/d05.png')" @click="getInfo('bestProportionOfConcrete')">
+          <img class="btn-item icon-six" :src="require('../assets/HaidiConstructor/d06.png')" @click="getInfo('story')">
+          <MaxCard v-if="infoType" class="des-detail" @close="qrCode">
+            <div class="title">
+              <h3>{{ infoDataArr[infoType].title }}</h3>
+              <span class="detail">
+                <p>{{ infoDataArr[infoType].info }}</p>
+              </span>
+            </div>
+          </MaxCard>
           <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$redirect(from)"/>
         </section>
       </template>
@@ -52,7 +60,7 @@ export default {
           绝因海底沉降导致的渗水，而国外一般在20厘米左右。`,
         },
         semirigidStructure: {
-          title: '半刚性结构',
+          title: '半刚性结构：',
           info: `一直以来，沉管制作只有刚性和柔性两种方法，但这两种无
           方法都无法满足港珠澳大桥的要求。于是，中国工程师们创新提出半
           刚性的解决方案。半刚性结构综合了刚性和柔性结构的优点。用积木
@@ -90,13 +98,18 @@ export default {
     getInfo (infoType) {
       this.infoType = infoType
     },
+    qrCode () {
+      this.infoType = false
+    },
   },
 }
 </script>
 <style lang="scss" scoped>
+
   .haidi-constructor {
     height: 100%;
     .btn-wrapper {
+      background: url(../assets/HaidiConstructor/gradient.png);
       height: 100%;
       position: relative;
       .btn-item {
@@ -104,51 +117,41 @@ export default {
       }
       .icon-one {
         width: 2.5rem;
-        height: 0.9rem;
         position: absolute;
         top: 1.7rem;
         left: 2.8rem;
       }
       .icon-two {
         width: 2rem;
-        height: 1.08rem;
         position: absolute;
         top: 1.1rem;
         left: 7rem;
       }
       .icon-three {
         width: 2.6rem;
-        height: .89rem;
         position: absolute;
         top: 1.5rem;
         right: 2rem;
       }
       .icon-four {
         width: 2.5rem;
-        height: 1.37rem;
         position: absolute;
         top: 6.7rem;
         left: 9.5rem;
       }
       .icon-five {
         width: 3.3rem;
-        height: .88rem;
         position: absolute;
         top: 5.1rem;
         right: .8rem;
       }
-      .des-detail {
-        height: 5rem;
-        width: 8em;
-        padding: 0.5rem;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-        background: url(../assets/img/des-wrapper.png) no-repeat;
-        background-size: 100% 100%;
+      .icon-six{
+        width: 3.3rem;
         position: absolute;
-        top: 4rem;
+        top: 8.5rem;
         left: .5rem;
-        color: #fff;
+      }
+      .des-detail {
         .title {
           font-size: .4rem;
           text-align: left;
