@@ -18,6 +18,7 @@ import MiniMap from '@/components/MiniMap'
 
 import video from '@/utils/video'
 import showFrame from '@/utils/frame'
+import showImages from '@/utils/showImages'
 import './scss/reset.scss'
 
 Vue.component(Loader.name, Loader)
@@ -34,6 +35,7 @@ Vue.component(MaxCard.name, MaxCard)
 Vue.component(MiniMap.name, MiniMap)
 Vue.prototype.$video = video
 Vue.prototype.$showFrame = showFrame
+Vue.prototype.$showImages = showImages
 Vue.prototype.$audio = document.createElement('AUDIO')
 Vue.prototype.$redirect = (route) => {
   Vue.prototype.$audio.pause()

@@ -39,8 +39,12 @@ export default {
       return this.images.length
     },
     items () {
-      // const preIdex = (this.index + this.total - 1) % this.total
       return this.images.slice(this.index, this.index + this.size + 1)
+    },
+  },
+  methods: {
+    reset () {
+      this.index = 0
     },
   },
 }

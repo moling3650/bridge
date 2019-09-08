@@ -1,37 +1,37 @@
 import Vue from 'vue'
-import Component from '../components/WebPage.vue'
+import Component from '../components/Album.vue'
 
-const WebPageConstructor = Vue.extend(Component)
+const AlbumConstructor = Vue.extend(Component)
 
 let instance = null
 
 function initInstance () {
-  instance = new WebPageConstructor({
+  instance = new AlbumConstructor({
     el: document.createElement('div'),
   })
   document.querySelector('#app').appendChild(instance.$el)
 }
 
-function _show (src, callback) {
+function _show (images, callback) {
   if (!instance) {
     initInstance()
   }
 
   instance.callback = callback
-  instance.src = src
+  instance.images = images
   instance.show()
 }
 
-function showFrame (src) {
+function showImages (images) {
   if (Vue.prototype.$isServer) {
     return
   }
 
   if (typeof Promise !== 'undefined') {
     return new Promise(resolve => {
-      _show(src, resolve)
+      _show(images, resolve)
     })
   }
 }
 
-export default showFrame
+export default showImages
