@@ -15,10 +15,10 @@ export default {
       links: [
         { top: `1.52rem`, left: `0.22rem`, to: '/Home', text: '起始页' },
         { top: `0.87rem`, left: `0.58rem`, to: '/Roaming', text: '大桥漫游' },
-        { top: `1.44rem`, left: `1.05rem`, to: '/JiuZhouQiao', text: '九洲桥' },
-        { top: `0.37rem`, left: `1.53rem`, to: '/JiangHaiQiao', text: '江海桥' },
-        { top: `1.26rem`, left: `1.77rem`, to: '/ShengTaiBaoHu', text: '生态保护' },
-        { top: `0.91rem`, left: `2.3rem`, to: '/QingZhouQiao', text: '青州桥' },
+        { top: `1.45rem`, left: `1.04rem`, to: '/JiuZhouQiao', text: '九洲桥' },
+        { top: `0.37rem`, left: `1.535rem`, to: '/JiangHaiQiao', text: '江海桥' },
+        { top: `1.26rem`, left: `1.775rem`, to: '/ShengTaiBaoHu', text: '生态保护' },
+        { top: `0.91rem`, left: `2.295rem`, to: '/QingZhouQiao', text: '青州桥' },
         { top: `0.06rem`, left: `2.69rem`, to: '/XiRenGongDao', text: '西人工岛' },
         { top: `0.91rem`, left: `3.08rem`, to: '/HaiDiSuiDao', text: '海底隧道' },
         { top: `0.05rem`, left: `3.75rem`, to: '/DongRenGongDao', text: '东人工岛' },
@@ -60,17 +60,18 @@ export default {
 }
 .btn {
   position: absolute;
-  padding: 0.05rem 0.1rem;
-  border-radius: 0.03rem;
-  font-size: 0.16rem;
+  padding: 0.04rem 0.1rem;
+  border-radius: 0.04rem;
+  font-size: 0.15rem;
   text-decoration: none;
   color: rgba(0, 0, 0, 0);
   cursor: pointer;
   &.current {
     border: 1px solid;
-    background-color: #ff6031;
-    color: #eee;
+    background-color: #F7592E;
+    color: #fff;
     font-weight: bold;
+    box-shadow: 0 2px 4px rgba(255,255,255,.3);
   }
 }
 </style>
