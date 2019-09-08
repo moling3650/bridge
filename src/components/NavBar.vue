@@ -3,7 +3,7 @@
     <transition name="fade">
       <div v-show="always || showBar" class="bar-container" @mouseleave="showBar = false">
         <div class="bar">
-          <div @click="$redirect('/navigation')"/>
+          <div @click="$route.name !== 'navigation' && $redirect('/navigation')"/>
           <div @click="$redirect('/Roaming')"/>
           <div @click="$redirect('/ShiJieZhiZui')"/>
           <div @click="$redirect('/ZhiShiMoFang')"/>
@@ -33,7 +33,6 @@ export default {
   data () {
     return {
       showBar: false,
-      showFrame: false,
     }
   },
 }

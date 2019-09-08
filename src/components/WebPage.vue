@@ -23,9 +23,6 @@ export default {
       this.visiable = true
     },
     close () {
-      if (this.$audio) {
-        this.$audio.play()
-      }
       this.visiable = false
       this.callback()
     },
