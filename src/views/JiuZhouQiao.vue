@@ -11,9 +11,6 @@
         <mini-map/>
       </template>
     </page>
-    <transition name="fade">
-      <Carousel v-show="imgsVisiable" :images="images" @close="hideImages"/>
-    </transition>
   </div>
 </template>
 
@@ -27,7 +24,6 @@ export default {
       showDesc: false,
       imgsVisiable: false,
       opacity: 0,
-      images,
     }
   },
   methods: {
@@ -46,14 +42,11 @@ export default {
       })
     },
     showImages () {
-      this.$audio.pause()
       this.opacity = 5
-      this.imgsVisiable = true
-    },
-    hideImages () {
-      this.opacity = 0
-      this.imgsVisiable = false
-      this.$audio.play()
+      this.$showImages(images).then(() => {
+        this.opacity = 0
+        this.$audio.play()
+      })
     },
   },
 }

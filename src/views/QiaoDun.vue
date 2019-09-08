@@ -7,12 +7,9 @@
     />
     <img class="bg" src="@/assets/img/1-3.png" :style="{ filter: `blur(${show === 'main' ? '0' : '5'}px)` }">
     <div class="btn video-btn" @click="showVideo"/>
-    <div class="btn atlas-btn" @click="show = 'imgs'"/>
+    <div class="btn atlas-btn" @click="showImages"/>
     <div class="btn story-btn" @click="show = 'story'"/>
 
-    <transition name="fade">
-      <Carousel v-show="show === 'imgs'" :images="images" @close="show = 'main'"/>
-    </transition>
     <max-card v-show="show === 'story'" class="card">
       <h3>发现质量问题，一个奖1000块</h3>
       <p>“我跟工区讲，发现质量问题，一个奖1000块……我这一分钱还没奖出去。”</p>
@@ -42,7 +39,6 @@ export default {
   data () {
     return {
       show: 'main',
-      images,
     }
   },
   methods: {
@@ -52,6 +48,12 @@ export default {
         url: require(`../../public/video/dot/1-3-1.mp4`),
       }
       this.$video.play(video).then(() => {
+        this.show = 'main'
+      })
+    },
+    showImages () {
+      this.show = 'images'
+      this.$showImages(images).then(() => {
         this.show = 'main'
       })
     },

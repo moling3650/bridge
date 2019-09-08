@@ -4,7 +4,7 @@
       <template v-if="isLoop" slot-scope="{ isLoop }">
         <nav-bar/>
         <dot :style="{ top: '5rem', left: '7rem' }" text="人工岛透视" @click.native="show('subPage')"/>
-        <dot :style="{ top: '5rem', left: '15rem' }" text="人工岛施工图集" @click.native="show('imgs')"/>
+        <dot :style="{ top: '5rem', left: '15rem' }" text="人工岛施工图集" @click.native="showImages"/>
         <dot :style="{ top: '7rem', left: '9rem' }" text="世界最大钢圆筒的海上之旅" @click.native="showVideo('5-3')"/>
         <dot :style="{ top: '5rem', left: '11.4rem' }" text="世界首创钢圆筒快速筑岛技术" @click.native="showVideo('5-4')"/>
         <dot :style="{ top: '6rem', left: '5rem' }" text="人工岛设计师专访" @click.native="showVideo('5-2')"/>
@@ -30,9 +30,6 @@
       <dot :style="{ top: '7rem', left: '7.5rem' }" text="钢圆筒" @click.native="checkDetail(6)"/>
       <back :style="{ bottom: '0.4rem', right: '0.4rem', width: '1rem', height: '1rem' }" @click.native="hide('subPage')"/>
     </div>
-    <transition name="fade">
-      <Carousel v-show="imgsVisiable" :images="images" @close="hide('imgs')"/>
-    </transition>
   </div>
 </template>
 
@@ -43,12 +40,10 @@ export default {
   name: 'XiRenGongDao',
   data () {
     return {
-      imgsVisiable: false,
       subPageVisiable: false,
       showDetail: false,
       opacity: 0,
       bgi: '',
-      images,
     }
   },
   methods: {
@@ -59,6 +54,13 @@ export default {
       }
       this.opacity = 5
       this.$video.play(video).then(() => {
+        this.opacity = 0
+        this.$audio.play()
+      })
+    },
+    showImages () {
+      this.opacity = 5
+      this.$showImages(images).then(() => {
         this.opacity = 0
         this.$audio.play()
       })

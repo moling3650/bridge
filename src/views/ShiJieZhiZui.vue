@@ -6,7 +6,7 @@
     <div class="anchor" :style="{ width: '2.7rem', height: '2.7rem', top: '1.9rem', left: '5.2rem' }" @click="$redirect('/HaidiSuiDaoChart')">
       <p class="text"><span>世界最长</span><span>海底公路</span><span>沉管隧道</span></p>
     </div>
-    <div class="anchor" :style="{ width: '2.3rem', height: '2.3rem', top: '5.9rem', left: '3.1rem' }">
+    <div class="anchor" :style="{ width: '2.3rem', height: '2.3rem', top: '5.9rem', left: '3.1rem' }" @click="showImages">
       <p class="text"><span>世界最长</span><span>钢铁大桥</span></p>
     </div>
     <div class="anchor" :style="{ width: '2.1rem', height: '2.1rem', top: '4.9rem', left: '8.2rem' }" @click="showVideo('6-2')">
@@ -27,6 +27,8 @@
 </template>
 
 <script>
+import { images } from '@/assets/worldlong/data'
+
 export default {
   name: 'ShiJieZhiZui',
   data () {
@@ -45,6 +47,12 @@ export default {
       }
       this.opacity = 5
       this.$video.play(video).then(() => {
+        this.opacity = 0
+      })
+    },
+    showImages () {
+      this.opacity = 5
+      this.$showImages(images).then(() => {
         this.opacity = 0
       })
     },
