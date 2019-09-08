@@ -1,5 +1,5 @@
 <template>
-  <div id="ShiJieZhiZui">
+  <div id="ShiJieZhiZui" :style="{ filter: `blur(${opacity}px)` }">
     <div class="anchor" :style="{ width: '2.4rem', height: '2.4rem', top: '3rem', left: '1rem' }" @click="$showFrame('http://newscenter.southcn.com/zt/20190902sjbri/index.html')">
       <p class="text"><span>世界最长</span><span>跨海大桥</span></p>
     </div>
@@ -33,7 +33,7 @@ export default {
     return {
       opacity: 0,
       from: {
-        name: this.$route.meta.from || 'navigation',
+        name: 'navigation',
         query: { loop: true },
       },
     }

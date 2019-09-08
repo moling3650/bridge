@@ -5,7 +5,7 @@
       autoplay
       loop
     />
-    <img class="bg" src="@/assets/img/1-3.png">
+    <img class="bg" src="@/assets/img/1-3.png" :style="{ filter: `blur(${show === 'main' ? '0' : '5'}px)` }">
     <div class="btn video-btn" @click="showVideo"/>
     <div class="btn atlas-btn" @click="show = 'imgs'"/>
     <div class="btn story-btn" @click="show = 'story'"/>
