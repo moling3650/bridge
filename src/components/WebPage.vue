@@ -38,5 +38,6 @@ export default {
   width: 19.2rem;
   height: 10.8rem;
   z-index: 9999;
+  background: #fff;
 }
 </style>
