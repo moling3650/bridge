@@ -1,5 +1,5 @@
 <template>
-  <div v-show="visiable" id="Album">
+  <div v-if="visiable" id="Album">
     <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 10000 }" @click.native="close"/>
     <Carousel ref="carousel" :images="images"/>
   </div>
@@ -20,7 +20,7 @@ export default {
       if (this.$audio) {
         this.$audio.pause()
       }
-      this.$refs.carousel.reset()
+      // this.$refs.carousel.reset()
       this.visiable = true
     },
     close () {
