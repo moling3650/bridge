@@ -80,17 +80,19 @@ export default {
     right: 0px;
     bottom: 0px;
   .qr {
-    background: url(./HaidiSuiDaoChart/images/haidi4bg.png);
-    background-size: cover;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 8.2rem;
-    height: 5rem;
-    font-size: 0.2rem;
+    width: 9.2rem;
+    height: 5.4rem;
     padding: 0.5rem;
+    font-size: 0.2rem;
     color:#fff;
+    box-sizing: border-box;
+    background-color: rgba(0,0,0,0);
+    background: url(../assets/img/game_bg.png);
+    background-size: 100% 100%;
     h3 {
         font-size: 0.3rem;
         margin-bottom: 0.3rem;
