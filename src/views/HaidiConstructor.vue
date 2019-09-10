@@ -3,18 +3,13 @@
     <page page-name="HaidiConstructor" no-cutscenes>
       <template>
         <section class="btn-wrapper">
-          <!-- <img class="btn-item icon-one" :src="require('../assets/img/icon-constructor-one.png')" @click="getInfo('rubberWterstop')">
-          <img class="btn-item icon-two" :src="require('../assets/img/icon-constructor-two.png')" @click="getInfo('semirigidStructure')">
-          <img class="btn-item icon-three" :src="require('../assets/img/icon-constructor-three.png')" @click="getInfo('processManagement')">
-          <img class="btn-item icon-four" :src="require('../assets/img/icon-constructor-four.png')" @click="getInfo('compositeFoundation')">
-          <img class="btn-item icon-five" :src="require('../assets/img/icon-constructor-five.png')" @click="getInfo('bestProportionOfConcrete')"> -->
           <img class="btn-item icon-one" :src="require('../assets/HaidiConstructor/d01.png')" @click="getInfo('rubberWterstop')">
           <img class="btn-item icon-two" :src="require('../assets/HaidiConstructor/d02.png')" @click="getInfo('semirigidStructure')">
           <img class="btn-item icon-three" :src="require('../assets/HaidiConstructor/d03.png')" @click="getInfo('processManagement')">
           <img class="btn-item icon-four" :src="require('../assets/HaidiConstructor/d04.png')" @click="getInfo('compositeFoundation')">
           <img class="btn-item icon-five" :src="require('../assets/HaidiConstructor/d05.png')" @click="getInfo('bestProportionOfConcrete')">
           <img class="btn-item icon-six" :src="require('../assets/HaidiConstructor/d06.png')" @click="getInfo('story')">
-          <MaxCard v-if="infoType" class="des-detail" @close="qrCode">
+          <MaxCard v-if="infoType" class="des-detail" @close="closeCard">
             <div class="title">
               <h3>{{ infoDataArr[infoType].title }}</h3>
               <span class="detail">
@@ -98,7 +93,7 @@ export default {
     getInfo (infoType) {
       this.infoType = infoType
     },
-    qrCode () {
+    closeCard () {
       this.infoType = false
     },
   },
