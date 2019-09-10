@@ -21,7 +21,7 @@ export default {
         { top: `0.91rem`, left: `2.295rem`, to: '/QingZhouQiao', text: '青州桥' },
         { top: `0.06rem`, left: `2.69rem`, to: '/XiRenGongDao', text: '西人工岛' },
         { top: `0.91rem`, left: `3.08rem`, to: '/HaiDiSuiDao', text: '海底隧道' },
-        { top: `0.05rem`, left: `3.75rem`, to: '/DongRenGongDao', text: '东人工岛' },
+        { top: `0.05rem`, left: `3.54rem`, to: '/DongRenGongDao', text: '东人工岛' },
         { top: `0.69rem`, left: `4.2rem`, to: '/End', text: '结束页' },
       ],
     }
