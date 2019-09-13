@@ -15,6 +15,7 @@ import Right from '@/components/Right'
 import Carousel from '@/components/Carousel'
 import MaxCard from '@/components/MaxCard'
 import MiniMap from '@/components/MiniMap'
+import GuideButton from '@/components/GuideButton'
 
 import video from '@/utils/video'
 import showFrame from '@/utils/frame'
@@ -33,6 +34,7 @@ Vue.component(Right.name, Right)
 Vue.component(Carousel.name, Carousel)
 Vue.component(MaxCard.name, MaxCard)
 Vue.component(MiniMap.name, MiniMap)
+Vue.component(GuideButton.name, GuideButton)
 Vue.prototype.$video = video
 Vue.prototype.$showFrame = showFrame
 Vue.prototype.$showImages = showImages
