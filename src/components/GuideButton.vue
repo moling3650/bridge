@@ -1,5 +1,5 @@
 <template>
-  <a class="guide-btn" v-bind="$attrs" @click="$emit('click')">
+  <a class="guide-button" v-bind="$attrs" @click="$emit('click')">
     <slot/>
   </a>
 </template>
@@ -11,10 +11,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.guide-btn {
-  position: absolute;
-  bottom: 0.25rem;
-  right: 0.25rem;
+.guide-button {
   display: inline-block;
   padding: 0.15rem 0.25rem;
   border-radius: 0.1rem;
