@@ -20,6 +20,7 @@ export default {
       width: 0,
       height: 0,
       bg: null,
+      mode: '',
     }
   },
   mounted () {
@@ -72,6 +73,11 @@ body {
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
+}
+.rb {
+  position: absolute;
+  right: 0.25rem;
+  bottom: 0.25rem;
 }
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;

@@ -2,26 +2,30 @@
   <div class="Navigation">
     <page ref="page" page-name="Navigation" can-skip autoplay>
       <template v-if="isLoop" slot-scope="{ isLoop }">
-        <nav-link to="Roaming" text="大桥漫游" :style="{ top: '5.7rem', left: '0.95rem' }"/>
-        <nav-link to="JiuZhouQiao" text="九洲航道桥" :style="{ top: '2.05rem', left: '3rem' }"/>
-        <nav-link to="JiangHaiQiao" text="江海航道桥" :style="{ top: '1.3rem', left: '6.4rem' }"/>
-        <nav-link to="ShengTaiBaoHu" text="生态保护" :style="{ top: '5.2rem', left: '4.75rem' }"/>
-        <nav-link to="QingZhouQiao" text="青州航道桥" :style="{ top: '4.5rem', left: '7.85rem' }"/>
-        <nav-link to="XiRenGongDao" text="西人工岛" :style="{ top: '1.6rem', left: '11.65rem' }"/>
-        <nav-link to="HaiDiSuiDao" text="海底隧道" :style="{ top: '5.1rem', left: '12.15rem' }"/>
-        <nav-link to="DongRenGongDao" text="东人工岛" :style="{ top: '2.2rem', left: '14.3rem' }"/>
-        <img class="bg-text" src="@/assets/img/navigation_text.png" alt="背景图">
-        <!-- <div class="text zuh">珠海</div>
-        <div class="text hk">香港</div>
-        <div class="text macau">澳门</div> -->
-        <div class="thinks">
-          特别鸣谢
-          <span class="info">
-            港珠澳大桥管理局：王彦林 唐丽娟 曾小娟 林杨
-            <br>南方日报社：张由琼 徐杰
-          </span>
-        </div>
-        <nav-bar always/>
+        <template v-if="app.mode === 'zy'">
+          <nav-link to="Roaming" text="大桥漫游" :style="{ top: '5.7rem', left: '0.95rem' }"/>
+          <nav-link to="JiuZhouQiao" text="九洲航道桥" :style="{ top: '2.05rem', left: '3rem' }"/>
+          <nav-link to="JiangHaiQiao" text="江海航道桥" :style="{ top: '1.3rem', left: '6.4rem' }"/>
+          <nav-link to="ShengTaiBaoHu" text="生态保护" :style="{ top: '5.2rem', left: '4.75rem' }"/>
+          <nav-link to="QingZhouQiao" text="青州航道桥" :style="{ top: '4.5rem', left: '7.85rem' }"/>
+          <nav-link to="XiRenGongDao" text="西人工岛" :style="{ top: '1.6rem', left: '11.65rem' }"/>
+          <nav-link to="HaiDiSuiDao" text="海底隧道" :style="{ top: '5.1rem', left: '12.15rem' }"/>
+          <nav-link to="DongRenGongDao" text="东人工岛" :style="{ top: '2.2rem', left: '14.3rem' }"/>
+          <img class="bg-text" src="@/assets/img/navigation_text.png" alt="背景图">
+          <nav-bar always/>
+          <div class="thinks">
+            特别鸣谢
+            <span class="info">
+              港珠澳大桥管理局：王彦林 唐丽娟 曾小娟 林杨
+              <br>南方日报社：张由琼 徐杰
+            </span>
+          </div>
+          <guide-button class="rb" @click="$router.push('/')">返回首页</guide-button>
+        </template>
+        <template v-else>
+          <img class="nav-text" src="@/assets/img/navigation-text.png" alt="nav-text">
+          <p class="start"><guide-button>开始参观</guide-button></p>
+        </template>
       </template>
     </page>
   </div>
@@ -30,16 +34,25 @@
 <script>
 export default {
   name: 'Navigation',
+  inject: ['app'],
 }
 </script>
 
 <style lang="scss" scoped>
-.text {
+.nav-text {
+  display: inline-block;
   position: absolute;
-  font-size: 0.48rem;
-  color: #00a4c7;
-  font-weight: bold;
-  opacity: 0.8;
+  top: 0.8rem;
+  left: 1.45rem;
+  width: 16.3rem;
+  height: 7.8rem;
+}
+.start {
+  margin-top: 8.8rem;
+  text-align: center;
+  .guide-button {
+    font-size: 0.48rem;
+  }
 }
 .bg-text {
   position: absolute;
@@ -48,18 +61,6 @@ export default {
   display: inline-block;
   width: 19.2rem;
   height: 10.8rem;
-}
-.zuh {
-  top: 1.8rem;
-  left: 3rem;
-}
-.macau {
-  top: 6rem;
-  left: 0.5rem;
-}
-.hk {
-  top: 3rem;
-  left: 17rem;
 }
 .thinks {
   position: absolute;

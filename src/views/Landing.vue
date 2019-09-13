@@ -1,8 +1,8 @@
 <template>
   <div id="Landing">
     <div class="btn-group">
-      <a class="btn"/>
-      <a class="btn" @click.prevent="$router.push('/navigation')"/>
+      <a class="btn" @click.prevent="gotoNavigation('dl')">导览版</a>
+      <a class="btn" @click.prevent="gotoNavigation('zy')">自游版</a>
     </div>
   </div>
 </template>
@@ -10,6 +10,13 @@
 <script>
 export default {
   name: 'Landing',
+  inject: ['app'],
+  methods: {
+    gotoNavigation (mode) {
+      this.app.mode = mode
+      this.$router.push({ name: 'navigation' })
+    },
+  },
 }
 </script>
 
@@ -28,12 +35,14 @@ export default {
     text-align: center;
     .btn {
       display: inline-block;
-      width: 2.8rem;
+      width: 2.75rem;
       height: 1rem;
       margin: 0 0.8rem;
+      text-indent: -99999px;
       cursor: pointer;
       &:first-child {
         background-image: url(../assets/img/btn-dl.png);
+        background-repeat: no-repeat;
         background-size: contain;
       }
       &:last-child {
