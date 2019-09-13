@@ -150,16 +150,6 @@ const router = new Router({
         import(/* webpackChunName: "Views"*/ './views/QiaoDun.vue'),
     },
     {
-      path: '/JianSheZhe',
-      name: 'JianSheZhe',
-      component: () =>
-        import(/* webpackChunName: "Views"*/ './views/JianSheZhe.vue'),
-      beforeEnter: (to, from, next) => {
-        to.meta.from = from.name
-        next()
-      },
-    },
-    {
       path: '/ShiJieZhiZui',
       name: 'ShiJieZhiZui',
       component: () =>
