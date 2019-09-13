@@ -30,7 +30,9 @@ const router = new Router({
       component: () =>
         import(/* webpackChunkName: "Views" */ './views/Navigation.vue'),
       beforeEnter: (to, from, next) => {
-        if (from.name !== 'home') {
+        if (from.name === 'home' || from.name === 'Landing') {
+          to.query.loop = false
+        } else {
           to.query.loop = true
         }
         next()
