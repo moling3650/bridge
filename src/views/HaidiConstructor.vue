@@ -24,7 +24,7 @@
               </span>
             </div>
           </MaxCard>
-          <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$redirect(from)"/>
+          <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$router.back()"/>
         </section>
       </template>
     </page>

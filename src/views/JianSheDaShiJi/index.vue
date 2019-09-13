@@ -19,7 +19,7 @@
       <left v-show="index > 0" :style="{ width: '1.1rem', height: '2rem', top: '4.3rem', left: '0.8rem'}" @click="index--"/>
       <right v-show="index < total - size" :style="{ width: '1.1rem', height: '2rem', top: '4.3rem', right: '0.8rem'}" @click="index++"/>
     </ul>
-    <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$router.push({ name: 'DongRenGongDao', query: { loop: true } })"/>
+    <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$router.back()"/>
   </div>
 </template>
 

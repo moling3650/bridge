@@ -1,6 +1,6 @@
 <template>
   <div class="mchart-container ">
-    <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 101 }" @click.native="$redirect(from)"/>
+    <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 101 }" @click.native="$router.back()"/>
     <div class="mchart core">
       <div class="lengtmaxbut" :class="{ curre: direction === 'left' }" @click="checkLeft">世界海底沉管隧道长度对比</div>
       <div class="depthmaxbut" :class="{ curre: direction === 'right' }" @click="checkRight">世界海底沉管隧道深度对比</div>
@@ -47,7 +47,7 @@
         <p>2018年10月通车成为世界最长海底沉管隧道，是第二名的1.6倍。</p>
       </div>
       <div id="dtipsmian" ref="dtipsmian">
-        <p>为保证通行30万吨轮船，港珠澳大桥沉管隧道需要埋到海床以下20多米，是全世界埋进海床最深的沉管隧道。</p>
+        <p>为保证30万吨轮船的通航，港珠澳大桥沉管隧道最大埋深40多米，需要埋置到海床下20多米，是<strong>世界埋置海床最深的沉管隧道。</strong></p>
       </div>
 
       <div id="xline" ref="xline"/>
@@ -71,10 +71,6 @@ export default {
   name: 'HaidiSuiDaoChart',
   data () {
     return {
-      from: {
-        name: this.$route.meta.from || 'navigation',
-        query: { loop: true },
-      },
       nums: ['', '', '', '', ''],
       marginLeft: '2.15rem',
       direction: '',

@@ -22,7 +22,7 @@
       <p class="text"><span>世界首创</span><span>钢圆筒快速</span><span>筑岛技术</span></p>
     </div>
     <nav-bar/>
-    <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 1000 }" @click.native="$router.push(from)"/>
+    <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 1000 }" @click.native="$router.back()"/>
   </div>
 </template>
 
