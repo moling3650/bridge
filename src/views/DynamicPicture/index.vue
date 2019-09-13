@@ -11,7 +11,7 @@
         <right @click="slicebox && slicebox.next()"/>
       </div>
     </div>
-    <back :style="{ top: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$redirect('/DongRenGongDao')"/>
+    <back :style="{ top: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$router.back()"/>
   </div>
 </template>
 <script>

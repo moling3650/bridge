@@ -23,8 +23,8 @@
         </div>
         <ul class="icon-wrapper">
           <li class="icon-item icon-one"/>
-          <li class="icon-item icon-two"/>
-          <li class="icon-item icon-three"/>
+          <li class="icon-item icon-two" @click="$router.push('/ZhiShiMoFang')"/>
+          <li class="icon-item icon-three" @click="$router.push('/DynamicPicture')"/>
           <li class="icon-item icon-four"/>
         </ul>
       </div>
@@ -53,7 +53,7 @@
       </div>
     </section>
     <nav-bar/>
-    <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 1000 }" @click.native="$router.push(from)"/>
+    <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 1000 }" @click.native="$router.back()"/>
   </div>
 </template>
 
@@ -212,6 +212,7 @@ export default {
           width: 3.3rem;
           margin-right: .1rem;
           margin-top: 0.1rem;
+          cursor: pointer;
           &:nth-child(2n) {
            margin-right: 0
           }

@@ -14,7 +14,7 @@
         <span class="text-des">知识魔方</span> -->
       </div>
       <template v-if="!dialogVisiable">
-        <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$router.push({ name: 'navigation', query: { loop: true } })"/>
+        <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$router.back()"/>
         <section class="content-display-wrapper">
           <div class="tech-container">
             <ul class="tech-list" :style="{ width: `${col * 206}px` }">

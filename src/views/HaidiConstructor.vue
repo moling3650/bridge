@@ -17,7 +17,7 @@
               </span>
             </div>
           </MaxCard>
-          <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$redirect(from)"/>
+          <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$router.back()"/>
         </section>
       </template>
     </page>
@@ -29,10 +29,6 @@ export default {
   name: 'HaidiConstructor',
   data () {
     return {
-      from: {
-        name: this.$route.meta.from || 'navigation',
-        query: { loop: true },
-      },
       infoDataArr: {
         rubberWterstop: {
           title: '橡胶止水带：',
