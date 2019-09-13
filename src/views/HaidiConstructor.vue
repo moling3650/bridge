@@ -15,9 +15,11 @@
               <h3 v-if="typeof infoData.info === 'string'">{{ infoData.title }}</h3>
               <span class="detail">
                 <p v-if="typeof infoData.info === 'string'">{{ infoData.info }}</p>
-                <div v-for="(item,index) in infoData.info" v-if="typeof infoData.info === 'object'" :key="index">
-                  <h3>{{ item.title }}</h3>
-                  <div>{{ item.content }}</div>
+                <div v-if="typeof infoData.info === 'object'">
+                  <div v-for="(item,index) in infoData.info" :key="index">
+                    <h3>{{ item.title }}</h3>
+                    <div>{{ item.content }}</div>
+                  </div>
                 </div>
               </span>
             </div>
