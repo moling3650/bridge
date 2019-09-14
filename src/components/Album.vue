@@ -1,7 +1,8 @@
 <template>
   <div v-if="visiable" id="Album">
-    <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 10000 }" @click.native="close"/>
     <Carousel ref="carousel" :images="images"/>
+    <back v-if="mode === 'zy'" :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 10000 }" @click.native="close"/>
+    <guide-button v-if="mode === 'dl'" class="rb" @click="close">继续</guide-button>
   </div>
 </template>
 
@@ -13,14 +14,14 @@ export default {
       visiable: false,
       images: [],
       callback: {},
+      mode: 'zy',
     }
   },
   methods: {
     show () {
-      if (this.$audio) {
+      if (this.$audio && this.mode === 'zy') {
         this.$audio.pause()
       }
-      // this.$refs.carousel.reset()
       this.visiable = true
     },
     close () {

@@ -78,7 +78,7 @@ export default {
     showImages () {
       this.guideBtnVisiable = false
       this.opacity = 5
-      this.$showImages(images).then(() => {
+      this.$showImages(images, this.app.mode).then(() => {
         this.guideBtnVisiable = true
         this.opacity = 0
         if (this.app.mode === 'zy') {

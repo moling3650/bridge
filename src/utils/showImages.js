@@ -12,24 +12,25 @@ function initInstance () {
   document.querySelector('#app').appendChild(instance.$el)
 }
 
-function _show (images, callback) {
+function _show (images, mode, callback) {
   if (!instance) {
     initInstance()
   }
 
   instance.callback = callback
+  instance.mode = mode
   instance.images = images
   instance.show()
 }
 
-function showImages (images) {
+function showImages (images, mode = 'zy') {
   if (Vue.prototype.$isServer) {
     return
   }
 
   if (typeof Promise !== 'undefined') {
     return new Promise(resolve => {
-      _show(images, resolve)
+      _show(images, mode, resolve)
     })
   }
 }
