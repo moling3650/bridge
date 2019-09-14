@@ -21,8 +21,13 @@
     <div class="anchor" :style="{ width: '2.6rem', height: '2.6rem', top: '3.4rem', right: '0.6rem' }" @click="showVideo('5-4')">
       <p class="text"><span>世界首创</span><span>钢圆筒快速</span><span>筑岛技术</span></p>
     </div>
-    <nav-bar/>
-    <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 1000 }" @click.native="$router.back()"/>
+    <template v-if="app.mode === 'zy'">
+      <nav-bar/>
+      <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 1000 }" @click.native="$router.back()"/>
+    </template>
+    <template v-if="app.mode === 'dl'">
+      <guide-button v-show="guideBtnVisiable" class="rb" @click="$router.push('/Experience')">继续</guide-button>
+    </template>
   </div>
 </template>
 
@@ -31,28 +36,30 @@ import { images } from '@/assets/worldlong/data'
 
 export default {
   name: 'ShiJieZhiZui',
+  inject: ['app'],
   data () {
     return {
       opacity: 0,
-      from: {
-        name: 'navigation',
-        query: { loop: true },
-      },
+      guideBtnVisiable: true,
     }
   },
   methods: {
     showVideo (filename) {
+      this.guideBtnVisiable = false
       const video = {
         url: require(`../../public/video/dot/${filename}.mp4`),
       }
       this.opacity = 5
-      this.$video.play(video).then(() => {
+      this.$video.play(video, this.app.mode).then(() => {
+        this.guideBtnVisiable = true
         this.opacity = 0
       })
     },
     showImages () {
+      this.guideBtnVisiable = false
       this.opacity = 5
       this.$showImages(images).then(() => {
+        this.guideBtnVisiable = true
         this.opacity = 0
       })
     },
