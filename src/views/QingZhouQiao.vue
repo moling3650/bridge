@@ -26,9 +26,9 @@ export default {
       opacity: 0,
       guideBtnVisiable: true,
       guideTextList: [
-        '世界最大钢桥面铺装',
-        '港珠澳大桥的护栏有多牛',
-        '继续',
+        '世界最大钢桥面铺装 〉',
+        '港珠澳大桥的护栏有多牛 〉',
+        '继续 〉',
       ],
       step: 0,
     }

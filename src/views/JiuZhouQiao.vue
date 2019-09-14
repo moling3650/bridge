@@ -31,9 +31,9 @@ export default {
       opacity: 0,
       guideBtnVisiable: true,
       guideTextList: [
-        '港珠澳大桥桥墩安装',
-        '港珠澳大桥的钢箱梁制造',
-        '继续',
+        '港珠澳大桥桥墩安装 〉',
+        '港珠澳大桥的钢箱梁制造 〉',
+        '继续 〉',
       ],
       step: this.$route.meta.step || 0,
     }

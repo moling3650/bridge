@@ -27,8 +27,8 @@ export default {
       opacity: 0,
       guideBtnVisiable: true,
       guideTextList: [
-        '世界最大“海豚”是怎么吊装的',
-        '继续',
+        '世界最大“海豚”是怎么吊装的 〉',
+        '继续 〉',
       ],
       step: 0,
     }

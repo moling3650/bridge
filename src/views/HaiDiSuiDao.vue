@@ -54,11 +54,11 @@ export default {
       chartsVisiable: false,
       guideBtnVisiable: true,
       guideTextList: [
-        '世界主要海底沉管隧道对比',
-        '世界最重沉管是怎么建成的',
-        '沉管对接',
-        '港珠澳大桥海底沉管的创新突破',
-        '主体桥梁',
+        '世界主要海底沉管隧道对比 〉',
+        '世界最重沉管是怎么建成的 〉',
+        '港珠澳大桥沉管的浮运和安装 〉',
+        '港珠澳大桥海底沉管的创新突破 〉',
+        '港珠澳大桥主体桥梁工程 〉',
       ],
       step: this.$route.meta.step || 0,
     }
