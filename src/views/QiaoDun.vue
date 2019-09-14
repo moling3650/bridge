@@ -19,9 +19,10 @@
         </div>
       </div>
     </max-card>
-    <back v-show="show === 'story'" :style="{ top: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 101 }" @click.native="show = 'main'"/>
+    <back v-show="show === 'story'" :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 101 }" @click.native="show = 'main'"/>
 
-    <back v-show="show === 'main'" :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$router.back()"/>
+    <back v-if="show === 'main' && app.mode === 'zy'" :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$router.back()"/>
+    <guide-button v-if="show === 'main' && app.mode === 'dl'" class="rb" @click.native="$router.back()">继续</guide-button>
   </div>
 </template>
 
@@ -31,6 +32,7 @@ import stories from '@/data/1-3-3'
 
 export default {
   name: 'QiaoDun',
+  inject: ['app'],
   data () {
     return {
       show: 'main',
@@ -43,7 +45,7 @@ export default {
       const video = {
         url: require(`../../public/video/dot/1-3-1.mp4`),
       }
-      this.$video.play(video).then(() => {
+      this.$video.play(video, 'zy').then(() => {
         this.show = 'main'
       })
     },

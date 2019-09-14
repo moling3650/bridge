@@ -46,6 +46,7 @@ const router = new Router({
       beforeEnter: (to, from, next) => {
         if (from.name === 'QiaoDun') {
           to.meta.audioReplay = true
+          to.meta.step = 1
         }
         next()
       },
