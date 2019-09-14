@@ -81,7 +81,7 @@ export default {
         url: require(`../../public/video/dot/${filename}.mp4`),
       }
       this.opacity = 5
-      this.$video.play(video).then(() => {
+      this.$video.play(video, this.app.mode).then(() => {
         this.guideBtnVisiable = true
         this.opacity = 0
         if (this.app.mode === 'zy') {

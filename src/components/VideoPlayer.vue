@@ -1,6 +1,7 @@
 <template>
   <div v-show="show" class="v-player-mask">
-    <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 10000 }" @click.native="close"/>
+    <back v-if="mode === 'zy'" :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 10000 }" @click.native="close"/>
+    <guide-button v-if="mode === 'dl'" class="rb" @click="close">继续</guide-button>
     <div class="v-player-wrap core">
       <v-player ref="player" class="v-player" :options="options"/>
       <div class="core2"/>
@@ -14,12 +15,14 @@ import 'vue-dplayer/dist/vue-dplayer.css'
 
 export default {
   name: 'VideoPlayer',
+  inject: ['app'],
   components: {
     vPlayer: VueDPlayer,
   },
   data () {
     return {
       show: false,
+      mode: '',
       options: {
         autoplay: true,
         theme: '#fadfa3',
@@ -42,7 +45,8 @@ export default {
     })
   },
   methods: {
-    play (video) {
+    play (video, mode) {
+      this.mode = mode
       this.show = true
       this.$refs.player.dp.switchVideo(video)
       this.$refs.player.dp.video.load()

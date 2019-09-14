@@ -25,7 +25,7 @@ function initInstance () {
   document.querySelector('#app').appendChild(instance.$el)
 }
 
-function _play (video, callback) {
+function _play (video, mode, callback) {
   if (!instance) {
     initInstance()
   }
@@ -33,17 +33,17 @@ function _play (video, callback) {
     instance[prop] = defaultProps[prop]
   }
   instance.callback = callback
-  instance.play(video)
+  instance.play(video, mode)
 }
 
-function playVideo (video) {
+function playVideo (video, mode) {
   if (Vue.prototype.$isServer) {
     return
   }
 
   if (typeof Promise !== 'undefined') {
     return new Promise(resolve => {
-      _play(video, resolve)
+      _play(video, mode, resolve)
     })
   }
 }
