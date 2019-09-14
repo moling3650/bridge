@@ -2,10 +2,15 @@
   <div id="ShengTaiBaoHu">
     <page page-name="ShengTaiBaoHu" autoplay can-skip :opacity="opacity">
       <template v-if="isLoop" slot-scope="{ isLoop }">
-        <nav-bar/>
-        <dot :style="{ top: '4rem', left: '12rem' }" text="保护海豚" @click.native="showVideo('3-1')"/>
-        <dot :style="{ top: '3.6rem', left: '15.4rem' }" text="一图读懂生态保护" @click.native="showImg"/>
-        <mini-map/>
+        <template v-if="app.mode === 'zy'">
+          <dot :style="{ top: '4rem', left: '12rem' }" text="保护海豚" @click.native="showVideo('3-1')"/>
+          <dot :style="{ top: '3.6rem', left: '15.4rem' }" text="一图读懂生态保护" @click.native="showImg"/>
+          <nav-bar/>
+          <mini-map/>
+        </template>
+        <template v-if="app.mode === 'dl'">
+          <guide-button v-show="guideBtnVisiable" class="rb" @click="nextStep">{{ guideTextList[step] }}</guide-button>
+        </template>
       </template>
     </page>
     <back v-show="show" :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="hide"/>
@@ -27,6 +32,7 @@
 <script>
 export default {
   name: 'ShengTaiBaoHu',
+  inject: ['app'],
   data () {
     return {
       opacity: 0,
@@ -34,30 +40,57 @@ export default {
       left: 0,
       screenWidth: document.body.clientWidth, // body宽度
       isShow: true,
+      guideBtnVisiable: true,
+      guideTextList: [
+        '中华白海豚“不搬家” 〉',
+        '港珠澳大桥生态保护做了啥 〉',
+        '继续 〉',
+      ],
+      step: 0,
     }
   },
   methods: {
+    nextStep () {
+      const stepFun = [
+        () => this.showVideo('3-1'),
+        () => this.showImg(),
+        () => this.$router.push('/ShengTaiBaoHu'),
+      ]
+      stepFun[this.step]()
+      this.step++
+      if (this.step >= this.guideTextList.length) {
+        this.guideBtnVisiable = false
+      }
+    },
     showVideo (filename) {
+      this.guideBtnVisiable = false
+      this.$audio.pause()
       const video = {
         url: require(`../../public/video/dot/${filename}.mp4`),
       }
-      this.$audio.pause()
       this.opacity = 5
-      this.$video.play(video).then(() => {
+      this.$video.play(video, this.app.mode).then(() => {
+        this.guideBtnVisiable = true
         this.opacity = 0
-        this.$audio.play()
+        if (this.app.mode === 'zy') {
+          this.$audio.play()
+        }
       })
     },
     showImg () {
       this.$audio.pause()
       this.opacity = 5
       this.show = true
+      this.guideBtnVisiable = false
     },
     hide () {
-      this.$audio.play()
+      if (this.app.mode === 'zy') {
+        this.$audio.play()
+      }
       this.opacity = 0
       this.show = false
       this.left = 0
+      this.guideBtnVisiable = true
     },
     clickLeft () {
       this.left += 8
@@ -68,6 +101,7 @@ export default {
   },
 }
 </script>
+
 <style lang="scss" scoped>
 .slider {
   position: absolute;
