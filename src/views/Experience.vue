@@ -4,6 +4,7 @@
       <a class="btn"/>
       <a class="btn" @click="$router.push('/Roaming')"/>
     </div>
+    <guide-button class="rb" @click="$router.push('/ExhibitionRoom')">继续</guide-button>
   </div>
 </template>
 
@@ -18,10 +19,11 @@ export default {
   position: relative;
   width: 19.2rem;
   height: 10.8rem;
-  padding-top: 2.2rem;
   background-image: url(../../public/img/bg/Experience.jpg);
   background-size: cover;
   .btn-wrap {
+    position: relative;
+    top: 2.2rem;
     height: 5.75rem;
     text-align: center;
     .btn {
