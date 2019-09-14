@@ -123,6 +123,18 @@ const router = new Router({
         import(/* webpackChunkName: "Views" */ './views/NavEnd.vue'),
     },
     {
+      path: '/Experience',
+      name: 'Experience',
+      component: () =>
+        import(/* webpackChunkName: "Views" */ './views/Experience.vue'),
+    },
+    {
+      path: '/ExhibitionRoom',
+      name: 'ExhibitionRoom',
+      component: () =>
+        import(/* webpackChunkName: "Views" */ './views/ExhibitionRoom.vue'),
+    },
+    {
       path: '/JianSheDaShiJi',
       name: 'JianSheDaShiJi',
       component: () =>

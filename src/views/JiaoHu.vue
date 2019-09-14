@@ -52,7 +52,7 @@
         </div>
       </div>
     </section>
-    <nav-bar/>
+    <nav-bar v-if="app.mode === 'zy'"/>
     <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 1000 }" @click.native="$router.back()"/>
   </div>
 </template>
@@ -61,12 +61,9 @@
 import { InteractiveApiFun } from '../service/webapi/apiFun'
 export default {
   name: 'JiaoHu',
+  inject: ['app'],
   data () {
     return {
-      from: {
-        name: this.$route.meta.from || 'navigation',
-        query: { loop: true },
-      },
       consent_count: 0,
       message: '',
       currentIndex: 0,

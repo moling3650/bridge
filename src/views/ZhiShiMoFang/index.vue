@@ -40,7 +40,7 @@
           <left v-show="index > 0" class="left" @click="index -= 1"/>
           <right v-show="index < data.length / size - 1" class="right" @click="index += 1"/>
         </section>
-        <nav-bar/>
+        <nav-bar v-if="app.mode === 'zy'"/>
       </template>
       <transition name="fade">
         <div v-if="dialogVisiable" class="dialog">
@@ -65,8 +65,10 @@
 
 <script>
 import data from './data.js'
+
 export default {
   name: 'ZhiShiMoFang',
+  inject: ['app'],
   data () {
     return {
       dialogVisiable: false,
