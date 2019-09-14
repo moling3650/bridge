@@ -54,7 +54,7 @@ export default {
       const stepFun = [
         () => this.showVideo('3-1'),
         () => this.showImg(),
-        () => this.$router.push('/ShengTaiBaoHu'),
+        () => this.$router.push('/NavEnd'),
       ]
       stepFun[this.step]()
       this.step++

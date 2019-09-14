@@ -117,6 +117,12 @@ const router = new Router({
         import(/* webpackChunkName: "Views" */ './views/End.vue'),
     },
     {
+      path: '/NavEnd',
+      name: 'NavEnd',
+      component: () =>
+        import(/* webpackChunkName: "Views" */ './views/NavEnd.vue'),
+    },
+    {
       path: '/JianSheDaShiJi',
       name: 'JianSheDaShiJi',
       component: () =>
