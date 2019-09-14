@@ -24,7 +24,7 @@
         </template>
         <template v-else>
           <img class="nav-text" src="@/assets/img/navigation-text.png" alt="nav-text">
-          <p class="start"><guide-button>开始参观</guide-button></p>
+          <p class="start"><guide-button @click="$router.push('/XiRenGongDao')">开始参观</guide-button></p>
         </template>
       </template>
     </page>
