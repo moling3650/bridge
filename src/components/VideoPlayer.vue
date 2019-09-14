@@ -15,7 +15,6 @@ import 'vue-dplayer/dist/vue-dplayer.css'
 
 export default {
   name: 'VideoPlayer',
-  inject: ['app'],
   components: {
     vPlayer: VueDPlayer,
   },
