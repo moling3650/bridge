@@ -10,7 +10,11 @@
 <script>
 export default {
   name: 'Landing',
-  inject: ['app'],
+  inject: {
+    app: {
+      default: {},
+    },
+  },
   methods: {
     gotoNavigation (mode) {
       this.app.mode = mode

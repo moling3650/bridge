@@ -24,7 +24,8 @@
               </span>
             </div>
           </MaxCard>
-          <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$router.back()"/>
+          <back v-if="app.mode === 'zy'" :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$router.back()"/>
+          <guide-button v-if="app.mode === 'dl'" class="rb" @click="$router.back()">继续</guide-button>
         </section>
       </template>
     </page>
@@ -35,6 +36,13 @@
 import infoDataArr from '@/data/7-3'
 export default {
   name: 'HaidiConstructor',
+  inject: {
+    app: {
+      default () {
+        return {}
+      },
+    },
+  },
   data () {
     return {
       from: {

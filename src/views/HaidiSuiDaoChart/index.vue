@@ -1,6 +1,7 @@
 <template>
   <div class="mchart-container ">
-    <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 101 }" @click.native="$router.back()"/>
+    <back v-if="app.mode === 'zy'" :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 101 }" @click.native="$router.back()"/>
+    <guide-button v-if="app.mode === 'dl'" class="rb" @click="$router.back()">继续</guide-button>
     <div class="mchart core">
       <div class="lengtmaxbut" :class="{ curre: direction === 'left' }" @click="checkLeft">世界海底沉管隧道长度对比</div>
       <div class="depthmaxbut" :class="{ curre: direction === 'right' }" @click="checkRight">世界海底沉管隧道深度对比</div>
@@ -69,6 +70,13 @@ import { TimelineMax } from 'gsap/TweenMax'
 
 export default {
   name: 'HaidiSuiDaoChart',
+  inject: {
+    app: {
+      default () {
+        return {}
+      },
+    },
+  },
   data () {
     return {
       nums: ['', '', '', '', ''],

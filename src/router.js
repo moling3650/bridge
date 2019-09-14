@@ -86,8 +86,13 @@ const router = new Router({
       component: () =>
         import(/* webpackChunkName: "Views" */ './views/HaiDiSuiDao.vue'),
       beforeEnter: (to, from, next) => {
-        if (from.name === 'HaidiSuiDaoChart' || from.name === 'HaidiConstructor') {
+        if (from.name === 'HaidiSuiDaoChart') {
           to.meta.audioReplay = true
+          to.meta.step = 1
+        }
+        if (from.name === 'HaidiConstructor') {
+          to.meta.audioReplay = true
+          to.meta.step = 4
         }
         next()
       },

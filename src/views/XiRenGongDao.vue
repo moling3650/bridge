@@ -73,6 +73,9 @@ export default {
       ]
       stepFun[this.step]()
       this.step++
+      if (this.step >= this.guideTextList.length) {
+        this.guideBtnVisiable = false
+      }
     },
     showVideo (filename) {
       this.guideBtnVisiable = false

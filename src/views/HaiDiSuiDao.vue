@@ -2,19 +2,23 @@
   <div id="HaiDiSuiDao">
     <page page-name="HaiDiSuiDao" autoplay can-skip :opacity="opacity">
       <template v-if="isLoop" slot-scope="{ isLoop }">
-        <dot :style="{ top: '5.2rem', left: '3rem' }" text="世界最长、最深的海底沉管隧道" @click.native="$redirect('/HaidiSuiDaoChart')"/>
-        <dot :style="{ top: '5.7rem', left: '6.7rem' }" text="世界最重沉管" @click.native="showVideo('6-2')"/>
-        <dot :style="{ top: '5.7rem', left: '10.7rem' }" text="世界首次实现沉管隧道滴水不漏" @click.native="$redirect('/HaidiConstructor')"/>
-        <dot :style="{ top: '5.6rem', left: '15.6rem' }" text="世界最精准的沉管对接" @click.native="show('qrCode')"/>
-        <dot :style="{ top: '4.4rem', left: '15.9rem' }" text="建设者专访：岛隧项目总工程师 林鸣" @click.native="showVideo('6-5')"/>
-        <dot :style="{ top: '7.5rem', left: '13rem' }" text="建设者专访：混凝土超级配方打造者 张宝兰" @click.native="showVideo('6-6')"/>
-        <nav-bar/>
-        <mini-map/>
+        <template v-if="app.mode === 'zy'">
+          <dot :style="{ top: '5.2rem', left: '3rem' }" text="世界最长、最深的海底沉管隧道" @click.native="$redirect('/HaidiSuiDaoChart')"/>
+          <dot :style="{ top: '5.7rem', left: '6.7rem' }" text="世界最重沉管" @click.native="showVideo('6-2')"/>
+          <dot :style="{ top: '5.7rem', left: '10.7rem' }" text="世界首次实现沉管隧道滴水不漏" @click.native="$redirect('/HaidiConstructor')"/>
+          <dot :style="{ top: '5.6rem', left: '15.6rem' }" text="世界最精准的沉管对接" @click.native="show('qrCode')"/>
+          <dot :style="{ top: '4.4rem', left: '15.9rem' }" text="建设者专访：岛隧项目总工程师 林鸣" @click.native="showVideo('6-5')"/>
+          <dot :style="{ top: '7.5rem', left: '13rem' }" text="建设者专访：混凝土超级配方打造者 张宝兰" @click.native="showVideo('6-6')"/>
+          <nav-bar/>
+          <mini-map/>
+        </template>
+        <template v-if="app.mode === 'dl'">
+          <guide-button v-show="guideBtnVisiable" class="rb" @click="nextStep">{{ guideTextList[step] }}</guide-button>
+        </template>
       </template>
     </page>
     <transition name="fade">
-      <!-- <MaxCard v-show="qrCodeVisiable" @close="hide('qrCode')"> -->
-      <div v-show="qrCodeVisiable" class="maxcard" @click="qrCode">
+      <div v-show="qrCodeVisiable" class="maxcard">
         <div class="qr">
           <h3>海底沉管对接小游戏，等你挑战！</h3>
           <span class="left">
@@ -26,8 +30,9 @@
             <img src="@/assets/img/haidi4.png" alt>
           </div>
         </div>
+        <back v-if="app.mode === 'zy'" :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 10000 }" @click.native="hide('qrCode')"/>
+        <guide-button v-if="app.mode === 'dl'" class="rb" @click="hide('qrCode')">继续</guide-button>
       </div>
-      <!-- </MaxCard> -->
     </transition>
   </div>
 </template>
@@ -35,38 +40,74 @@
 <script>
 export default {
   name: 'HaiDiSuiDao',
+  inject: {
+    app: {
+      default () {
+        return {}
+      },
+    },
+  },
   data () {
     return {
       opacity: 0,
       qrCodeVisiable: false,
       chartsVisiable: false,
+      guideBtnVisiable: true,
+      guideTextList: [
+        '世界主要海底沉管隧道对比',
+        '世界最重沉管是怎么建成的',
+        '沉管对接',
+        '港珠澳大桥海底沉管的创新突破',
+        '主体桥梁',
+      ],
+      step: this.$route.meta.step || 0,
     }
   },
   methods: {
+    nextStep () {
+      const stepFun = [
+        () => this.$redirect('/HaidiSuiDaoChart'),
+        () => this.showVideo('6-2'),
+        () => this.show('qrCode'),
+        () => this.$redirect('/HaidiConstructor'),
+        () => this.$router.push('/JiuZhouQiao'),
+      ]
+      stepFun[this.step]()
+      this.step++
+      if (this.step >= this.guideTextList.length) {
+        this.guideBtnVisiable = false
+      }
+    },
     showVideo (filename) {
+      this.guideBtnVisiable = false
       this.$audio.pause()
       const video = {
         url: require(`../../public/video/dot/${filename}.mp4`),
       }
       this.opacity = 5
-      this.$video.play(video).then(() => {
+      this.$video.play(video, this.app.mode).then(() => {
+        this.guideBtnVisiable = true
         this.opacity = 0
-        this.$audio.play()
+        if (this.app.mode === 'zy') {
+          this.$audio.play()
+        }
       })
     },
     show (key) {
-      this.$audio.pause()
+      if (this.app.mode === 'zy') {
+        this.$audio.pause()
+      }
       this.opacity = 5
       this[`${key}Visiable`] = true
+      this.guideBtnVisiable = false
     },
     hide (key) {
-      this.$audio.play()
+      if (this.app.mode === 'zy') {
+        this.$audio.play()
+      }
       this.opacity = 0
       this[`${key}Visiable`] = false
-    },
-    qrCode () {
-      this.qrCodeVisiable = false
-      this.hide(false)
+      this.guideBtnVisiable = true
     },
   },
 }
