@@ -102,11 +102,13 @@ export default {
     },
   },
   mounted () {
-    if (this.$route.meta.audioReplay) {
-      this.$audio.play()
-    } else if (this.hadAudio) {
-      this.$audio.src = require(`../../public/audio/${this.pageName}.mp3`)
-      this.$audio.load()
+    if (this.app.mode === 'zy') {
+      if (this.$route.meta.audioReplay) {
+        this.$audio.play()
+      } else if (this.hadAudio) {
+        this.$audio.src = require(`../../public/audio/${this.pageName}.mp3`)
+        this.$audio.load()
+      }
     }
     this.isLoop = this.$route.query.loop
     if (this.app.bg) {
@@ -148,7 +150,7 @@ export default {
       }
       this.isLoop = true
       this.$nextTick(() => {
-        if (this.hadAudio) {
+        if (this.app.mode === 'zy' && this.hadAudio) {
           this.$audio.play()
         }
         this.$refs.LoopVideo.play()
