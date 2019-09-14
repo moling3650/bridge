@@ -30,6 +30,8 @@ export default {
   z-index: 11;
 
   .main {
+    max-height: 6rem;
+    overflow: auto;
     width: 8.6rem;
     // height: 5rem;
     position: absolute;
@@ -45,24 +47,29 @@ export default {
       rgba(101, 172, 218, 0.9),
       #6fcaee
     );
-    // .close {
-    //   position: absolute;
-    //   top: -1rem;
-    //   right: -1.5rem;
-    //   display: block;
-    //   width: 1rem;
-    //   height: 1rem;
-    //   background-image: url(../assets/img/back.png);
-    //   background-size: cover;
-    //   cursor: pointer;
-    // }
+
+    &::-webkit-scrollbar {
+    /*滚动条整体样式*/
+      width: 12px; /*高宽分别对应横竖滚动条的尺寸*/
+      height: 12px;
+    }
+    &::-webkit-scrollbar-thumb {
+      /*滚动条里面小方块*/
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+    &::-webkit-scrollbar-track {
+      /*滚动条里面轨道*/
+      border-radius: 0;
+      background: rgba(0, 0, 0, 0.1);
+    }
     .MaxCardBorder {
       border: 0.03rem solid #6fcaee;
       position: absolute;
-      top: -0.15rem;
-      left: -0.15rem;
-      right: -0.15rem;
-      bottom: -0.15rem;
+      // top: -0.15rem;
+      // left: -0.15rem;
+      // right: -0.15rem;
+      // bottom: -0.15rem;
       border-radius: 30px;
     }
     h3 {
