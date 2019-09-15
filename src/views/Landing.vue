@@ -18,7 +18,7 @@ export default {
   },
   data () {
     return {
-      showVideo: true,
+      showVideo: !this.$route.meta.skip && true,
     }
   },
   methods: {

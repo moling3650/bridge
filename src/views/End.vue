@@ -1,17 +1,15 @@
 <template>
   <div id="End">
-    <page page-name="End" no-loop autoplay @ended="playAudio">
-      <template v-if="isEnd">
-        <back v-show="app.mode === 'zy'" :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$router.push({ name: 'navigation', query: { loop: true } })"/>
-        <ul v-show="app.mode === 'dl' && btnVisiable" class="btn-wrapper">
-          <li class="btn-item">
-            <guide-button @click="$router.push('/')">返回首页</guide-button>
-          </li>
-          <li class="btn-item">
-            <guide-button @click="$router.push('/navigation')">再看一次</guide-button>
-          </li>
-        </ul>
-      </template>
+    <page page-name="End" no-loop autoplay @ended="handleEnded">
+      <back v-show="app.mode === 'zy' && isEnd" :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$router.push({ name: 'navigation', query: { loop: true } })"/>
+      <ul v-show="app.mode === 'dl' && btnVisiable" class="btn-wrapper">
+        <li class="btn-item">
+          <guide-button @click="$router.push('/')">返回首页</guide-button>
+        </li>
+        <li class="btn-item">
+          <guide-button @click="$router.push('/navigation')">再看一次</guide-button>
+        </li>
+      </ul>
     </page>
   </div>
 </template>
@@ -34,7 +32,7 @@ export default {
     }
   },
   methods: {
-    playAudio () {
+    handleEnded () {
       this.isEnd = true
       if (this.app.mode === 'dl') {
         this.$audioD.loop = false
@@ -48,7 +46,10 @@ export default {
 
 <style lang="scss" scoped>
   .btn-wrapper {
-    margin-top: 9rem;
+    position: absolute;
+    top: 9rem;
+    right: 0;
+    left: 0;
     text-align: center;
     .btn-item {
       display: inline-block;

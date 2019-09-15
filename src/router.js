@@ -18,6 +18,12 @@ const router = new Router({
       name: 'Landing',
       component: () =>
         import(/* webpackChunkName: "Views" */ './views/Landing.vue'),
+      beforeEnter (to, from, next) {
+        if (from.name === 'End') {
+          to.meta.skip = true
+        }
+        next()
+      },
     },
     {
       path: '/home',
