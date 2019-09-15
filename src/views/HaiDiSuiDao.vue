@@ -22,8 +22,7 @@
         <div class="qr">
           <h3>海底沉管对接小游戏，等你挑战！</h3>
           <span class="left">
-            <p>港珠澳大桥海底沉管对接被称为“最精准深海之吻”。33节沉管在海底无人对接，误差控制在2厘米以内，是目前世界上最精准的深海对接。而最终接头安装偏差从最初的17厘米降至2.5毫米，更是达到了毫米级的安装精度。</p>
-            <p>港珠澳大桥海底沉管对接，可以说是智慧与工艺的双重挑战。</p>
+            <p>港珠澳大桥海底沉管对接被称为“最精准深海之吻”。33节沉管在海底无人对接，误差控制在2厘米以内，是目前世界上最精准的深海对接，最终接头更是达到了毫米级的安装精度。可以说是智慧与工艺的双重挑战。</p>
             <p>我们专门制作了一个沉管对接小游戏，您可以扫描二维码体验这一过程。</p>
           </span>
           <div class="right">
@@ -190,7 +189,8 @@ export default {
     background-size: 100% 100%;
     h3 {
         font-size: 0.3rem;
-        margin-bottom: 0.3rem;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
         line-height: 0.45rem;
         text-align: center;
       }
@@ -202,9 +202,11 @@ export default {
       }
       .right {
         float: right;
+        width: 2.8rem;
+        height: 2.8rem;
         &>img {
-          width: 3rem;
-          height: 3rem;
+          width: 100%;
+          height: 100%;
         }
       }
     p {

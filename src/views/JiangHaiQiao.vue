@@ -28,12 +28,16 @@ export default {
       guideBtnVisiable: false,
       guideTextList: [
         '世界最大“海豚”是怎么吊装的',
-        '继续',
+        '世界最大钢桥面铺装',
+        '港珠澳大桥的护栏有多牛',
+        '全球首次采用锌-铝合金镀层超强钢丝',
       ],
       step: 0,
       soundList: [
         'dl19',
-        '',
+        'dl20',
+        'dl21',
+        'dl22',
       ],
     }
   },
@@ -64,7 +68,7 @@ export default {
       this.$audio.oncanplay = () => {
         this.$audio.play()
       }
-      if (this.step) {
+      if (this.step || this.$route.query.loop) {
         this.playAudio()
       }
     }
@@ -79,12 +83,16 @@ export default {
         } else {
           this.guideBtnVisiable = true
         }
+      } else {
+        this.$router.push({ name: 'ShengTaiBaoHu', query: { loop: true }})
       }
     },
     nextStep () {
       const stepFun = [
         () => this.showVideo('2-2'),
-        () => this.$router.push('/QingZhouQiao'),
+        () => this.showVideo('4-3'),
+        () => this.showVideo('4-2'),
+        () => this.showVideo('2-3'),
       ]
       stepFun[this.step]()
       setTimeout(() => {
