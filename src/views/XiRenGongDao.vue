@@ -1,6 +1,6 @@
 <template>
   <div id="XiRenGongDao">
-    <page page-name="XiRenGongDao" autoplay can-skip :opacity="opacity">
+    <page page-name="XiRenGongDao" autoplay can-skip :opacity="opacity" @ended="playAudio">
       <template v-if="isLoop" slot-scope="{ isLoop }">
         <template v-if="app.mode === 'zy'">
           <dot :style="{ top: '5rem', left: '7rem' }" text="人工岛透视" @click.native="show('subPage')"/>
@@ -48,7 +48,7 @@ export default {
   data () {
     return {
       subPageVisiable: false,
-      guideBtnVisiable: true,
+      guideBtnVisiable: false,
       showDetail: false,
       opacity: 0,
       bgi: '',
@@ -60,9 +60,32 @@ export default {
         '港珠澳大桥海底沉管隧道 〉',
       ],
       step: 0,
+      soundList: [
+        'dl04',
+        'dl05',
+        'dl06',
+        'dl07',
+        'dl08',
+      ],
+    }
+  },
+  mounted () {
+    if (this.app.mode === 'dl') {
+      this.$audio.onended = () => {
+        this.guideBtnVisiable = true
+      }
+      this.$audio.oncanplay = () => {
+        this.$audio.play()
+      }
     }
   },
   methods: {
+    playAudio () {
+      if (this.step < this.soundList.length) {
+        this.$audio.src = require(`../../public/audio/dl/${this.soundList[this.step]}.mp3`)
+        this.$audio.load()
+      }
+    },
     nextStep () {
       const stepFun = [
         () => this.show('subPage'),
@@ -85,21 +108,30 @@ export default {
       }
       this.opacity = 5
       this.$video.play(video, this.app.mode).then(() => {
-        this.guideBtnVisiable = true
         this.opacity = 0
         if (this.app.mode === 'zy') {
           this.$audio.play()
         }
+        if (this.app.mode === 'dl') {
+          this.playAudio()
+        }
       })
     },
     showImages () {
+      this.guideBtnVisiable = false
       this.opacity = 5
       this.$showImages(images).then(() => {
         this.opacity = 0
-        this.$audio.play()
+        if (this.app.mode === 'zy') {
+          this.$audio.play()
+        }
+        if (this.app.mode === 'dl') {
+          this.playAudio()
+        }
       })
     },
     show (key) {
+      this.guideBtnVisiable = false
       this.opacity = 5
       this.$audio.pause()
       this[`${key}Visiable`] = true
@@ -118,6 +150,9 @@ export default {
         this.$refs.v.currentTime = 0
         this.bgi = ''
         this.showDetail = false
+        if (this.app.mode === 'dl') {
+          this.playAudio()
+        }
       }
     },
     checkDetail (index) {
