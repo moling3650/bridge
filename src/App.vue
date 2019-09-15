@@ -72,6 +72,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    padding: 0.2rem 0.4rem;
     font-size: 0.48rem;
   }
 }
