@@ -157,6 +157,9 @@ export default {
         this.$refs.Cutscenes.play()
       }
     },
+    pauseLoopVideo () {
+      this.$refs.LoopVideo.pause()
+    },
     playLoopVideo () {
       if (this.$refs.Cutscenes) {
         this.$refs.Cutscenes.pause()

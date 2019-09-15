@@ -1,6 +1,6 @@
 <template>
   <div id="XiRenGongDao">
-    <page page-name="XiRenGongDao" autoplay can-skip :opacity="opacity" @ended="playAudio">
+    <page ref="page" page-name="XiRenGongDao" autoplay can-skip :opacity="opacity" @ended="playAudio">
       <template v-if="isLoop" slot-scope="{ isLoop }">
         <template v-if="app.mode === 'zy'">
           <dot :style="{ top: '5rem', left: '7rem' }" text="人工岛透视" @click.native="show('subPage')"/>
@@ -11,11 +11,11 @@
           <nav-bar/>
           <mini-map/>
         </template>
-        <template v-if="app.mode === 'dl'">
-          <guide-button v-show="guideBtnVisiable" class="rb" @click="nextStep">{{ guideTextList[step] }}</guide-button>
-        </template>
       </template>
     </page>
+    <template v-if="app.mode === 'dl'">
+      <guide-button v-show="guideBtnVisiable" class="btn-center" @click="nextStep">{{ guideTextList[step] }}</guide-button>
+    </template>
     <video
       v-show="subPageVisiable"
       ref="v"
@@ -53,11 +53,11 @@ export default {
       opacity: 0,
       bgi: '',
       guideTextList: [
-        '三维透视东、西人工岛构造 〉',
-        '世界最大钢圆筒的海上之旅 〉',
-        '215天如何快速围筑两个10万平米人工岛 〉',
-        '“海上客厅”背后的1000+张设计图 〉',
-        '港珠澳大桥海底沉管隧道 〉',
+        '三维透视东、西人工岛构造',
+        '世界最大钢圆筒的海上之旅',
+        '215天如何快速围筑两个10万平米人工岛',
+        '“海上客厅”背后的1000+张设计图',
+        '港珠澳大桥海底沉管隧道',
       ],
       step: 0,
       soundList: [
@@ -68,6 +68,25 @@ export default {
         'dl08',
       ],
     }
+  },
+  watch: {
+    guideBtnVisiable (val) {
+      if (this.app.mode === 'zy') {
+        return
+      }
+      if (val) {
+        this.opacity = 5
+        this.$refs.page.pauseLoopVideo()
+      }
+    },
+    opacity (val) {
+      if (this.app.mode === 'zy') {
+        return
+      }
+      if (!val) {
+        this.$refs.page.playLoopVideo()
+      }
+    },
   },
   mounted () {
     if (this.app.mode === 'dl') {
@@ -163,17 +182,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// .details-des {
-//   position: absolute;
-//   top: 0;
-//   bottom: 0;
-//   right: 0;
-//   left: 0;
-//   width: 19.2rem;
-//   height: 10.8rem;
-//   z-index: 2;
-//   background-image: url(/img/5-1-1.png);
-// }
 .details,
 .v {
   position: absolute;
