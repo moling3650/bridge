@@ -1,6 +1,6 @@
 <template>
   <div class="Navigation">
-    <page ref="page" page-name="Navigation" can-skip autoplay>
+    <page ref="page" page-name="Navigation" can-skip autoplay @ended="handleEnded">
       <template v-if="isLoop" slot-scope="{ isLoop }">
         <template v-if="app.mode === 'zy'">
           <nav-link to="Roaming" text="大桥漫游" :style="{ top: '5.7rem', left: '0.95rem' }"/>
@@ -22,9 +22,11 @@
           </div>
           <guide-button class="rb" @click="$router.push('/')">返回首页</guide-button>
         </template>
-        <template v-else>
+        <template v-if="app.mode === 'dl'">
           <img class="nav-text" src="@/assets/img/navigation-text.png" alt="nav-text">
-          <p class="start"><guide-button @click="$router.push('/XiRenGongDao')">开始参观</guide-button></p>
+          <p v-show="guideBtnVisiable" class="start">
+            <guide-button @click="$router.push('/XiRenGongDao')">开始参观</guide-button>
+          </p>
         </template>
       </template>
     </page>
@@ -35,6 +37,20 @@
 export default {
   name: 'Navigation',
   inject: ['app'],
+  data () {
+    return {
+      guideBtnVisiable: false,
+    }
+  },
+  methods: {
+    handleEnded () {
+      this.$audio.onended = () => {
+        this.guideBtnVisiable = true
+      }
+      this.$audio.src = require(`../../public/audio/dl/dl01.mp3`)
+      this.$audio.play()
+    },
+  },
 }
 </script>
 
