@@ -1,6 +1,6 @@
 <template>
   <div id="JiuZhouQiao">
-    <page page-name="JiuZhouQiao" autoplay can-skip :opacity="opacity" @ended="handleEnd">
+    <page ref="page" page-name="JiuZhouQiao" autoplay can-skip :opacity="opacity" @ended="handleEnd">
       <template v-if="isLoop" slot-scope="{ isLoop }">
         <template v-if="app.mode === 'zy'">
           <img v-show="showDesc" src="@/assets/img/desc.png" alt="desc" class="desc" @click="closeDesc">
@@ -11,11 +11,11 @@
           <nav-bar/>
           <mini-map/>
         </template>
-        <template v-if="app.mode === 'dl'">
-          <guide-button v-show="guideBtnVisiable" class="rb" @click="nextStep">{{ guideTextList[step] }}</guide-button>
-        </template>
       </template>
     </page>
+    <template v-if="app.mode === 'dl'">
+      <guide-button v-show="guideBtnVisiable" class="btn-center" @click="nextStep">{{ guideTextList[step] }}</guide-button>
+    </template>
   </div>
 </template>
 
@@ -29,16 +29,64 @@ export default {
     return {
       showDesc: false,
       opacity: 0,
-      guideBtnVisiable: true,
+      guideBtnVisiable: false,
       guideTextList: [
-        '港珠澳大桥桥墩安装 〉',
-        '港珠澳大桥的钢箱梁制造 〉',
-        '继续 〉',
+        '港珠澳大桥桥墩安装',
+        '港珠澳大桥的钢箱梁制造',
+        '继续',
       ],
       step: this.$route.meta.step || 0,
+      soundList: [
+        'dl17',
+        'dl18',
+        '',
+      ],
+    }
+  },
+  watch: {
+    guideBtnVisiable (val) {
+      if (this.app.mode === 'zy') {
+        return
+      }
+      if (val) {
+        this.opacity = 5
+        this.$refs.page.pauseLoopVideo()
+      }
+    },
+    opacity (val) {
+      if (this.app.mode === 'zy') {
+        return
+      }
+      if (!val) {
+        this.$refs.page.playLoopVideo()
+      }
+    },
+  },
+  mounted () {
+    if (this.app.mode === 'dl') {
+      this.$audio.onended = () => {
+        this.guideBtnVisiable = true
+      }
+      this.$audio.oncanplay = () => {
+        this.$audio.play()
+      }
+      if (this.step) {
+        this.playAudio()
+      }
     }
   },
   methods: {
+    playAudio () {
+      if (this.step < this.soundList.length) {
+        const filename = this.soundList[this.step]
+        if (filename) {
+          this.$audio.src = require(`../../public/audio/dl/${filename}.mp3`)
+          this.$audio.load()
+        } else {
+          this.guideBtnVisiable = true
+        }
+      }
+    },
     nextStep () {
       const stepFun = [
         () => this.$redirect('/QiaoDun'),
@@ -46,7 +94,9 @@ export default {
         () => this.$router.push('/JiangHaiQiao'),
       ]
       stepFun[this.step]()
-      this.step++
+      setTimeout(() => {
+        this.step++
+      }, 500)
       if (this.step >= this.guideTextList.length) {
         this.guideBtnVisiable = false
       }
@@ -59,6 +109,9 @@ export default {
       if (this.app.mode === 'zy') {
         this.showDesc = sessionStorage.getItem('viewDesc') !== 'true'
       }
+      if (this.app.mode === 'dl') {
+        this.playAudio()
+      }
     },
     showVideo (filename) {
       this.guideBtnVisiable = false
@@ -68,10 +121,12 @@ export default {
       }
       this.opacity = 5
       this.$video.play(video, this.app.mode).then(() => {
-        this.guideBtnVisiable = true
         this.opacity = 0
         if (this.app.mode === 'zy') {
           this.$audio.play()
+        }
+        if (this.app.mode === 'dl') {
+          this.playAudio()
         }
       })
     },
@@ -79,10 +134,12 @@ export default {
       this.guideBtnVisiable = false
       this.opacity = 5
       this.$showImages(images, this.app.mode).then(() => {
-        this.guideBtnVisiable = true
         this.opacity = 0
         if (this.app.mode === 'zy') {
           this.$audio.play()
+        }
+        if (this.app.mode === 'dl') {
+          this.playAudio()
         }
       })
     },
