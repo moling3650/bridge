@@ -1,7 +1,17 @@
 <template>
   <div id="End">
     <page page-name="End" no-loop autoplay @ended="isEnd = true ">
-      <back v-show="isEnd" :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$router.push({ name: 'navigation', query: { loop: true } })"/>
+      <template v-if="isEnd">
+        <back v-if="app.mode === 'zy'" :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$router.push({ name: 'navigation', query: { loop: true } })"/>
+        <ul v-if="app.mode === 'dl'" class="btn-wrapper">
+          <li class="btn-item">
+            <guide-button @click="$router.push('/')">返回首页</guide-button>
+          </li>
+          <li class="btn-item">
+            <guide-button @click="$router.push('/navigation')">再看一次</guide-button>
+          </li>
+        </ul>
+      </template>
     </page>
   </div>
 </template>
@@ -9,6 +19,7 @@
 <script>
 export default {
   name: 'End',
+  inject: ['app'],
   data () {
     return {
       isEnd: false,
@@ -16,3 +27,18 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+  .btn-wrapper {
+    margin-top: 9rem;
+    text-align: center;
+    .btn-item {
+      display: inline-block;
+      margin: 0 0.15rem;
+      cursor: pointer;
+      .guide-button {
+        font-size: 0.4rem;
+      }
+    }
+  }
+</style>
