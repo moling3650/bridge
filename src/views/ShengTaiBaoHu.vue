@@ -1,6 +1,6 @@
 <template>
   <div id="ShengTaiBaoHu">
-    <page page-name="ShengTaiBaoHu" autoplay can-skip :opacity="opacity">
+    <page ref="page" page-name="ShengTaiBaoHu" autoplay can-skip :opacity="opacity" @ended="playAudio">
       <template v-if="isLoop" slot-scope="{ isLoop }">
         <template v-if="app.mode === 'zy'">
           <dot :style="{ top: '4rem', left: '12rem' }" text="保护海豚" @click.native="showVideo('3-1')"/>
@@ -8,12 +8,16 @@
           <nav-bar/>
           <mini-map/>
         </template>
-        <template v-if="app.mode === 'dl'">
-          <guide-button v-show="guideBtnVisiable" class="rb" @click="nextStep">{{ guideTextList[step] }}</guide-button>
-        </template>
       </template>
     </page>
-    <back v-show="show" :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="hide"/>
+    <template v-if="app.mode === 'dl'">
+      <guide-button v-show="guideBtnVisiable" class="btn-center" @click="nextStep">{{ guideTextList[step] }}</guide-button>
+    </template>
+    <template v-if="show">
+      <back v-if="app.mode === 'zy'" :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="hide"/>
+      <guide-button v-if="app.mode === 'dl'" class="rb" @click="hide">继续</guide-button>
+    </template>
+
     <transition name="fade">
       <div v-show="show" class="slider core">
         <div ref="longDiv" class="longDiv" style="font-size:0.3rem">
@@ -40,24 +44,73 @@ export default {
       left: 0,
       screenWidth: document.body.clientWidth, // body宽度
       isShow: true,
-      guideBtnVisiable: true,
+      guideBtnVisiable: false,
       guideTextList: [
-        '中华白海豚“不搬家” 〉',
-        '港珠澳大桥生态保护做了啥 〉',
-        '继续 〉',
+        '中华白海豚“不搬家”',
+        '港珠澳大桥生态保护做了啥',
       ],
       step: 0,
+      soundList: [
+        'dl23',
+        'dl24',
+      ],
+    }
+  },
+  watch: {
+    guideBtnVisiable (val) {
+      if (this.app.mode === 'zy') {
+        return
+      }
+      if (val) {
+        this.opacity = 5
+        this.$refs.page.pauseLoopVideo()
+      }
+    },
+    opacity (val) {
+      if (this.app.mode === 'zy') {
+        return
+      }
+      if (!val) {
+        this.$refs.page.playLoopVideo()
+      }
+    },
+  },
+  mounted () {
+    if (this.app.mode === 'dl') {
+      this.$audio.onended = () => {
+        this.guideBtnVisiable = true
+      }
+      this.$audio.oncanplay = () => {
+        this.$audio.play()
+      }
+      if (this.step || this.$route.query.loop) {
+        this.playAudio()
+      }
     }
   },
   methods: {
+    playAudio () {
+      if (this.step < this.soundList.length) {
+        const filename = this.soundList[this.step]
+        if (filename) {
+          this.$audio.src = require(`../../public/audio/dl/${filename}.mp3`)
+          this.$audio.load()
+        } else {
+          this.guideBtnVisiable = true
+        }
+      } else {
+        this.$router.push('/NavEnd')
+      }
+    },
     nextStep () {
       const stepFun = [
         () => this.showVideo('3-1'),
         () => this.showImg(),
-        () => this.$router.push('/NavEnd'),
       ]
       stepFun[this.step]()
-      this.step++
+      setTimeout(() => {
+        this.step++
+      }, 500)
       if (this.step >= this.guideTextList.length) {
         this.guideBtnVisiable = false
       }
@@ -70,10 +123,12 @@ export default {
       }
       this.opacity = 5
       this.$video.play(video, this.app.mode).then(() => {
-        this.guideBtnVisiable = true
         this.opacity = 0
         if (this.app.mode === 'zy') {
           this.$audio.play()
+        }
+        if (this.app.mode === 'dl') {
+          this.playAudio()
         }
       })
     },
@@ -87,10 +142,12 @@ export default {
       if (this.app.mode === 'zy') {
         this.$audio.play()
       }
+      if (this.app.mode === 'dl') {
+        this.playAudio()
+      }
       this.opacity = 0
       this.show = false
       this.left = 0
-      this.guideBtnVisiable = true
     },
     clickLeft () {
       this.left += 8

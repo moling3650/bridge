@@ -33,13 +33,11 @@ export default {
       guideTextList: [
         '港珠澳大桥桥墩安装',
         '港珠澳大桥的钢箱梁制造',
-        '继续',
       ],
       step: this.$route.meta.step || 0,
       soundList: [
         'dl17',
         'dl18',
-        '',
       ],
     }
   },
@@ -85,21 +83,19 @@ export default {
         } else {
           this.guideBtnVisiable = true
         }
+      } else {
+        this.$router.push({ name: 'JiangHaiQiao', query: { loop: true }})
       }
     },
     nextStep () {
       const stepFun = [
         () => this.$redirect('/QiaoDun'),
         () => this.showImages(),
-        () => this.$router.push('/JiangHaiQiao'),
       ]
       stepFun[this.step]()
       setTimeout(() => {
         this.step++
       }, 500)
-      if (this.step >= this.guideTextList.length) {
-        this.guideBtnVisiable = false
-      }
     },
     closeDesc () {
       this.showDesc = false
