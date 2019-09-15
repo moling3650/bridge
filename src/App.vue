@@ -67,6 +67,13 @@ body {
 #app {
   position: relative;
   margin: 0 auto;
+  .btn-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.48rem;
+  }
 }
 body {
   display: flex;
@@ -79,6 +86,7 @@ body {
   right: 0.25rem;
   bottom: 0.25rem;
 }
+
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }

@@ -19,6 +19,7 @@ export default {
   color: #fff;
   text-decoration: none;
   background-color: #2e77d3;
+  box-shadow: 0.03rem 0.03rem 0.06rem #0c103a;
   cursor: pointer;
 }
 </style>
