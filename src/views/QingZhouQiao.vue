@@ -25,7 +25,9 @@ export default {
   },
   methods: {
     showVideo (filename) {
-      this.$audio.pause()
+      if (this.app.mode === 'zy') {
+        this.$audioZ.pause()
+      }
       const video = {
         url: require(`../../public/video/dot/${filename}.mp4`),
       }
@@ -33,7 +35,7 @@ export default {
       this.$video.play(video, this.app.mode).then(() => {
         this.opacity = 0
         if (this.app.mode === 'zy') {
-          this.$audio.play()
+          this.$audioZ.play()
         }
       })
     },

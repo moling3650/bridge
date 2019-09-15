@@ -29,12 +29,12 @@ export default {
   methods: {
     show (key) {
       this.opacity = 5
-      this.$audio.pause()
+      this.$audioZ.pause()
       this[`${key}Visiable`] = true
     },
     hide (key) {
       this.opacity = 0
-      this.$audio.play()
+      this.$audioZ.play()
       this[`${key}Visiable`] = false
     },
   },

@@ -19,8 +19,8 @@ export default {
   },
   methods: {
     show () {
-      if (this.$audio && this.mode === 'zy') {
-        this.$audio.pause()
+      if (this.$audioZ && this.mode === 'zy') {
+        this.$audioZ.pause()
       }
       this.visiable = true
     },

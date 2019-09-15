@@ -29,13 +29,35 @@
       </li>
     </ul>
     <div class="line"/>
-    <guide-button class="rb" @click="$router.push('/End')">继续</guide-button>
+    <guide-button v-show="btnVisiable" class="rb" @click="$router.push('/End')">继续</guide-button>
   </div>
 </template>
 
 <script>
 export default {
   name: 'ExhibitionRoom',
+  inject: ['app'],
+  data () {
+    return {
+      btnVisiable: false,
+    }
+  },
+  mounted () {
+    if (this.app.mode === 'dl') {
+      this.$audioD.onended = () => {
+        this.btnVisiable = true
+      }
+      this.playAudio()
+    }
+  },
+  methods: {
+    playAudio () {
+      if (this.app.mode === 'dl') {
+        this.$audioD.src = require(`../../public/audio/dl/dl28.mp3`)
+        this.$audioD.load()
+      }
+    },
+  },
 }
 </script>
 

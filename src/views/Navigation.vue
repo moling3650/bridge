@@ -44,11 +44,13 @@ export default {
   },
   methods: {
     handleEnded () {
-      this.$audio.onended = () => {
-        this.guideBtnVisiable = true
+      if (this.app.mode === 'dl') {
+        this.$audioD.onended = () => {
+          this.guideBtnVisiable = true
+        }
+        this.$audioD.src = require(`../../public/audio/dl/dl01.mp3`)
+        this.$audioD.load()
       }
-      this.$audio.src = require(`../../public/audio/dl/dl01.mp3`)
-      this.$audio.play()
     },
   },
 }

@@ -38,9 +38,13 @@ Vue.component(GuideButton.name, GuideButton)
 Vue.prototype.$video = video
 Vue.prototype.$showFrame = showFrame
 Vue.prototype.$showImages = showImages
-Vue.prototype.$audio = document.createElement('AUDIO')
+Vue.prototype.$audioZ = document.createElement('AUDIO')
+Vue.prototype.$audioD = document.createElement('AUDIO')
+Vue.prototype.$audioD.oncanplay = () => {
+  Vue.prototype.$audioD.play()
+}
 Vue.prototype.$redirect = (route) => {
-  Vue.prototype.$audio.pause()
+  Vue.prototype.$audioZ.pause()
   router.push(route)
 }
 

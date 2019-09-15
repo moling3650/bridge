@@ -1,16 +1,39 @@
 <template>
   <div id="Experience">
-    <div class="btn-wrap">
+    <div class="video-wrap" :class="{ blur: btnGroupVisiable }">
+      <video
+        ref="v"
+        :src="require(`../../public/video/Experience.mp4`)"
+        autoplay
+        @ended="handleEnded"
+        @click="$refs.v.play()"
+      />
+    </div>
+    <div v-show="btnGroupVisiable" class="btn-wrap">
       <a class="btn"/>
       <a class="btn" @click="$router.push('/Roaming')"/>
     </div>
-    <guide-button class="rb" @click="$router.push('/ExhibitionRoom')">继续</guide-button>
+    <guide-button v-show="btnVisiable" class="rb" @click="$router.push('/ExhibitionRoom')">继续</guide-button>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Experience',
+  data () {
+    return {
+      btnGroupVisiable: false,
+      btnVisiable: false,
+    }
+  },
+  methods: {
+    handleEnded () {
+      this.btnGroupVisiable = true
+      setTimeout(() => {
+        this.btnVisiable = true
+      }, 10000)
+    },
+  },
 }
 </script>
 
@@ -21,9 +44,21 @@ export default {
   height: 10.8rem;
   background-image: url(../../public/img/bg/Experience.jpg);
   background-size: cover;
+  .video-wrap {
+    width: 100%;
+    height: 100%;
+    &.blur {
+      filter: blur(8px);
+    }
+    video {
+      width: 100%;
+      height: 100%;
+    }
+  }
   .btn-wrap {
-    position: relative;
+    position: absolute;
     top: 2.2rem;
+    width: 100%;
     height: 5.75rem;
     text-align: center;
     .btn {
