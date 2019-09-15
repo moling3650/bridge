@@ -37,6 +37,7 @@ export default {
     playAudio () {
       this.isEnd = true
       if (this.app.mode === 'dl') {
+        this.$audioD.loop = false
         this.$audioD.src = require(`../../public/audio/dl/dl29.mp3`)
         this.$audioD.load()
       }

@@ -76,6 +76,7 @@ export default {
         if (this.step < this.soundList.length) {
           const filename = this.soundList[this.step]
           if (filename) {
+            this.$audioD.loop = false
             this.$audioD.src = require(`../../public/audio/dl/${filename}.mp3`)
             this.$audioD.load()
           } else {

@@ -48,6 +48,7 @@ export default {
         this.$audioD.onended = () => {
           this.guideBtnVisiable = true
         }
+        this.$audioD.loop = false
         this.$audioD.src = require(`../../public/audio/dl/dl01.mp3`)
         this.$audioD.load()
       }

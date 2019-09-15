@@ -26,7 +26,7 @@
       <back :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 1000 }" @click.native="$router.back()"/>
     </template>
     <template v-if="app.mode === 'dl'">
-      <guide-button v-show="guideBtnVisiable" class="rb" @click="$router.push('/Experience')">继续</guide-button>
+      <guide-button v-show="guideBtnVisiable" class="rb" @click="$redirect('/Experience')">继续</guide-button>
     </template>
   </div>
 </template>
@@ -43,8 +43,18 @@ export default {
       guideBtnVisiable: true,
     }
   },
+  mounted () {
+    if (this.app.mode === 'dl') {
+      this.$audioD.loop = true
+      this.$audioD.src = require('../assets/bg.mp3')
+      this.$audioD.load()
+    }
+  },
   methods: {
     showVideo (filename) {
+      if (this.app.mode === 'dl') {
+        this.$audioD.pause()
+      }
       this.guideBtnVisiable = false
       const video = {
         url: require(`../../public/video/dot/${filename}.mp4`),
@@ -53,6 +63,9 @@ export default {
       this.$video.play(video, this.app.mode).then(() => {
         this.guideBtnVisiable = true
         this.opacity = 0
+        if (this.app.mode === 'dl') {
+          this.$audioD.play()
+        }
       })
     },
     showImages () {

@@ -8,7 +8,7 @@
     <img class="bg" src="@/assets/img/1-3.png" :style="{ filter: `blur(${show === 'main' ? '0' : '5'}px)` }">
     <div class="btn video-btn" @click="showVideo"/>
     <div class="btn atlas-btn" @click="showImages"/>
-    <div class="btn story-btn" @click="show = 'story'"/>
+    <div class="btn story-btn" @click="showStory"/>
 
     <max-card v-show="show === 'story'">
       <div class="card">
@@ -19,7 +19,7 @@
         </div>
       </div>
     </max-card>
-    <back v-show="show === 'story'" :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 101 }" @click.native="show = 'main'"/>
+    <back v-show="show === 'story'" :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem', zIndex: 101 }" @click.native="hideStory"/>
 
     <back v-if="show === 'main' && app.mode === 'zy'" :style="{ bottom: '0.25rem', right: '0.25rem', width: '1.2rem', height: '1.2rem' }" @click.native="$router.back()"/>
     <guide-button v-if="show === 'main' && app.mode === 'dl'" class="rb" @click.native="$router.back()">继续</guide-button>
@@ -54,6 +54,20 @@ export default {
       this.$showImages(images).then(() => {
         this.show = 'main'
       })
+    },
+    showStory () {
+      this.show = 'story'
+      if (this.app.mode === 'dl') {
+        this.$audioD.loop = true
+        this.$audioD.src = require('../assets/bg.mp3')
+        this.$audioD.load()
+      }
+    },
+    hideStory () {
+      this.show = 'main'
+      if (this.app.mode === 'dl') {
+        this.$audioD.pause()
+      }
     },
   },
 }

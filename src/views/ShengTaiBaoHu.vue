@@ -88,6 +88,8 @@ export default {
   methods: {
     playAudio () {
       if (this.app.mode === 'dl') {
+        this.$audioD.loop = false
+        this.$audioD.pause()
         if (this.step < this.soundList.length) {
           const filename = this.soundList[this.step]
           if (filename) {
@@ -136,6 +138,11 @@ export default {
     showImg () {
       if (this.app.mode === 'zy') {
         this.$audioZ.pause()
+      }
+      if (this.app.mode === 'dl') {
+        this.$audioD.loop = true
+        this.$audioD.src = require('../assets/bg.mp3')
+        this.$audioD.load()
       }
       this.opacity = 5
       this.show = true

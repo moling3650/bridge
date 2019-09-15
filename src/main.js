@@ -45,6 +45,7 @@ Vue.prototype.$audioD.oncanplay = () => {
 }
 Vue.prototype.$redirect = (route) => {
   Vue.prototype.$audioZ.pause()
+  Vue.prototype.$audioD.pause()
   router.push(route)
 }
 

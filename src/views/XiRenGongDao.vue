@@ -99,6 +99,7 @@ export default {
     playAudio () {
       if (this.app.mode === 'dl') {
         if (this.step < this.soundList.length) {
+          this.$audioD.loop = false
           this.$audioD.src = require(`../../public/audio/dl/${this.soundList[this.step]}.mp3`)
           this.$audioD.load()
         }
@@ -161,6 +162,11 @@ export default {
       this[`${key}Visiable`] = true
       if (key === 'subPage') {
         this.checkDetail(1)
+        if (this.app.mode === 'dl') {
+          this.$audioD.loop = true
+          this.$audioD.src = require('../assets/bg.mp3')
+          this.$audioD.load()
+        }
         this.$nextTick(() => {
           this.$refs.v.play()
         })

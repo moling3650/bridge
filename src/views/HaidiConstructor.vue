@@ -54,6 +54,13 @@ export default {
       infoData: {},
     }
   },
+  mounted () {
+    if (this.app.mode === 'dl') {
+      this.$audioD.loop = true
+      this.$audioD.src = require('../assets/bg.mp3')
+      this.$audioD.load()
+    }
+  },
   methods: {
     getInfo (infoType) {
       infoDataArr.forEach(item => {

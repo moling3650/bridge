@@ -103,7 +103,6 @@ export default {
     hasGuide () {
       const list = [
         'DongRenGongDao',
-        'HaidiConstructor',
         'HaiDiSuiDao',
         'JiangHaiQiao',
         'JiuZhouQiao',
