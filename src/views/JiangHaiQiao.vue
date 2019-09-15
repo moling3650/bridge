@@ -28,7 +28,7 @@ export default {
       guideBtnVisiable: false,
       guideTextList: [
         '世界最大“海豚”是怎么吊装的',
-        '世界最大钢桥面铺装',
+        '世界最大单体钢桥面铺装',
         '港珠澳大桥的护栏有多牛',
         '全球首次采用锌-铝合金镀层超强钢丝',
       ],
@@ -76,6 +76,7 @@ export default {
         if (this.step < this.soundList.length) {
           const filename = this.soundList[this.step]
           if (filename) {
+            this.$audioD.loop = false
             this.$audioD.src = require(`../../public/audio/dl/${filename}.mp3`)
             this.$audioD.load()
           } else {

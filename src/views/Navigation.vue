@@ -1,6 +1,6 @@
 <template>
   <div class="Navigation">
-    <page ref="page" page-name="Navigation" can-skip autoplay @ended="handleEnded">
+    <page ref="page" page-name="Navigation" can-skip autoplay @ended="playAudio">
       <template v-if="isLoop" slot-scope="{ isLoop }">
         <template v-if="app.mode === 'zy'">
           <nav-link to="Roaming" text="大桥漫游" :style="{ top: '5.7rem', left: '0.95rem' }"/>
@@ -42,12 +42,19 @@ export default {
       guideBtnVisiable: false,
     }
   },
+  mounted () {
+    if (this.app.mode === 'dl') {
+      this.$audioD.onended = () => {
+        this.guideBtnVisiable = true
+      }
+      if (this.$route.query.loop) {
+        this.playAudio()
+      }
+    }
+  },
   methods: {
-    handleEnded () {
+    playAudio () {
       if (this.app.mode === 'dl') {
-        this.$audioD.onended = () => {
-          this.guideBtnVisiable = true
-        }
         this.$audioD.loop = false
         this.$audioD.src = require(`../../public/audio/dl/dl01.mp3`)
         this.$audioD.load()
