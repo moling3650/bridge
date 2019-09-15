@@ -27,6 +27,10 @@ export default {
     this.$video.init()
     this.createBlurBg()
     this.resize()
+    this.mode = localStorage.getItem('__mode__')
+    if (!this.mode && this.$route.name !== 'Landing') {
+      this.$router.push('/')
+    }
   },
   methods: {
     createBlurBg () {

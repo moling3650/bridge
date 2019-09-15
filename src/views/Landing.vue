@@ -24,6 +24,7 @@ export default {
   methods: {
     gotoNavigation (mode) {
       this.app.mode = mode
+      localStorage.setItem('__mode__', mode)
       if (mode === 'dl') {
         this.$router.push({ name: 'navigation', query: { loop: false }})
       } else if (mode === 'zy') {
