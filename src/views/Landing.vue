@@ -18,7 +18,11 @@ export default {
   methods: {
     gotoNavigation (mode) {
       this.app.mode = mode
-      this.$router.push({ name: 'navigation' })
+      if (mode === 'dl') {
+        this.$router.push({ name: 'navigation', query: { loop: false }})
+      } else if (mode === 'zy') {
+        this.$router.push({ name: 'navigation', query: { loop: true }})
+      }
     },
   },
 }
@@ -47,11 +51,11 @@ export default {
       &:first-child {
         background-image: url(../assets/img/btn-dl.png);
         background-repeat: no-repeat;
-        background-size: contain;
+        background-size: cover;
       }
       &:last-child {
         background-image: url(../assets/img/btn-zy.png);
-        background-size: contain;
+        background-size: cover;
       }
     }
   }

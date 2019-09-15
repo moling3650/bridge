@@ -20,12 +20,12 @@
               <br>南方日报社：张由琼 徐杰
             </span>
           </div>
-          <guide-button class="rb" @click="$router.push('/')">返回首页</guide-button>
+          <guide-button class="rb" @click="$redirect('/')">返回首页</guide-button>
         </template>
         <template v-if="app.mode === 'dl'">
           <img class="nav-text" src="@/assets/img/navigation-text.png" alt="nav-text">
           <p v-show="guideBtnVisiable" class="start">
-            <guide-button @click="$router.push('/XiRenGongDao')">开始参观</guide-button>
+            <guide-button @click="$redirect('/XiRenGongDao')">开始参观</guide-button>
           </p>
         </template>
       </template>
