@@ -16,7 +16,7 @@
       v-if="!noLoop"
       ref="LoopVideo"
       :poster="require(`../../public/img/poster/${pageName}${noCutscenes ? '' : '-2'}-p.jpg`)"
-      :src="require(`../../public/video/${pageName}${noCutscenes ? '' : '-2'}.mp4`)"
+      :src="require(`../../public/video/${pageName}${noCutscenes ? '' : '-2'}${hasGuide ? '-g' : ''}.mp4`)"
       :preload="loopPreLoad"
       :autoplay="noCutscenes"
       loop
@@ -99,6 +99,19 @@ export default {
         top: 0,
         left: 0,
       }
+    },
+    hasGuide () {
+      const list = [
+        'DongRenGongDao',
+        'HaidiConstructor',
+        'HaiDiSuiDao',
+        'JiangHaiQiao',
+        'JiuZhouQiao',
+        'QingZhouQiao',
+        'ShengTaiBaoHu',
+        'XiRenGongDao',
+      ]
+      return ~list.indexOf(this.pageName) && this.app.mode === 'dl'
     },
   },
   mounted () {
