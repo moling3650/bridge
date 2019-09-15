@@ -35,16 +35,16 @@ export default {
     left: 50%;
     transform: translate(-50%, -50%);
     color: #fff;
-    background: #6fcaee;
+    background: #339edd;
     padding: 0.5rem;
     border-radius: 20px;
     background: radial-gradient(
-      rgba(101, 172, 218, 0.6),
+      rgba(101, 172, 218, 0.7),
       rgba(101, 172, 218, 0.9),
-      #6fcaee
+      #339edd
     );
     .MaxCardBorder {
-      border: 0.03rem solid #6fcaee;
+      border: 0.03rem solid #339edd;
       position: absolute;
       top: -0.15rem;
       left: -0.15rem;
@@ -54,9 +54,15 @@ export default {
       z-index: -1;
     }
     h3 {
-      font-size: 0.3rem;
-      margin-bottom: 0.3rem;
+      margin: 0.2rem 0;
+      font-size: 0.32rem;
+      font-weight: bold;
       line-height: 0.45rem;
+      text-align: center;
+    }
+    p {
+      font-size: 0.24rem;
+      text-indent: 0.48rem;
     }
     .left {
       float: left;

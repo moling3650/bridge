@@ -271,21 +271,20 @@ export default {
         display: flex;
         flex-direction: row;
         .photo {
-          width: 3rem;
-          height: 3rem;
+          width: 2.8rem;
+          height: 2.8rem;
           vertical-align: top;
         }
         .line {
           height: 4rem;
           background: #fff;
           width: 3px;
-          margin-left: 30px;
+          margin-left: 0.5rem;
         }
         .answer {
           display: inline-block;
           width: 75%;
           height: 5rem;
-          margin-left: 5%;
           padding-left: 5%;
           // border-left: 1px solid #eee;
           box-sizing: border-box;
