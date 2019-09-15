@@ -10,7 +10,7 @@
       <li class="icon-item" @click="$router.push('/JianSheDaShiJi')">
         <img src="../assets/img/ExhibitionRoom-2.png" alt="电子图册">
       </li>
-      <li class="icon-item">
+      <li class="icon-item" @click="showVideo('X-1')">
         <img src="../assets/img/ExhibitionRoom-3.png" alt="视频短片">
       </li>
       <li class="icon-item" @click="$router.push('/DynamicPicture')">
@@ -51,6 +51,13 @@ export default {
     }
   },
   methods: {
+    showVideo (filename) {
+      const video = {
+        url: require(`../../public/video/dot/${filename}.mp4`),
+      }
+      this.$video.play(video, this.app.mode).then(() => {
+      })
+    },
     playAudio () {
       if (this.app.mode === 'dl') {
         this.$audioD.loop = false
