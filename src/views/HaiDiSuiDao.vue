@@ -1,6 +1,6 @@
 <template>
   <div id="HaiDiSuiDao">
-    <page page-name="HaiDiSuiDao" autoplay can-skip :opacity="opacity">
+    <page ref="page" page-name="HaiDiSuiDao" autoplay can-skip :opacity="opacity" @ended="playAudio">
       <template v-if="isLoop" slot-scope="{ isLoop }">
         <template v-if="app.mode === 'zy'">
           <dot :style="{ top: '5.2rem', left: '3rem' }" text="世界最长、最深的海底沉管隧道" @click.native="$redirect('/HaidiSuiDaoChart')"/>
@@ -12,11 +12,11 @@
           <nav-bar/>
           <mini-map/>
         </template>
-        <template v-if="app.mode === 'dl'">
-          <guide-button v-show="guideBtnVisiable" class="rb" @click="nextStep">{{ guideTextList[step] }}</guide-button>
-        </template>
       </template>
     </page>
+    <template v-if="app.mode === 'dl'">
+      <guide-button v-show="guideBtnVisiable" class="btn-center" @click="nextStep">{{ guideTextList[step] }}</guide-button>
+    </template>
     <transition name="fade">
       <div v-show="qrCodeVisiable" class="maxcard">
         <div class="qr">
@@ -52,28 +52,78 @@ export default {
       opacity: 0,
       qrCodeVisiable: false,
       chartsVisiable: false,
-      guideBtnVisiable: true,
+      guideBtnVisiable: false,
       guideTextList: [
-        '世界主要海底沉管隧道对比 〉',
-        '世界最重沉管是怎么建成的 〉',
-        '港珠澳大桥沉管的浮运和安装 〉',
-        '港珠澳大桥海底沉管的创新突破 〉',
-        '港珠澳大桥主体桥梁工程 〉',
+        '世界主要海底沉管隧道对比',
+        '世界最重沉管是怎么建成的',
+        '海底沉管的浮运和安装',
+        '海底沉管对接小游戏',
+        '海底沉管的创新突破',
+        '港珠澳大桥主体桥梁工程',
       ],
       step: this.$route.meta.step || 0,
+      soundList: [
+        'dl09',
+        'dl10',
+        'dl11',
+        'dl12',
+        'dl13',
+        'dl16',
+      ],
+    }
+  },
+  watch: {
+    guideBtnVisiable (val) {
+      if (this.app.mode === 'zy') {
+        return
+      }
+      if (val) {
+        this.opacity = 5
+        this.$refs.page.pauseLoopVideo()
+      }
+    },
+    opacity (val) {
+      if (this.app.mode === 'zy') {
+        return
+      }
+      if (!val) {
+        this.$refs.page.playLoopVideo()
+      }
+    },
+  },
+  mounted () {
+    if (this.app.mode === 'dl') {
+      this.$audio.onended = () => {
+        this.guideBtnVisiable = true
+      }
+      this.$audio.oncanplay = () => {
+        this.$audio.play()
+      }
+      if (this.step) {
+        this.playAudio()
+      }
     }
   },
   methods: {
+    playAudio () {
+      if (this.step < this.soundList.length) {
+        this.$audio.src = require(`../../public/audio/dl/${this.soundList[this.step]}.mp3`)
+        this.$audio.load()
+      }
+    },
     nextStep () {
       const stepFun = [
         () => this.$redirect('/HaidiSuiDaoChart'),
         () => this.showVideo('6-2'),
+        () => this.showVideo('6-7'),
         () => this.show('qrCode'),
         () => this.$redirect('/HaidiConstructor'),
         () => this.$router.push('/JiuZhouQiao'),
       ]
       stepFun[this.step]()
-      this.step++
+      setTimeout(() => {
+        this.step++
+      }, 500)
       if (this.step >= this.guideTextList.length) {
         this.guideBtnVisiable = false
       }
@@ -86,10 +136,12 @@ export default {
       }
       this.opacity = 5
       this.$video.play(video, this.app.mode).then(() => {
-        this.guideBtnVisiable = true
         this.opacity = 0
         if (this.app.mode === 'zy') {
           this.$audio.play()
+        }
+        if (this.app.mode === 'dl') {
+          this.playAudio()
         }
       })
     },
@@ -105,9 +157,11 @@ export default {
       if (this.app.mode === 'zy') {
         this.$audio.play()
       }
+      if (this.app.mode === 'dl') {
+        this.playAudio()
+      }
       this.opacity = 0
       this[`${key}Visiable`] = false
-      this.guideBtnVisiable = true
     },
   },
 }

@@ -114,7 +114,9 @@ export default {
         () => this.$router.push('/HaiDiSuiDao'),
       ]
       stepFun[this.step]()
-      this.step++
+      setTimeout(() => {
+        this.step++
+      }, 500)
       if (this.step >= this.guideTextList.length) {
         this.guideBtnVisiable = false
       }

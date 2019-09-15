@@ -95,7 +95,7 @@ const router = new Router({
         }
         if (from.name === 'HaidiConstructor') {
           to.meta.audioReplay = true
-          to.meta.step = 4
+          to.meta.step = 5
         }
         next()
       },
