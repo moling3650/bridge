@@ -1,6 +1,7 @@
 <template>
   <div id="Landing">
-    <div class="btn-group">
+    <video v-show="showVideo" ref="v" src="../../public/video/Landing.mp4" @ended="showVideo = false" @click="$refs.v.play()"/>
+    <div v-show="!showVideo" class="btn-group">
       <a class="btn" @click.prevent="gotoNavigation('dl')">导览版</a>
       <a class="btn" @click.prevent="gotoNavigation('zy')">自游版</a>
     </div>
@@ -14,6 +15,11 @@ export default {
     app: {
       default: {},
     },
+  },
+  data () {
+    return {
+      showVideo: true,
+    }
   },
   methods: {
     gotoNavigation (mode) {
@@ -34,6 +40,10 @@ export default {
   height: 10.8rem;
   background-image: url(../../public/img/bg/Landing.jpg);
   background-size: cover;
+  video {
+    width: 100%;
+    height: 100%;
+  }
   .btn-group {
     position: absolute;
     top: 6.9rem;
@@ -52,10 +62,16 @@ export default {
         background-image: url(../assets/img/btn-dl.png);
         background-repeat: no-repeat;
         background-size: cover;
+        &:hover {
+          background-image: url(../assets/img/btn-dl-d.png);
+        }
       }
       &:last-child {
         background-image: url(../assets/img/btn-zy.png);
         background-size: cover;
+        &:hover {
+          background-image: url(../assets/img/btn-zy-d.png);
+        }
       }
     }
   }
