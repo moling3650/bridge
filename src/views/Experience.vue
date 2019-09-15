@@ -26,6 +26,13 @@ export default {
       btnVisiable: false,
     }
   },
+  mounted () {
+    if (this.$route.meta.skip) {
+      this.$refs.v.pause()
+      this.handleEnded()
+      this.btnVisiable = true
+    }
+  },
   methods: {
     handleEnded () {
       this.btnGroupVisiable = true

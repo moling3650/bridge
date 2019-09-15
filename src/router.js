@@ -135,6 +135,12 @@ const router = new Router({
       name: 'Experience',
       component: () =>
         import(/* webpackChunkName: "Views" */ './views/Experience.vue'),
+      beforeEnter (to, from, next) {
+        if (from.name === 'Roaming') {
+          to.meta.skip = true
+        }
+        next()
+      },
     },
     {
       path: '/ExhibitionRoom',
