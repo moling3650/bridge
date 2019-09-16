@@ -1,10 +1,15 @@
 <template>
-  <div id="Landing">
-    <video v-show="showVideo" ref="v" src="../../public/video/Landing.mp4" @ended="showVideo = false" @click="$refs.v.play()"/>
+  <div id="Landing" :class="bgClass">
+    <video v-show="showVideo" ref="v" src="../../public/video/Landing.mp4" @ended="showVideo = false" @click="play"/>
+    <p v-show="showVideo && !played" class="tips">点击任意位置开始</p>
     <div v-show="!showVideo" class="btn-group">
       <a class="btn" @click.prevent="gotoNavigation('dl')">导览版</a>
       <a class="btn" @click.prevent="gotoNavigation('zy')">自游版</a>
     </div>
+    <p v-show="!showVideo" class="footer">
+      <span>指导单位：中共广东省委宣传部 中共广东省委网信办</span>
+      <span>建设单位：南方新闻网</span>
+    </p>
   </div>
 </template>
 
@@ -18,11 +23,30 @@ export default {
   },
   data () {
     return {
+      played: false,
       showVideo: !this.$route.meta.skip && true,
+      index: 0,
+      timer: null,
     }
   },
+  computed: {
+    bgClass () {
+      return `bg-${this.index}`
+    },
+  },
+  mounted () {
+    this.timer = setInterval(() => {
+      this.index %= 4
+      this.index++
+    }, 5000)
+  },
   methods: {
+    play () {
+      this.played = true
+      this.$refs.v.play()
+    },
     gotoNavigation (mode) {
+      clearInterval(this.timer)
       this.app.mode = mode
       localStorage.setItem('__mode__', mode)
       if (mode === 'dl') {
@@ -39,8 +63,46 @@ export default {
 #Landing {
   width: 19.2rem;
   height: 10.8rem;
-  background-image: url(../../public/img/bg/Landing.jpg);
-  background-size: cover;
+  transition: all 0.5s ease-out;
+  &.bg-1 {
+    background-image: url(../assets/bg/1.jpg);
+    background-size: cover;
+  }
+  &.bg-2 {
+    background-image: url(../assets/bg/2.jpg);
+    background-size: cover;
+  }
+  &.bg-3 {
+    background-image: url(../assets/bg/3.jpg);
+    background-size: cover;
+  }
+  &.bg-4 {
+    background-image: url(../assets/bg/4.jpg);
+    background-size: cover;
+  }
+  .tips {
+    position: absolute;
+    top: 0.1rem;
+    right: 0.1rem;
+    font-size: 0.2rem;
+    color: #eee;
+  }
+  .footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0.2rem;
+    font-size: 0.2rem;
+    text-align: center;
+    color: #eee;
+    background-color: #002e6a;
+    opacity: 0.8;
+    span {
+      display: inline-block;
+      margin: 0 0.2rem;
+    }
+  }
   video {
     width: 100%;
     height: 100%;
