@@ -20,6 +20,7 @@ import GuideButton from '@/components/GuideButton'
 import video from '@/utils/video'
 import showFrame from '@/utils/frame'
 import showImages from '@/utils/showImages'
+import playFullVideo from '@/utils/playFullVideo'
 import './scss/reset.scss'
 
 Vue.component(Loader.name, Loader)
@@ -38,6 +39,7 @@ Vue.component(GuideButton.name, GuideButton)
 Vue.prototype.$video = video
 Vue.prototype.$showFrame = showFrame
 Vue.prototype.$showImages = showImages
+Vue.prototype.$playFullVideo = playFullVideo
 Vue.prototype.$audioZ = document.createElement('AUDIO')
 Vue.prototype.$audioD = document.createElement('AUDIO')
 Vue.prototype.$audioD.oncanplay = () => {
