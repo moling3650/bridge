@@ -12,23 +12,23 @@ function initInstance () {
   document.querySelector('#app').appendChild(instance.$el)
 }
 
-function _play (src, callback) {
+function _play (src, auto, callback) {
   if (!instance) {
     initInstance()
   }
 
   instance.callback = callback
-  instance.play(src)
+  instance.play(src, auto)
 }
 
-function playFullVideo (src) {
+function playFullVideo (src, auto) {
   if (Vue.prototype.$isServer) {
     return
   }
 
   if (typeof Promise !== 'undefined') {
     return new Promise(resolve => {
-      _play(src, resolve)
+      _play(src, auto, resolve)
     })
   }
 }

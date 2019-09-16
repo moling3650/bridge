@@ -18,18 +18,24 @@ export default {
     return {
       visiable: false,
       btnVisiable: false,
+      auto: false,
       src: '',
       callback () {},
     }
   },
   methods: {
-    play (src) {
+    play (src, auto) {
+      this.auto = !!auto
       this.src = src
-      this.visiable = true
       this.$refs.x.load()
+      this.visiable = true
     },
     handleEnded () {
-      this.btnVisiable = true
+      if (this.auto) {
+        this.close()
+      } else {
+        this.btnVisiable = true
+      }
     },
     close () {
       this.$refs.x.pause()

@@ -22,10 +22,10 @@
           </div>
           <guide-button class="rb" @click="$redirect('/')">返回首页</guide-button>
         </template>
-        <template v-if="app.mode === 'dl'">
+        <template v-if="app.mode === 'dl' && contentVisiable">
           <img class="nav-text" src="@/assets/img/navigation-text.png" alt="nav-text">
-          <p v-show="guideBtnVisiable" class="start">
-            <guide-button @click="$redirect('/XiRenGongDao')">开始参观</guide-button>
+          <p class="start">
+            <guide-button @click="view">开始参观</guide-button>
           </p>
         </template>
       </template>
@@ -40,6 +40,7 @@ export default {
   data () {
     return {
       guideBtnVisiable: false,
+      contentVisiable: true,
     }
   },
   mounted () {
@@ -59,6 +60,15 @@ export default {
         this.$audioD.src = require(`../../public/audio/dl/dl01.mp3`)
         this.$audioD.load()
       }
+    },
+    view () {
+      this.contentVisiable = false
+      this.$audioD.pause()
+      this.$playFullVideo(require('../data/nav-0.mp4'), true)
+        .then(_ => this.$playFullVideo(require('../data/nav-1.mp4'), true))
+        .then(_ => {
+          this.$redirect('/XiRenGongDao')
+        })
     },
   },
 }
