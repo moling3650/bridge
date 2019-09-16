@@ -2,6 +2,9 @@
   <div id="Landing" :class="bgClass">
     <video v-show="showVideo" ref="v" src="../../public/video/Landing.mp4" @ended="showVideo = false" @click="play"/>
     <p v-show="showVideo && !played" class="tips">点击任意位置开始</p>
+    <div v-show="!showVideo" class="logo-wrap">
+      <img class="logo" src="../assets/img/logo.png" alt="logo">
+    </div>
     <div v-show="!showVideo" class="btn-group">
       <a class="btn" @click.prevent="gotoNavigation('dl')">导览版</a>
       <a class="btn" @click.prevent="gotoNavigation('zy')">自游版</a>
@@ -36,9 +39,9 @@ export default {
   },
   mounted () {
     this.timer = setInterval(() => {
-      this.index %= 4
       this.index++
-    }, 5000)
+      this.index %= 5
+    }, 2000)
   },
   methods: {
     play () {
@@ -64,6 +67,10 @@ export default {
   width: 19.2rem;
   height: 10.8rem;
   transition: all 0.5s ease-out;
+  &.bg-0 {
+    background-image: url(../assets/bg/0.jpg);
+    background-size: cover;
+  }
   &.bg-1 {
     background-image: url(../assets/bg/1.jpg);
     background-size: cover;
@@ -79,6 +86,18 @@ export default {
   &.bg-4 {
     background-image: url(../assets/bg/4.jpg);
     background-size: cover;
+  }
+  .logo-wrap {
+    position: absolute;
+    top: 1.55rem;
+    right: 0;
+    left: 0;
+    text-align: center;
+    height: 3.9rem;
+    .logo {
+      width: 9.8rem;
+      height: 100%;
+    }
   }
   .tips {
     position: absolute;
